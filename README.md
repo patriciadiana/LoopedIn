@@ -10,3 +10,5 @@ Requirements: https://docs.google.com/document/d/12FSFUZ_ESrjdW13F8UwAcoLF27bj5k
 
 **Target audience**: knitters, crocheters etc<br>
 
+# UML Diagram
+![Diagram](https://github.com/user-attachments/assets/e6d1ff6f-8b27-4dc5-9260-8ded2cc9db94)
