@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/main_page">
+
+    <fragment
+        android:id="@+id/main_page"
+        android:name="com.msa.looped.MainPage"
+        android:label="@string/home_page"
+        tools:layout="@layout/main_page">
+
+        <action
+            android:id="@+id/action_main_page_to_login_page"
+            app:destination="@id/login_page" />
+    </fragment>
+    <fragment
+        android:id="@+id/login_page"
+        android:name="com.msa.looped.LoginPage"
+        android:label="@string/login_page"
+        tools:layout="@layout/login_page">
+
+    </fragment>
+</navigation>

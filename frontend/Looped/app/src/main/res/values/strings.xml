@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Looped</string>
+    <string name="app_logo">app logo</string>
+    <string name="welcome">Welcome</string>
+    <string name="subtitle">We are so happy to see you here!</string>
+    <string name="button_get_started">Get started</string>
+    <string name="home_page">home page</string>
+    <string name="login_page">login page</string>
+</resources>
