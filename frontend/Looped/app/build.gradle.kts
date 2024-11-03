@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.msa.looped"
+    namespace = "msa.looped"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.msa.looped"
+        applicationId = "msa.looped"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -38,7 +38,6 @@ dependencies {
 
     implementation(libs.appcompat)
     implementation(libs.material)
-    implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)

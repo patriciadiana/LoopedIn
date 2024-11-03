@@ -1,4 +1,4 @@
-package com.msa.looped;
+package msa.looped;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.msa.looped", appContext.getPackageName());
+        assertEquals("msa.looped", appContext.getPackageName());
     }
 }

@@ -1,4 +1,4 @@
-package com.msa.looped;
+package msa.looped;
 
 import org.junit.Test;
 
