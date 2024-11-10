@@ -48,4 +48,5 @@
     <string name="app_logo">app logo</string>
     <string name="home_page_label">Home Page</string>
     <string name="login_page_label">Login Page</string>
+    <string name="get_started">Get Started</string>
 </resources>

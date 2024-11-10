@@ -27,10 +27,11 @@
 
         <TextView
             android:id="@+id/welcome_text"
-            android:layout_width="168dp"
+            android:layout_width="149dp"
             android:layout_height="43dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="276dp"
+            android:fontFamily="@font/inter_semibold"
             android:text="@string/welcome"
             android:textColor="#616161"
             android:textSize="32sp"
@@ -43,7 +44,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="328dp"
+            android:layout_marginTop="324dp"
+            android:fontFamily="@font/inter_medium"
             android:text="@string/subtitle"
             android:textColor="#616161"
             android:textSize="20sp"
@@ -52,12 +54,12 @@
 
         <Button
             android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="154dp"
+            android:layout_height="48dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="368dp"
-            android:text="Button"
-            android:clickable="true"
+            android:backgroundTint="@color/main_purple"
+            android:text="@string/get_started"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
