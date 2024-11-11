@@ -61,7 +61,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="RtlSymmetry"
-            android:autofillHints="" />
+            android:autofillHints=""
+
+        />
 
         <TextView
             android:id="@+id/textEmail"
