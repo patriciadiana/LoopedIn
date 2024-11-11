@@ -32,7 +32,7 @@
             android:background="@drawable/rounded_corner"
             android:ems="10"
             android:hint="@string/enter_your_name"
-            android:inputType="textPassword"
+            android:inputType="textEmailAddress"
             android:paddingStart="20dp"
             android:textColor="@color/background_color"
             android:textColorHint="#80FFF4E4"
