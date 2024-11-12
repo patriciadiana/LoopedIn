@@ -20,7 +20,16 @@
         android:label="@string/login_page_label"
         tools:layout="@layout/login_page">
         <action
-            android:id="@+id/action_LoginPage_to_HomePage"
-            app:destination="@id/HomePage" />
+            android:id="@+id/action_LoginPage_to_signUpPage"
+            app:destination="@id/signUpPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpPage"
+        android:name="msa.looped.SignUpPage"
+        android:label="signup_page"
+        tools:layout="@layout/signup_page" >
+        <action
+            android:id="@+id/action_signUpPage_to_LoginPage"
+            app:destination="@id/LoginPage" />
     </fragment>
 </navigation>

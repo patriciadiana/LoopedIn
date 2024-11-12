@@ -48,4 +48,20 @@
     <string name="app_logo">app logo</string>
     <string name="home_page_label">Home Page</string>
     <string name="login_page_label">Login Page</string>
+    <string name="get_started">Get Started</string>
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account">Don’t have an account?</string>
+    <string name="or_connect_using">Or connect using</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="google_button">google_button</string>
+    <string name="raverly_button">raverly_button</string>
+    <string name="register">Register</string>
+    <string name="already_having_an_account">Already having an account?</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="enter_your_email_address">Enter your email address</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="confirm_your_password">Confirm your password</string>
 </resources>
