@@ -105,7 +105,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/login_button"
             android:layout_width="154dp"
             android:layout_height="48dp"
             android:layout_marginStart="128dp"
@@ -141,16 +141,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textSignUp"
-            android:layout_width="55dp"
-            android:layout_height="19dp"
-            android:layout_marginTop="552dp"
+        <Button
+            android:id="@+id/signup_button"
+            android:layout_width="110dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="538dp"
+            android:background="@android:color/transparent"
             android:fontFamily="@font/inter_bold"
             android:text="@string/sign_up"
             android:textColor="@color/main_purple"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.719"
+            app:layout_constraintHorizontal_bias="0.77"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

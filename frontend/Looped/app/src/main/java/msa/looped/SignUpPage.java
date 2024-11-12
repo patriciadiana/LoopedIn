@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import msa.looped.databinding.SignupPageBinding;
 
@@ -28,6 +29,11 @@ public class SignUpPage extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        binding.loginButton.setOnClickListener(v ->
+                NavHostFragment.findNavController(SignUpPage.this)
+                        .navigate(R.id.action_signUpPage_to_LoginPage)
+        );
     }
 
     @Override
