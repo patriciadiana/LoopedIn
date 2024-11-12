@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/login_page">
+        android:id="@+id/signup_page">
 
         <ImageView
             android:id="@+id/small_logo"
@@ -123,7 +123,7 @@
             android:text="@string/already_having_an_account"
             android:textColor="@color/grey"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.446"
+            app:layout_constraintHorizontal_bias="0.45"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
