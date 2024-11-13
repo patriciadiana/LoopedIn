@@ -46,7 +46,7 @@
     <string name="subtitle">We are so happy to see you here!</string>
     <string name="welcome">Welcome</string>
     <string name="app_logo">app logo</string>
-    <string name="home_page_label">Home Page</string>
+    <string name="welcome_page_label">Welcome Page</string>
     <string name="login_page_label">Login Page</string>
     <string name="get_started">Get Started</string>
     <string name="email">E-mail</string>

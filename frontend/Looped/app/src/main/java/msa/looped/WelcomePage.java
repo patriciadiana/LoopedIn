@@ -9,11 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import msa.looped.databinding.LoginPageBinding;
+import msa.looped.databinding.WelcomePageBinding;
 
-public class LoginPage extends Fragment {
+public class WelcomePage extends Fragment {
 
-    private LoginPageBinding binding;
+    private WelcomePageBinding binding;
 
     @Override
     public View onCreateView(
@@ -21,7 +21,7 @@ public class LoginPage extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = LoginPageBinding.inflate(inflater, container, false);
+        binding = WelcomePageBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
@@ -29,14 +29,9 @@ public class LoginPage extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.signupButton.setOnClickListener(v ->
-                NavHostFragment.findNavController(LoginPage.this)
-                        .navigate(R.id.action_LoginPage_to_signUpPage)
-        );
-
-        binding.loginButton.setOnClickListener(v ->
-                NavHostFragment.findNavController(LoginPage.this)
-                        .navigate(R.id.action_LoginPage_to_homePage)
+        binding.button.setOnClickListener(v ->
+                NavHostFragment.findNavController(WelcomePage.this)
+                        .navigate(R.id.action_HomePage_to_LoginPage)
         );
     }
 

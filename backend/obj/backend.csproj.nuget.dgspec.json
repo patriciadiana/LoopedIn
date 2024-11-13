@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\year4\\msa\\looped\\backend\\backend.csproj": {}
+    "D:\\looped\\backend\\backend.csproj": {}
   },
   "projects": {
-    "E:\\year4\\msa\\looped\\backend\\backend.csproj": {
+    "D:\\looped\\backend\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\year4\\msa\\looped\\backend\\backend.csproj",
+        "projectUniqueName": "D:\\looped\\backend\\backend.csproj",
         "projectName": "backend",
-        "projectPath": "E:\\year4\\msa\\looped\\backend\\backend.csproj",
-        "packagesPath": "C:\\Users\\calac\\.nuget\\packages\\",
-        "outputPath": "E:\\year4\\msa\\looped\\backend\\obj\\",
+        "projectPath": "D:\\looped\\backend\\backend.csproj",
+        "packagesPath": "C:\\Users\\bârsi\\.nuget\\packages\\",
+        "outputPath": "D:\\looped\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\calac\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bârsi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -48,7 +47,7 @@
           "dependencies": {
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.6.2, )"
+              "version": "[6.9.0, )"
             }
           },
           "imports": [

@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\year4\\msa\\looped\\backend\\",
+  "WorkspaceRootPath": "D:\\looped\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8980D97E-F38F-435C-9D8A-8D3A7F6795AE}|backend.csproj|e:\\year4\\msa\\looped\\backend\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8980D97E-F38F-435C-9D8A-8D3A7F6795AE}|backend.csproj|d:\\looped\\backend\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8980D97E-F38F-435C-9D8A-8D3A7F6795AE}|backend.csproj|solutionrelative:controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -24,9 +24,9 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "WeatherForecastController.cs",
-              "DocumentMoniker": "E:\\year4\\msa\\looped\\backend\\Controllers\\WeatherForecastController.cs",
+              "DocumentMoniker": "D:\\looped\\backend\\Controllers\\WeatherForecastController.cs",
               "RelativeDocumentMoniker": "Controllers\\WeatherForecastController.cs",
-              "ToolTip": "E:\\year4\\msa\\looped\\backend\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "D:\\looped\\backend\\Controllers\\WeatherForecastController.cs",
               "RelativeToolTip": "Controllers\\WeatherForecastController.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

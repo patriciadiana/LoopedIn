@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/HomePage">
+    app:startDestination="@id/WelcomePage">
 
     <fragment
-        android:id="@+id/HomePage"
-        android:name="msa.looped.HomePage"
-        android:label="@string/home_page_label"
-        tools:layout="@layout/home_page">
+        android:id="@+id/WelcomePage"
+        android:name="msa.looped.WelcomePage"
+        android:label="@string/welcome_page_label"
+        tools:layout="@layout/welcome_page">
         <action
             android:id="@+id/action_HomePage_to_LoginPage"
             app:destination="@id/LoginPage" />
@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_LoginPage_to_signUpPage"
             app:destination="@id/signUpPage" />
+        <action
+            android:id="@+id/action_LoginPage_to_homePage"
+            app:destination="@id/homePage" />
     </fragment>
     <fragment
         android:id="@+id/signUpPage"
@@ -32,4 +35,9 @@
             android:id="@+id/action_signUpPage_to_LoginPage"
             app:destination="@id/LoginPage" />
     </fragment>
+    <fragment
+        android:id="@+id/homePage"
+        android:name="msa.looped.HomePage"
+        android:label="home_page"
+        tools:layout="@layout/home_page" />
 </navigation>
