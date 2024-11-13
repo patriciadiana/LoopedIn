@@ -1,28 +1,22 @@
 package msa.looped;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 import msa.looped.databinding.HomePageBinding;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class HomePage extends Fragment {
@@ -45,7 +39,7 @@ public class HomePage extends Fragment {
     }
 
     private void fetchDataFromBackend() {
-        String url = "https://localhost:7035/WeatherForecast";  // Replace with your actual URL
+        String url = "http://10.0.2.2:5298/WeatherForecast";
 
         Request request = new Request.Builder()
                 .url(url)
@@ -57,12 +51,7 @@ public class HomePage extends Fragment {
                 if (response.isSuccessful()) {
                     final String responseData = response.body().string();
                     if (getActivity() != null) {
-                        getActivity().runOnUiThread(() -> binding.responseTextView.setText("DA"));
-                        //getActivity().runOnUiThread(() -> binding.responseTextView.setText(responseData));
-                    }
-                } else {
-                    if (getActivity() != null) {
-                        getActivity().runOnUiThread(() -> binding.responseTextView.setText("Error: " + response.code()));
+                        getActivity().runOnUiThread(() -> binding.responseTextView.setText(responseData));
                     }
                 }
             }
@@ -70,20 +59,27 @@ public class HomePage extends Fragment {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 e.printStackTrace();
-                if (getActivity() != null) {
-                    getActivity().runOnUiThread(() -> binding.responseTextView.setText("Failed to connect"));
-                }
+                String errorMessage = e.getMessage();
+                getActivity().runOnUiThread(() -> binding.responseTextView.setText("Failed to connect: " + errorMessage));
             }
         });
     }
 
-
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-//        binding.registerButton.setOnClickListener(v ->
-//                NavHostFragment.findNavController(HomePage.this)
-//                        .navigate(R.id.action_LoginPage_to_signUpPage)
-//        );
-    }
+//    private void sendDataToBackend() throws IOException {
+//        String url = "";
+//
+//        RequestBody formBody = new FormBody.Builder()
+//                .add("username", "test")
+//                .add("password", "test")
+//                .build();
+//
+//        Request request = new Request.Builder()
+//                .url(url)
+//                .post(formBody)
+//                .build();
+//
+//        Call call = client.newCall(request);
+//        Response response = call.execute();
+//
+//    }
 }
