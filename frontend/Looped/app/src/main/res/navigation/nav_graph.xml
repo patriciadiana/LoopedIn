@@ -39,5 +39,18 @@
         android:id="@+id/homePage"
         android:name="msa.looped.HomePage"
         android:label="home_page"
-        tools:layout="@layout/home_page" />
+        tools:layout="@layout/home_page" >
+        <action
+            android:id="@+id/action_homePage_to_myProjectsPage"
+            app:destination="@id/myProjectsPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/myProjectsPage"
+        android:name="msa.looped.MyProjectsPage"
+        android:label="myprojects_page"
+        tools:layout="@layout/myprojects_page" >
+        <action
+            android:id="@+id/action_myProjectsPage_to_homePage"
+            app:destination="@id/homePage" />
+    </fragment>
 </navigation>
