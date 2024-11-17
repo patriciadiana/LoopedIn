@@ -11,6 +11,10 @@
       "RelativeMoniker": "D:0:0:{8980D97E-F38F-435C-9D8A-8D3A7F6795AE}|backend.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{8980D97E-F38F-435C-9D8A-8D3A7F6795AE}|backend.csproj|e:\\year4\\msa\\looped\\backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8980D97E-F38F-435C-9D8A-8D3A7F6795AE}|backend.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8980D97E-F38F-435C-9D8A-8D3A7F6795AE}|backend.csproj|e:\\year4\\msa\\looped\\backend\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8980D97E-F38F-435C-9D8A-8D3A7F6795AE}|backend.csproj|solutionrelative:controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -26,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,13 +42,25 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\year4\\msa\\looped\\backend\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "E:\\year4\\msa\\looped\\backend\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-11-17T12:38:02.631Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "OAuthController.cs",
               "DocumentMoniker": "E:\\year4\\msa\\looped\\backend\\Controllers\\OAuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\OAuthController.cs",
               "ToolTip": "E:\\year4\\msa\\looped\\backend\\Controllers\\OAuthController.cs",
               "RelativeToolTip": "Controllers\\OAuthController.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAAwCAAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAADwvy4AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-12T20:31:28.133Z",
               "EditorCaption": ""
@@ -57,13 +73,14 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "E:\\year4\\msa\\looped\\backend\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAuwBAAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T17:08:56.658Z"
+              "WhenOpened": "2024-11-12T17:08:56.658Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "MainController.cs",
               "DocumentMoniker": "E:\\year4\\msa\\looped\\backend\\Controllers\\MainController.cs",
               "RelativeDocumentMoniker": "Controllers\\MainController.cs",
@@ -75,7 +92,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "WeatherForecastController.cs",
               "DocumentMoniker": "E:\\year4\\msa\\looped\\backend\\Controllers\\WeatherForecastController.cs",
               "RelativeDocumentMoniker": "Controllers\\WeatherForecastController.cs",

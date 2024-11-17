@@ -9,6 +9,11 @@ namespace backend
 
             // Add services to the container.
 
+            builder.WebHost.ConfigureKestrel(options =>
+            {
+                options.Listen(System.Net.IPAddress.Any, 5298);
+            });
+
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -25,7 +30,7 @@ namespace backend
                 app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseAuthorization();
 

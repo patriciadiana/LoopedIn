@@ -84,7 +84,8 @@ public class HomePage extends Fragment {
     private void getAccessTokenFromBackend(String authorizationCode) {
         // Logică pentru obținerea tokenului din backend
         Log.d("getAccessTokenFromBackend", "facem get la backend");
-        String backendUrl = "https://localhost:7035/api/oauth/token?code=" + authorizationCode;
+        Log.d("getAccessTokenFromBackend", authorizationCode);
+        String backendUrl = "http://10.0.2.2:5298/api/oauth/token?code=" + authorizationCode;
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url(backendUrl)
