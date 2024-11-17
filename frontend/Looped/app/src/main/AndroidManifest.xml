@@ -18,8 +18,15 @@
             android:theme="@style/Theme.Looped">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Intent Filter pentru URL-ul personalizat de la Ravelry -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="looped" android:host="callback" />
             </intent-filter>
         </activity>
     </application>

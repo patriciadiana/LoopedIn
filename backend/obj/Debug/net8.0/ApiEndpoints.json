@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "backend.Controllers.OAuthController",
+    "Method": "GetAccessToken",
+    "RelativePath": "api/oauth/token",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "code",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "backend.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",

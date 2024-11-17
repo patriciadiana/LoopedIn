@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_HomePage_to_LoginPage"
             app:destination="@id/LoginPage" />
+        <action
+            android:id="@+id/action_HomePage_to_dupaLogin"
+            app:destination="@id/dupaLogin" />
     </fragment>
     <fragment
         android:id="@+id/LoginPage"
@@ -22,6 +25,9 @@
         <action
             android:id="@+id/action_LoginPage_to_signUpPage"
             app:destination="@id/signUpPage" />
+        <action
+            android:id="@+id/action_LoginPage_to_dupaLogin"
+            app:destination="@id/dupaLogin" />
     </fragment>
     <fragment
         android:id="@+id/signUpPage"
@@ -32,4 +38,9 @@
             android:id="@+id/action_signUpPage_to_LoginPage"
             app:destination="@id/LoginPage" />
     </fragment>
+    <fragment
+        android:id="@+id/dupaLogin"
+        android:name="msa.looped.DupaLogin"
+        android:label="dupalogin"
+        tools:layout="@layout/dupalogin" />
 </navigation>

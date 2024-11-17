@@ -31,3 +31,10 @@ E:\year4\msa\looped\backend\obj\Debug\net8.0\refint\backend.dll
 E:\year4\msa\looped\backend\obj\Debug\net8.0\backend.pdb
 E:\year4\msa\looped\backend\obj\Debug\net8.0\backend.genruntimeconfig.cache
 E:\year4\msa\looped\backend\obj\Debug\net8.0\ref\backend.dll
+E:\year4\msa\looped\backend\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+E:\year4\msa\looped\backend\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\year4\msa\looped\backend\bin\Debug\net8.0\backend.staticwebassets.endpoints.json
+E:\year4\msa\looped\backend\bin\Debug\net8.0\IdentityModel.dll
+E:\year4\msa\looped\backend\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+E:\year4\msa\looped\backend\obj\Debug\net8.0\staticwebassets\msbuild.backend.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+E:\year4\msa\looped\backend\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
