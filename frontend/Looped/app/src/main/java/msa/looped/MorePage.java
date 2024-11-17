@@ -10,16 +10,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.navigation.NavigationBarView;
 
-import msa.looped.databinding.MyprojectsPageBinding;
+import msa.looped.databinding.MorePageBinding;
 
-public class MyProjectsPage extends Fragment {
-    private MyprojectsPageBinding binding;
+public class MorePage extends Fragment {
+    private MorePageBinding binding;
 
     @Override
     public View onCreateView(
@@ -27,15 +24,15 @@ public class MyProjectsPage extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = MyprojectsPageBinding.inflate(inflater, container, false);
+        binding = MorePageBinding.inflate(inflater, container, false);
 
         binding.bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                if(menuItem.getItemId() == R.id.menu_more)
+                if(menuItem.getItemId() == R.id.menu_projects)
                 {
                     menuItem.setChecked(true);
-                    loadFragment(new MorePage());
+                    loadFragment(new MyProjectsPage());
                 }
                 else if(menuItem.getItemId() == R.id.menu_search)
                 {
@@ -59,7 +56,7 @@ public class MyProjectsPage extends Fragment {
     {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.myprojects_page, fragment);
+        fragmentTransaction.add(R.id.more_page, fragment);
         fragmentTransaction.commit();
     }
 

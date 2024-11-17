@@ -1,7 +1,9 @@
 package msa.looped;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -15,6 +17,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
@@ -30,21 +33,6 @@ import okhttp3.Response;
 public class HomePage extends Fragment {
     private HomePageBinding binding;
     public OkHttpClient client;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        binding = HomePageBinding.inflate(getLayoutInflater());
-
-        binding.bottomNavigationView.setOnItemSelectedListener(menuItem -> {
-            if(menuItem.getItemId() == R.id.menu_projects)
-            {
-                NavHostFragment.findNavController(HomePage.this).navigate(R.id.action_homePage_to_myProjectsPage);
-            }
-            return false;
-        });
-    }
     @Override
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
@@ -54,8 +42,37 @@ public class HomePage extends Fragment {
         binding = HomePageBinding.inflate(inflater, container, false);
         client = new OkHttpClient();
         binding.registerButton.setOnClickListener(v -> fetchDataFromBackend());
+        binding.bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                if(menuItem.getItemId() == R.id.menu_projects)
+                {
+                    menuItem.setChecked(true);
+                    loadFragment(new MyProjectsPage());
+                }
+                else if(menuItem.getItemId() == R.id.menu_search)
+                {
+                    menuItem.setChecked(true);
+                    loadFragment(new SearchPage());
+                }
+                else if(menuItem.getItemId() == R.id.menu_more)
+                {
+                    menuItem.setChecked(true);
+                    loadFragment(new MorePage());
+                }
+            return false;
+            }
+        });
 
         return binding.getRoot();
+    }
+
+    private void loadFragment(Fragment fragment)
+    {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.home_page, fragment);
+        fragmentTransaction.commit();
     }
 
     private void fetchDataFromBackend() {
@@ -83,6 +100,12 @@ public class HomePage extends Fragment {
                 getActivity().runOnUiThread(() -> binding.responseTextView.setText("Failed to connect: " + errorMessage));
             }
         });
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
 //    private void sendDataToBackend() throws IOException {

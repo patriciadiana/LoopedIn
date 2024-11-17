@@ -9,9 +9,9 @@
         android:icon="@drawable/projects"
         android:id="@+id/menu_projects" />
 
-    <item android:title="Add"
-        android:icon="@drawable/add"
-        android:id="@+id/menu_add" />
+    <item android:title=""
+        android:id="@+id/menu_add"
+        android:enabled="false"/>
 
     <item android:title="Search"
         android:icon="@drawable/search"

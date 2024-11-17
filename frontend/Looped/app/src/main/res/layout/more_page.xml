@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/myprojects_page"
+    android:id="@+id/more_page"
     android:background="#FDF4E6"
-    tools:context=".MyProjectsPage">
+    tools:context=".MorePage">
 
     <TextView
-        android:id="@+id/textProjects"
-        android:layout_width="185dp"
-        android:layout_height="46dp"
+        android:id="@+id/textSearch"
+        android:layout_width="246dp"
+        android:layout_height="41dp"
         android:layout_marginTop="56dp"
         android:fontFamily="@font/inter_semibold"
-        android:text="@string/my_projects"
+        android:text="More Page"
         android:textColor="@color/grey"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintHorizontal_bias="0.096"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,26 +27,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#7F4A92"
+        app:itemIconTint="@color/bottom_nav_tint"
+        app:itemTextColor="@color/bottom_nav_tint"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:itemTextColor="@color/bottom_nav_tint"
-        app:itemIconTint="@color/bottom_nav_tint"
-        app:menu="@menu/bottom_nav_menu" >
+        app:layout_constraintStart_toEndOf="parent"
+        app:menu="@menu/bottom_nav_menu">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="180dp"
-            app:layout_anchor="@+id/bottomNavigationView"
-            app:elevation="0dp">
+            app:elevation="0dp"
+            app:layout_anchor="@+id/bottomNavigationView">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
