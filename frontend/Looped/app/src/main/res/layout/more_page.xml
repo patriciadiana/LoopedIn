@@ -4,40 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/home_page"
+    android:id="@+id/more_page"
     android:background="#FDF4E6"
-    tools:context=".HomePage">
-
-    <ImageView
-        android:id="@+id/small_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="44dp"
-        android:contentDescription="@string/app_logo"
-        android:src="@drawable/yarn_ball"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/register_button"
-        android:layout_width="154dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="496dp"
-        android:backgroundTint="@color/secondary_purple"
-        android:text="@string/register"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".MorePage">
 
     <TextView
-        android:id="@+id/responseTextView"
-        android:layout_width="262dp"
-        android:layout_height="229dp"
-        android:layout_marginTop="232dp"
-        android:text="TextView"
+        android:id="@+id/textSearch"
+        android:layout_width="246dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="56dp"
+        android:fontFamily="@font/inter_semibold"
+        android:text="More Page"
+        android:textColor="@color/grey"
+        android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.096"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

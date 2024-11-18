@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Home"
+        android:icon="@drawable/home"
+        android:id="@+id/menu_home" />
+
+    <item android:title="My projects"
+        android:icon="@drawable/projects"
+        android:id="@+id/menu_projects" />
+
+    <item android:title=""
+        android:id="@+id/menu_add"
+        android:enabled="false"/>
+
+    <item android:title="Search"
+        android:icon="@drawable/search"
+        android:id="@+id/menu_search"/>
+
+    <item android:title="More"
+        android:icon="@drawable/more"
+        android:id="@+id/menu_more"/>
+
+</menu>
