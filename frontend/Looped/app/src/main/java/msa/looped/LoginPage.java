@@ -84,9 +84,9 @@ public class LoginPage extends Fragment {
                 RESPONSE_TYPE_CODE,
                 Uri.parse(redirectUri)
         )
-                .setState(state)
-                .setScopes("offline")
-                .build();
+            .setState(state)
+            .setScopes("offline")
+            .build();
 
         AuthorizationService authService = new AuthorizationService(requireContext());
         Intent authIntent = authService.getAuthorizationRequestIntent(authRequest);

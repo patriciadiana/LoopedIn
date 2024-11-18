@@ -1,24 +1,8 @@
 [
   {
-    "ContainingType": "backend.Controllers.OAuthController",
-    "Method": "GetAccessToken",
-    "RelativePath": "api/oauth/token",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "code",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "backend.Controllers.MainController",
     "Method": "GetCurrentUser",
-    "RelativePath": "Main/current_user",
+    "RelativePath": "api/main/current_user",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -34,7 +18,7 @@
   {
     "ContainingType": "backend.Controllers.MainController",
     "Method": "GetProjectsByUsername",
-    "RelativePath": "Main/projects/{username}/list",
+    "RelativePath": "api/main/projects/{username}/list",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -43,6 +27,38 @@
         "Name": "username",
         "Type": "System.String",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend.Controllers.MainController",
+    "Method": "GetCurrentToken",
+    "RelativePath": "api/main/token",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Authorization",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend.Controllers.OAuthController",
+    "Method": "GetAccessToken",
+    "RelativePath": "api/oauth/token",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "code",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

@@ -83,6 +83,8 @@ namespace backend
 
             app.MapControllers();
 
+            app.UseCors();
+
             app.Run();
         }
     }

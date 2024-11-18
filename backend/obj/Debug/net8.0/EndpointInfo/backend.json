@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/Main/projects/{username}/list": {
+    "/api/main/projects/{username}/list": {
       "get": {
         "tags": [
           "Main"
@@ -27,7 +27,19 @@
         }
       }
     },
-    "/Main/current_user": {
+    "/api/main/current_user": {
+      "get": {
+        "tags": [
+          "Main"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/main/token": {
       "get": {
         "tags": [
           "Main"

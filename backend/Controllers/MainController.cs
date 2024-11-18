@@ -5,20 +5,24 @@ using System.Text.Json;
 
 namespace backend.Controllers
 {
-    [Authorize]
     [ApiController]
-    [Route("[controller]")]
-    public class MainController(HttpClient _httpClient) : ControllerBase
+    [Route("api/main")]
+    public class MainController : ControllerBase
     {
-        private string RavelryApiUrl = "api.ravelry.com";
+        private readonly HttpClient _httpClient;
+        private string RavelryApiUrl = "https://api.ravelry.com";
+
+        public MainController(IHttpClientFactory httpClientFactory)
+        {
+            _httpClient = httpClientFactory.CreateClient();
+        }
 
         [HttpGet("projects/{username}/list")]
         public async Task<IActionResult> GetProjectsByUsername(string username)
         {
             var url = $"{RavelryApiUrl}/projects/{username}/list.json";
 
-            var accessToken = Request.Headers["Authorization"].ToString().Replace("Bearer ", ""); 
-            //var accessToken = "y_bvGlQzcoXPk1hqUXYUfD3RINbtvFPhMW2KgZ9NAhA.YczAA5gYtoTHZtSp9menycrK2lEGalIZj5UgPRmzB0I";
+            var accessToken = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
             _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
 
             try
@@ -41,16 +45,17 @@ namespace backend.Controllers
                 return StatusCode(500, new { error = "An error occurred while retrieving projects.", details = ex.Message });
             }
         }
+
         [HttpGet("current_user")]
         public async Task<IActionResult> GetCurrentUser([FromHeader(Name = "Authorization")] string authorizationHeader)
         {
-            Console.WriteLine("Authorization Header: " + authorizationHeader);
+            Console.WriteLine("Entered GetCurrentUser endpoint.");
+
             if (string.IsNullOrEmpty(authorizationHeader) || !authorizationHeader.StartsWith("Bearer "))
                 return Unauthorized("Missing or invalid Authorization header.");
 
             // Trim Bearer from the header
             string accessToken = authorizationHeader.Substring("Bearer ".Length);
-
 
             Console.WriteLine("Authorization Header: " + authorizationHeader);
             Console.WriteLine("Access Token: " + accessToken);
@@ -66,6 +71,12 @@ namespace backend.Controllers
             var userData = await response.Content.ReadAsStringAsync();
             return Ok(JsonSerializer.Deserialize<object>(userData));
         }
-    }
 
+        [HttpGet("token")]
+        public async Task<IActionResult> GetCurrentToken([FromHeader(Name = "Authorization")] string authorizationHeader)
+        {
+            string accessToken = authorizationHeader.Substring("Bearer ".Length);
+            return Ok(accessToken);
+        }
+    }
 }
