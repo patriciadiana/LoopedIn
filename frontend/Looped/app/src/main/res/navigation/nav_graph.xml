@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_HomePage_to_LoginPage"
             app:destination="@id/LoginPage" />
+        <action
+            android:id="@+id/action_WelcomePage_to_homePage"
+            app:destination="@id/homePage" />
     </fragment>
     <fragment
         android:id="@+id/LoginPage"
