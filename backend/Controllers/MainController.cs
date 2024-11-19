@@ -74,9 +74,8 @@ namespace backend.Controllers
             var userData = await response.Content.ReadAsStringAsync();
 
             var jsonDocument = JsonDocument.Parse(userData);
-            string username = jsonDocument.RootElement.GetProperty("user").GetString();
+            string username = jsonDocument.RootElement.GetProperty("user").GetProperty("username").GetString();
 
-            return Ok(username);
             url = $"{RavelryApiUrl}/projects/{username}/list.json";
 
             accessToken = _authService.getToken();

@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/responseTextView"
+        android:id="@+id/username"
         android:layout_width="262dp"
         android:layout_height="229dp"
         android:layout_marginTop="232dp"

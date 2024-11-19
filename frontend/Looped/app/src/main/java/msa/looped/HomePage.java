@@ -72,7 +72,7 @@ public class HomePage extends Fragment {
             return false;
             }
         });
-
+        fetchDataFromBackend();
         return binding.getRoot();
     }
 
@@ -104,7 +104,7 @@ public class HomePage extends Fragment {
                 if (response.isSuccessful()) {
                     final String responseData = response.body().string();
                     if (getActivity() != null) {
-                        getActivity().runOnUiThread(() -> binding.responseTextView.setText(responseData));
+                        getActivity().runOnUiThread(() -> binding.username.setText(responseData));
                     }
                 }
             }
@@ -113,7 +113,7 @@ public class HomePage extends Fragment {
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 e.printStackTrace();
                 String errorMessage = e.getMessage();
-                getActivity().runOnUiThread(() -> binding.responseTextView.setText("Failed to connect: " + errorMessage));
+                getActivity().runOnUiThread(() -> binding.username.setText("Failed to connect: " + errorMessage));
             }
         });
     }
