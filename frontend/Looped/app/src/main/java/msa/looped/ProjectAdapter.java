@@ -45,14 +45,13 @@ public class ProjectAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.list_view, parent, false);
         }
 
-        Project user = projectsList.get(position);
+        Project project = projectsList.get(position);
 
-        //ImageView imageView = convertView.findViewById(R.id.imageViewPhoto);
         TextView textView = convertView.findViewById(R.id.textViewName);
+        textView.setText(project.getName());
 
-        textView.setText("Hardcoded text");
-        System.out.println(user.getName());
-        //Glide.with(context).load(user.getThumbnailUrl()).into(imageView);
+        ImageView imageView = convertView.findViewById(R.id.imageViewPhoto);
+        Glide.with(context).load(project.getFirstPhoto().getThumbnailUrl()).into(imageView);
 
         return convertView;
     }

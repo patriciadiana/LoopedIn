@@ -10,18 +10,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.gson.Gson;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
-import kotlinx.coroutines.channels.ProduceKt;
 import msa.looped.databinding.MyprojectsPageBinding;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -97,12 +92,13 @@ public class MyProjectsPage extends Fragment {
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 if (response.isSuccessful()) {
                     final String responseData = response.body().string();
+
                     Gson gson = new Gson();
-                    Project projects = gson.fromJson(responseData, Project.class);
-                    List<Project> projectList = Arrays.asList(projects);
+                    ProjectsList projectsList = gson.fromJson(responseData, ProjectsList.class);
+
+                    List<Project> projectList = projectsList.getProjects();
 
                     if (getActivity() != null) {
-                        //getActivity().runOnUiThread(() -> binding.username.setText(responseData));
                         getActivity().runOnUiThread(() -> {
                             ProjectAdapter adapter = new ProjectAdapter(getContext(), projectList);
                             binding.listView.setAdapter(adapter);

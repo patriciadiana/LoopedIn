@@ -1,22 +1,22 @@
 package msa.looped;
 
-public class Project {
-    private String name;
-    private String thumbnail_url;
+import com.google.gson.annotations.SerializedName;
 
-    public Project(String name, String thumbnailUrl)
-    {
-        this.name = name;
-        this.thumbnail_url = thumbnailUrl;
-    }
+public class Project {
+    @SerializedName("name")
+    private String name;
+
+    @SerializedName("first_photo")
+    private FirstPhoto firstPhoto;
 
     public String getName()
     {
         return name;
     }
-    public String getThumbnailUrl()
-    {
-        return thumbnail_url;
-    }
 
+    public FirstPhoto getFirstPhoto()
+    {
+        return firstPhoto;
+    }
 }
+
