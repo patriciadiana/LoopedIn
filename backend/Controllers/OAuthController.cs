@@ -1,18 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using backend.Service;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using System.Security.AccessControl;
+using System.Text.Json;
 using System.Web;
 
 namespace backend.Controllers
 {
     [ApiController]
-    [Route("api/oauth")]
-    public class OAuthController(HttpClient _httpClient) : ControllerBase
+    [Route("oauth")]
+    public class OAuthController(HttpClient _httpClient, AuthService _authService) : ControllerBase
     {
         private const string tokenRequestUrl = "https://www.ravelry.com/oauth2/token";
 
         private const string clientId = "4e2b721afe4a3e4a5853efdf287b86cc";
         private const string clientSecret = "LbNpJ9tcyBbeN/20KZQgPeZvUmLC_b71Qml/KuB8";
-
 
         [HttpPost("token")]
         public async Task<IActionResult> GetAccessToken([FromQuery] string code)
@@ -34,7 +36,6 @@ namespace backend.Controllers
 
             try
             {
-                // Trimite cererea
                 var response = await _httpClient.PostAsync(tokenRequestUrl, formContent);
 
                 if (!response.IsSuccessStatusCode)
@@ -44,6 +45,10 @@ namespace backend.Controllers
                 }
 
                 var tokenResponse = await response.Content.ReadAsStringAsync();
+                var jsonDocument = JsonDocument.Parse(tokenResponse);
+                string accessToken = jsonDocument.RootElement.GetProperty("access_token").GetString();
+
+                _authService.setToken(accessToken);
                 return Ok(tokenResponse);
             }
             catch (HttpRequestException ex)
@@ -51,7 +56,6 @@ namespace backend.Controllers
                 return StatusCode(500, new { error = "An error occurred while requesting the access token.", details = ex.Message });
             }
         }
-
 
     }
 }

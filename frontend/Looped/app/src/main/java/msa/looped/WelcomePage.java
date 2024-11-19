@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.util.Log;
 
 import java.io.IOException;
+import java.net.URI;
 
 import msa.looped.databinding.WelcomePageBinding;
 import okhttp3.Call;
@@ -28,7 +29,9 @@ public class WelcomePage extends Fragment {
 
     private WelcomePageBinding binding;
     private String state;
+    public OkHttpClient client;
     private String authorizationCode;
+    private String apiUrl = Data.getInstance().getApiUrl();
     private String redirectUri="";
     private String clientId = "4e2b721afe4a3e4a5853efdf287b86cc";
 
@@ -37,7 +40,7 @@ public class WelcomePage extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-
+        client = new OkHttpClient();
         binding = WelcomePageBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
@@ -82,7 +85,8 @@ public class WelcomePage extends Fragment {
     private void getAccessTokenFromBackend(String authorizationCode) {
         Log.d("getAccessTokenFromBackend", "facem get la backend");
         Log.d("getAccessTokenFromBackend", authorizationCode);
-        String backendUrl = "http://10.0.2.2:5298/api/oauth/token?code=" + authorizationCode;
+
+        String backendUrl = apiUrl + "/oauth/token?code=" + authorizationCode;
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url(backendUrl)

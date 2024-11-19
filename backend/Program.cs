@@ -1,4 +1,5 @@
 
+using backend.Service;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
@@ -22,6 +23,7 @@ namespace backend
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped<HttpClient>();
+            builder.Services.AddSingleton<AuthService>();
             builder.Services.AddHttpClient();
 
             builder.Services.AddAuthentication("Bearer")
@@ -75,11 +77,8 @@ namespace backend
                 app.UseSwaggerUI();
             }
 
-            //app.UseHttpsRedirection();
-
             app.UseAuthentication();
             app.UseAuthorization();
-
 
             app.MapControllers();
 

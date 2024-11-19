@@ -29,6 +29,7 @@ public class LoginPage extends Fragment {
     private String redirectUri = "looped://callback";
     private String RESPONSE_TYPE_CODE = "code";
     private String state;
+    private String apiUrl = "";
 
     private static final String TAG = "LoginPage";  // Log tag
 
@@ -60,6 +61,7 @@ public class LoginPage extends Fragment {
             Log.d(TAG, "onViewCreated: Ravelry button clicked");
             initiateLogin();
         });
+
     }
 
     private void initiateLogin() {
