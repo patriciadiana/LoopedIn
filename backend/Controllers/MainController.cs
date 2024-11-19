@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using backend.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using System.Text.Json;
@@ -6,23 +7,17 @@ using System.Text.Json;
 namespace backend.Controllers
 {
     [ApiController]
-    [Route("api/main")]
-    public class MainController : ControllerBase
+    [Route("main")]
+    public class MainController(HttpClient _httpClient, AuthService _authService) : ControllerBase
     {
-        private readonly HttpClient _httpClient;
         private string RavelryApiUrl = "https://api.ravelry.com";
-
-        public MainController(IHttpClientFactory httpClientFactory)
-        {
-            _httpClient = httpClientFactory.CreateClient();
-        }
 
         [HttpGet("projects/{username}/list")]
         public async Task<IActionResult> GetProjectsByUsername(string username)
         {
             var url = $"{RavelryApiUrl}/projects/{username}/list.json";
 
-            var accessToken = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+            var accessToken = _authService.getToken();
             _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
 
             try
@@ -47,20 +42,14 @@ namespace backend.Controllers
         }
 
         [HttpGet("current_user")]
-        public async Task<IActionResult> GetCurrentUser([FromHeader(Name = "Authorization")] string authorizationHeader)
+        public async Task<IActionResult> GetCurrentUser()
         {
-            Console.WriteLine("Entered GetCurrentUser endpoint.");
+            string accessToken = _authService.getToken();
 
-            if (string.IsNullOrEmpty(authorizationHeader) || !authorizationHeader.StartsWith("Bearer "))
-                return Unauthorized("Missing or invalid Authorization header.");
-
-            // Trim Bearer from the header
-            string accessToken = authorizationHeader.Substring("Bearer ".Length);
-
-            Console.WriteLine("Authorization Header: " + authorizationHeader);
             Console.WriteLine("Access Token: " + accessToken);
 
-            var request = new HttpRequestMessage(HttpMethod.Get, "https://api.ravelry.com/current_user.json");
+            var url = $"{RavelryApiUrl}/current_user.json";
+            var request = new HttpRequestMessage(HttpMethod.Get, url);
             request.Headers.Add("Authorization", $"Bearer {accessToken}");
 
             var response = await _httpClient.SendAsync(request);
@@ -70,13 +59,6 @@ namespace backend.Controllers
 
             var userData = await response.Content.ReadAsStringAsync();
             return Ok(JsonSerializer.Deserialize<object>(userData));
-        }
-
-        [HttpGet("token")]
-        public async Task<IActionResult> GetCurrentToken([FromHeader(Name = "Authorization")] string authorizationHeader)
-        {
-            string accessToken = authorizationHeader.Substring("Bearer ".Length);
-            return Ok(accessToken);
         }
     }
 }

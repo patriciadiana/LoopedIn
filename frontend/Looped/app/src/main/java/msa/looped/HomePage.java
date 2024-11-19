@@ -1,5 +1,7 @@
 package msa.looped;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,6 +35,8 @@ import okhttp3.Response;
 public class HomePage extends Fragment {
     private HomePageBinding binding;
     public OkHttpClient client;
+    private String apiUrl = Data.getInstance().getApiUrl();
+
     @Override
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
@@ -41,7 +45,7 @@ public class HomePage extends Fragment {
 
         binding = HomePageBinding.inflate(inflater, container, false);
         client = new OkHttpClient();
-        binding.registerButton.setOnClickListener(v -> fetchDataFromBackend());
+//        binding.registerButton.setOnClickListener(v -> fetchDataFromBackend());
         binding.bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -60,11 +64,22 @@ public class HomePage extends Fragment {
                     menuItem.setChecked(true);
                     loadFragment(new MorePage());
                 }
+                else if(menuItem.getItemId() == R.id.menu_home)
+                {
+                    menuItem.setChecked(true);
+                    loadFragment(new HomePage());
+                }
             return false;
             }
         });
 
         return binding.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        fetchDataFromBackend();
     }
 
     private void loadFragment(Fragment fragment)
@@ -76,7 +91,8 @@ public class HomePage extends Fragment {
     }
 
     private void fetchDataFromBackend() {
-        String url = "http://10.0.2.2:5298/WeatherForecast";
+
+        String url = apiUrl + "/main/current_user";
 
         Request request = new Request.Builder()
                 .url(url)
