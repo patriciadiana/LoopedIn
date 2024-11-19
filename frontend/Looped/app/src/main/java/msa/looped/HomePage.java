@@ -92,7 +92,7 @@ public class HomePage extends Fragment {
 
     private void fetchDataFromBackend() {
 
-        String url = apiUrl + "/main/current_user";
+        String url = apiUrl + "/main/projects/current_user";
 
         Request request = new Request.Builder()
                 .url(url)

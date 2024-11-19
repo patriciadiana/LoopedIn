@@ -1,7 +1,5 @@
 ﻿using backend.Service;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Net.Http;
 using System.Text.Json;
 
 namespace backend.Controllers
@@ -59,6 +57,50 @@ namespace backend.Controllers
 
             var userData = await response.Content.ReadAsStringAsync();
             return Ok(JsonSerializer.Deserialize<object>(userData));
+        }
+
+        [HttpGet("projects/current_user")]
+        public async Task<IActionResult> GetProjectsForCurrentUser()
+        {
+            string accessToken = _authService.getToken();
+
+            Console.WriteLine("Access Token: " + accessToken);
+
+            var url = $"{RavelryApiUrl}/current_user.json";
+            var request = new HttpRequestMessage(HttpMethod.Get, url);
+            request.Headers.Add("Authorization", $"Bearer {accessToken}");
+
+            var response = await _httpClient.SendAsync(request);
+            var userData = await response.Content.ReadAsStringAsync();
+
+            var jsonDocument = JsonDocument.Parse(userData);
+            string username = jsonDocument.RootElement.GetProperty("user").GetString();
+
+            return Ok(username);
+            url = $"{RavelryApiUrl}/projects/{username}/list.json";
+
+            accessToken = _authService.getToken();
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+
+            try
+            {
+                response = await _httpClient.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var projectsData = await response.Content.ReadAsStringAsync();
+                    return Ok(projectsData);
+                }
+                else
+                {
+                    var errorResponse = await response.Content.ReadAsStringAsync();
+                    return BadRequest(new { error = "Failed to retrieve projects.", details = errorResponse });
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                return StatusCode(500, new { error = "An error occurred while retrieving projects.", details = ex.Message });
+            }
         }
     }
 }
