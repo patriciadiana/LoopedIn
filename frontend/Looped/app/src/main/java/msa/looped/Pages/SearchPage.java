@@ -1,4 +1,4 @@
-package msa.looped;
+package msa.looped.Pages;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationBarView;
 
+import msa.looped.R;
 import msa.looped.databinding.SearchPageBinding;
 
 public class SearchPage extends Fragment {

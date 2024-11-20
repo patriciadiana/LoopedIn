@@ -59,7 +59,27 @@ namespace backend.Controllers
             return Ok(JsonSerializer.Deserialize<object>(userData));
         }
 
-        [HttpGet("projects/current_user")]
+        [HttpGet("current_user/profile_picture")]
+        public async Task<IActionResult> GetProfilePictureForCurrentUser()
+        {
+            string accessToken = _authService.getToken();
+
+            Console.WriteLine("Access Token: " + accessToken);
+
+            var url = $"{RavelryApiUrl}/current_user.json";
+            var request = new HttpRequestMessage(HttpMethod.Get, url);
+            request.Headers.Add("Authorization", $"Bearer {accessToken}");
+
+            var response = await _httpClient.SendAsync(request);
+            var userData = await response.Content.ReadAsStringAsync();
+
+            var jsonDocument = JsonDocument.Parse(userData);
+            string profilePic = jsonDocument.RootElement.GetProperty("user").GetProperty("large_photo_url").GetString();
+
+            return Ok(profilePic);
+        }
+
+        [HttpGet("current_user/projects")]
         public async Task<IActionResult> GetProjectsForCurrentUser()
         {
             string accessToken = _authService.getToken();

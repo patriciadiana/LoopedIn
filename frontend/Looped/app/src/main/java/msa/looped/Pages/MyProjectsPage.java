@@ -1,4 +1,4 @@
-package msa.looped;
+package msa.looped.Pages;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,6 +17,11 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.List;
 
+import msa.looped.Data;
+import msa.looped.Entities.Project;
+import msa.looped.Entities.ProjectAdapter;
+import msa.looped.Entities.ProjectsList;
+import msa.looped.R;
 import msa.looped.databinding.MyprojectsPageBinding;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -81,7 +86,7 @@ public class MyProjectsPage extends Fragment {
 
     private void fetchDataFromBackend() {
 
-        String url = apiUrl + "/main/projects/current_user";
+        String url = apiUrl + "/main/current_user/projects";
 
         Request request = new Request.Builder()
                 .url(url)

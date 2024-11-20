@@ -2,20 +2,21 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/home_page"
     android:background="#FDF4E6"
-    tools:context=".HomePage">
+    tools:context=".Pages.HomePage">
 
     <ImageView
         android:id="@+id/small_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
         android:layout_marginTop="44dp"
         android:contentDescription="@string/app_logo"
         android:src="@drawable/yarn_ball"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,10 +24,11 @@
         android:id="@+id/register_button"
         android:layout_width="154dp"
         android:layout_height="48dp"
-        android:layout_marginStart="128dp"
         android:layout_marginTop="496dp"
         android:backgroundTint="@color/secondary_purple"
         android:text="@string/register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,23 +37,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#7F4A92"
+        app:itemActiveIndicatorStyle="@null"
         app:itemIconTint="@color/bottom_nav_tint"
         app:itemTextColor="@color/bottom_nav_tint"
         app:labelVisibilityMode="labeled"
-        app:itemActiveIndicatorStyle="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:menu="@menu/bottom_nav_menu">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
+            android:layout_width="233dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="180dp"
-            app:elevation="0dp"
-            app:layout_anchor="@+id/bottomNavigationView">
-        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="15dp"
+            app:elevation="10dp"
+            app:layout_anchor="@+id/bottomNavigationView"></com.google.android.material.floatingactionbutton.FloatingActionButton>
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 </androidx.constraintlayout.widget.ConstraintLayout>

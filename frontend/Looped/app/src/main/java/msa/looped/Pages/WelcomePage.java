@@ -1,4 +1,4 @@
-package msa.looped;
+package msa.looped.Pages;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,8 +15,9 @@ import android.net.Uri;
 import android.util.Log;
 
 import java.io.IOException;
-import java.net.URI;
 
+import msa.looped.Data;
+import msa.looped.R;
 import msa.looped.databinding.WelcomePageBinding;
 import okhttp3.Call;
 import okhttp3.Callback;
