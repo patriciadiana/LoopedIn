@@ -1,9 +1,6 @@
 ﻿using backend.Service;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
-using System.Security.AccessControl;
 using System.Text.Json;
-using System.Web;
 
 namespace backend.Controllers
 {

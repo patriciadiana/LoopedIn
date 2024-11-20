@@ -34,8 +34,6 @@ import okhttp3.Response;
 
 public class HomePage extends Fragment {
     private HomePageBinding binding;
-    public OkHttpClient client;
-    private String apiUrl = Data.getInstance().getApiUrl();
 
     @Override
     public View onCreateView(
@@ -44,7 +42,6 @@ public class HomePage extends Fragment {
     ) {
 
         binding = HomePageBinding.inflate(inflater, container, false);
-        client = new OkHttpClient();
 //        binding.registerButton.setOnClickListener(v -> fetchDataFromBackend());
         binding.bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -72,14 +69,12 @@ public class HomePage extends Fragment {
             return false;
             }
         });
-
         return binding.getRoot();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        fetchDataFromBackend();
     }
 
     private void loadFragment(Fragment fragment)
@@ -88,34 +83,6 @@ public class HomePage extends Fragment {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.home_page, fragment);
         fragmentTransaction.commit();
-    }
-
-    private void fetchDataFromBackend() {
-
-        String url = apiUrl + "/main/current_user";
-
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    final String responseData = response.body().string();
-                    if (getActivity() != null) {
-                        getActivity().runOnUiThread(() -> binding.responseTextView.setText(responseData));
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                e.printStackTrace();
-                String errorMessage = e.getMessage();
-                getActivity().runOnUiThread(() -> binding.responseTextView.setText("Failed to connect: " + errorMessage));
-            }
-        });
     }
 
     @Override
