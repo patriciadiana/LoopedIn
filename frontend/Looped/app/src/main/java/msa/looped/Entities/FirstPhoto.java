@@ -1,4 +1,4 @@
-package msa.looped;
+package msa.looped.Entities;
 
 import com.google.gson.annotations.SerializedName;
 

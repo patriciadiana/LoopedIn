@@ -1,4 +1,4 @@
-package msa.looped;
+package msa.looped.Entities;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,10 +10,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import java.sql.SQLOutput;
 import java.util.List;
 
-import kotlin.system.ProcessKt;
+import msa.looped.Entities.Project;
+import msa.looped.R;
 
 public class ProjectAdapter extends BaseAdapter {
     private Context context;

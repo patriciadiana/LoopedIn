@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     android:id="@+id/more_page"
     android:background="#FDF4E6"
-    tools:context=".MorePage">
+    tools:context=".Pages.MorePage">
 
     <TextView
         android:id="@+id/textSearch"
-        android:layout_width="246dp"
-        android:layout_height="41dp"
+        android:layout_width="245dp"
+        android:layout_height="53dp"
         android:layout_marginTop="56dp"
         android:fontFamily="@font/inter_semibold"
         android:text="More Page"

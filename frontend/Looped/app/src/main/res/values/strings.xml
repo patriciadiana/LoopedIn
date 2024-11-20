@@ -65,4 +65,8 @@
     <string name="enter_your_password">Enter your password</string>
     <string name="confirm_your_password">Confirm your password</string>
     <string name="my_projects">My projects</string>
+    <string name="my_profile">My profile</string>
+    <string name="friends">Friends</string>
+    <string name="picksForYou">Picks for me</string>
+    <string name="settings">Settings</string>
 </resources>

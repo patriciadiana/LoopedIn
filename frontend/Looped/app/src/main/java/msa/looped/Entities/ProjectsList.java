@@ -1,8 +1,10 @@
-package msa.looped;
+package msa.looped.Entities;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+
+import msa.looped.Entities.Project;
 
 public class ProjectsList {
     @SerializedName("projects")

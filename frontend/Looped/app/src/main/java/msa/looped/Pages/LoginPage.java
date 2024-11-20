@@ -1,4 +1,4 @@
-package msa.looped;
+package msa.looped.Pages;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +20,7 @@ import net.openid.appauth.AuthorizationRequest;
 
 import java.util.UUID;
 
+import msa.looped.R;
 import msa.looped.databinding.LoginPageBinding;
 
 public class LoginPage extends Fragment {

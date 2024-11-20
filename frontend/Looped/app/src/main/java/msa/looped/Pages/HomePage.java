@@ -1,9 +1,6 @@
-package msa.looped;
+package msa.looped.Pages;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,18 +10,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
 
-import msa.looped.databinding.ActivityMainBinding;
+import msa.looped.Data;
+import msa.looped.R;
 import msa.looped.databinding.HomePageBinding;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -34,6 +26,8 @@ import okhttp3.Response;
 
 public class HomePage extends Fragment {
     private HomePageBinding binding;
+    public OkHttpClient client;
+    private String apiUrl = Data.getInstance().getApiUrl();
 
     @Override
     public View onCreateView(
@@ -42,7 +36,7 @@ public class HomePage extends Fragment {
     ) {
 
         binding = HomePageBinding.inflate(inflater, container, false);
-//        binding.registerButton.setOnClickListener(v -> fetchDataFromBackend());
+        client = new OkHttpClient();
         binding.bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -69,7 +63,40 @@ public class HomePage extends Fragment {
             return false;
             }
         });
+        if(Data.getInstance().getProfilePicUrl().equals(""))
+            fetchDataFromBackend();
         return binding.getRoot();
+    }
+
+    private void fetchDataFromBackend() {
+
+        String url = apiUrl + "/main/current_user/profile_picture";
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    final String responseData = response.body().string();
+                    if (getActivity() != null) {
+                        getActivity().runOnUiThread(() -> {
+                            Data.getInstance().setProfilePicUrl(responseData);
+                            System.out.println("profile pic url: " + Data.getInstance().getProfilePicUrl());
+                        });
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                e.printStackTrace();
+                String errorMessage = e.getMessage();
+//                getActivity().runOnUiThread(() -> binding.responseTextView.setText("Failed to connect: " + errorMessage));
+            }
+        });
     }
 
     @Override
@@ -91,21 +118,4 @@ public class HomePage extends Fragment {
         binding = null;
     }
 
-//    private void sendDataToBackend() throws IOException {
-//        String url = "";
-//
-//        RequestBody formBody = new FormBody.Builder()
-//                .add("username", "test")
-//                .add("password", "test")
-//                .build();
-//
-//        Request request = new Request.Builder()
-//                .url(url)
-//                .post(formBody)
-//                .build();
-//
-//        Call call = client.newCall(request);
-//        Response response = call.execute();
-//
-//    }
 }

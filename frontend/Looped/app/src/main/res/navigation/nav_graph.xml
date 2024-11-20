@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/WelcomePage"
-        android:name="msa.looped.WelcomePage"
+        android:name="msa.looped.Pages.WelcomePage"
         android:label="@string/welcome_page_label"
         tools:layout="@layout/welcome_page">
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/LoginPage"
-        android:name="msa.looped.LoginPage"
+        android:name="msa.looped.Pages.LoginPage"
         android:label="@string/login_page_label"
         tools:layout="@layout/login_page">
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpPage"
-        android:name="msa.looped.SignUpPage"
+        android:name="msa.looped.Pages.SignUpPage"
         android:label="signup_page"
         tools:layout="@layout/signup_page" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/homePage"
-        android:name="msa.looped.HomePage"
+        android:name="msa.looped.Pages.HomePage"
         android:label="home_page"
         tools:layout="@layout/home_page" >
         <action
@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/myProjectsPage"
-        android:name="msa.looped.MyProjectsPage"
+        android:name="msa.looped.Pages.MyProjectsPage"
         android:label="myprojects_page"
         tools:layout="@layout/myprojects_page" >
         <action

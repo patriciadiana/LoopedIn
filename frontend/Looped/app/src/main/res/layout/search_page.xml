@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     android:id="@+id/search_page"
     android:background="#FDF4E6"
-    tools:context=".SearchPage">
+    tools:context=".Pages.SearchPage">
 
     <TextView
         android:id="@+id/textSearch"
-        android:layout_width="246dp"
-        android:layout_height="41dp"
+        android:layout_width="243dp"
+        android:layout_height="53dp"
         android:layout_marginTop="56dp"
         android:fontFamily="@font/inter_semibold"
         android:text="Search Page"

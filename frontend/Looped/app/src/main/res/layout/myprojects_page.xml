@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/myprojects_page"
     android:background="#FDF4E6"
-    tools:context=".MyProjectsPage">
+    tools:context=".Pages.MyProjectsPage">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,8 +21,8 @@
 
             <TextView
                 android:id="@+id/textProjects"
-                android:layout_width="185dp"
-                android:layout_height="46dp"
+                android:layout_width="190dp"
+                android:layout_height="58dp"
                 android:layout_marginTop="56dp"
                 android:fontFamily="@font/inter_semibold"
                 android:text="@string/my_projects"
@@ -38,6 +38,7 @@
                 android:layout_width="415dp"
                 android:layout_height="459dp"
                 android:layout_marginTop="92dp"
+                android:layout_marginStart="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textProjects" />
