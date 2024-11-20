@@ -39,7 +39,7 @@
             android:textColorHint="@color/background_color"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="RtlSymmetry" />
@@ -59,7 +59,7 @@
             android:textColorHint="@color/background_color"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="RtlSymmetry"
@@ -96,8 +96,9 @@
             android:id="@+id/textForgotPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/inter_bold"
+            android:gravity="center"
             android:text="@string/forgot_your_password"
             android:textColor="@color/secondary_purple"
             app:layout_constraintEnd_toEndOf="parent"
@@ -112,48 +113,52 @@
             android:layout_marginTop="488dp"
             android:backgroundTint="@color/secondary_purple"
             android:text="@string/login"
+            android:textColor="@color/background_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="158dp"
-            android:layout_height="18dp"
-            android:layout_marginTop="552dp"
+            android:id="@+id/textConnect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="620dp"
             android:fontFamily="@font/inter_medium"
-            android:text="@string/don_t_have_an_account"
+            android:gravity="center"
+            android:text="@string/or_connect_using"
             android:textColor="@color/grey"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.354"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textConnect"
-            android:layout_width="117dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="620dp"
+            android:id="@+id/textDontHaveAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="552dp"
             android:fontFamily="@font/inter_medium"
-            android:text="@string/or_connect_using"
+            android:gravity="center"
+            android:text="@string/don_t_have_an_account"
             android:textColor="@color/grey"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintHorizontal_bias="0.32"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <TextView
             android:id="@+id/signup_button"
-            android:layout_width="110dp"
+            android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:layout_marginTop="538dp"
+            android:layout_marginTop="552dp"
             android:background="@android:color/transparent"
+            android:clickable="true"
             android:fontFamily="@font/inter_bold"
             android:text="@string/sign_up"
             android:textColor="@color/main_purple"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.74"
+            app:layout_constraintHorizontal_bias="0.72"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -165,8 +170,16 @@
             android:contentDescription="@string/raverly_button"
             android:src="@drawable/raverly"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="20dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

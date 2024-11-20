@@ -27,6 +27,7 @@
         android:layout_marginTop="496dp"
         android:backgroundTint="@color/secondary_purple"
         android:text="@string/register"
+        android:textColor="@color/background_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,12 +48,17 @@
         app:menu="@menu/bottom_nav_menu">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="233dp"
+            style="@style/floating_add"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
-            android:layout_marginBottom="15dp"
-            app:elevation="10dp"
-            app:layout_anchor="@+id/bottomNavigationView"></com.google.android.material.floatingactionbutton.FloatingActionButton>
+            android:layout_marginStart="180dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/bottom_nav_tint"
+            android:contentDescription="@string/add_button"
+            app:backgroundTint="@color/bottom_nav_tint"
+            app:elevation="0dp"
+            app:fabSize="auto"
+            app:layout_anchor="@+id/bottomNavigationView" />
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 </androidx.constraintlayout.widget.ConstraintLayout>

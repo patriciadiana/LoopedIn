@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -49,6 +50,26 @@ public class ProjectAdapter extends BaseAdapter {
 
         TextView textView = convertView.findViewById(R.id.textViewName);
         textView.setText(project.getName());
+
+        ProgressBar progressBar = convertView.findViewById(R.id.progressBar);
+
+        TextView textProgress = convertView.findViewById(R.id.textViewPercentage);
+        if(project.getStatus().equals("Finished")) {
+            progressBar.setProgress(100);
+            textProgress.setText("100%");
+        }
+        else if(project.getProgress() != 0){
+            progressBar.setProgress(project.getProgress());
+            textProgress.setText(project.getProgress() + "%");
+        }
+        else
+        {
+            progressBar.setProgress(0);
+            textProgress.setText("0%");
+        }
+
+        TextView textLikes = convertView.findViewById(R.id.textViewLikeCount);
+        textLikes.setText(project.getLikes());
 
         ImageView imageView = convertView.findViewById(R.id.imageViewPhoto);
         Glide.with(context).load(project.getFirstPhoto().getThumbnailUrl()).into(imageView);
