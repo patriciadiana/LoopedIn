@@ -116,7 +116,6 @@ public class MyProjectsPage extends Fragment {
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 e.printStackTrace();
                 String errorMessage = e.getMessage();
-                //getActivity().runOnUiThread(() -> binding.username.setText("Failed to connect: " + errorMessage));
             }
         });
     }
