@@ -33,32 +33,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#7F4A92"
-        app:itemActiveIndicatorStyle="@null"
-        app:itemIconTint="@color/bottom_nav_tint"
-        app:itemTextColor="@color/bottom_nav_tint"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
-        app:menu="@menu/bottom_nav_menu">
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/main_purple"
+            android:layout_gravity="bottom" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#7F4A92"
+            app:itemActiveIndicatorStyle="@null"
+            app:itemIconTint="@color/bottom_nav_tint"
+            app:itemTextColor="@color/bottom_nav_tint"
+            app:labelVisibilityMode="labeled"
+            app:layout_anchor="@+id/fab"
+            app:layout_anchorGravity="bottom|center"
+            app:layout_gravity="bottom"
+            app:menu="@menu/bottom_nav_menu" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
             style="@style/floating_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="180dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/bottom_nav_tint"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="38dp"
             android:contentDescription="@string/add_button"
-            app:backgroundTint="@color/bottom_nav_tint"
-            app:elevation="0dp"
-            app:fabSize="auto"
-            app:layout_anchor="@+id/bottomNavigationView" />
+            app:backgroundTint="@color/transparent"
+            app:srcCompat="@drawable/add_button"
+            app:scaleType="centerInside"
+            app:fabSize="normal"
+            app:elevation="8dp" />
 
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
