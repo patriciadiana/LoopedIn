@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_homePage_to_myProjectsPage"
             app:destination="@id/myProjectsPage" />
+        <action
+            android:id="@+id/action_homePage_to_addProjectPage"
+            app:destination="@id/addProjectPage" />
     </fragment>
     <fragment
         android:id="@+id/myProjectsPage"
@@ -55,5 +58,31 @@
         <action
             android:id="@+id/action_myProjectsPage_to_homePage"
             app:destination="@id/homePage" />
+        <action
+            android:id="@+id/action_myProjectsPage_to_addProjectPage"
+            app:destination="@id/addProjectPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProjectPage"
+        android:name="msa.looped.Pages.AddProjectPage"
+        android:label="addproject_page"
+        tools:layout="@layout/addproject_page" />
+    <fragment
+        android:id="@+id/searchPage"
+        android:name="msa.looped.Pages.SearchPage"
+        android:label="search_page"
+        tools:layout="@layout/search_page" >
+        <action
+            android:id="@+id/action_searchPage_to_addProjectPage"
+            app:destination="@id/addProjectPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/morePage"
+        android:name="msa.looped.Pages.MorePage"
+        android:label="more_page"
+        tools:layout="@layout/more_page" >
+        <action
+            android:id="@+id/action_morePage_to_addProjectPage"
+            app:destination="@id/addProjectPage" />
     </fragment>
 </navigation>

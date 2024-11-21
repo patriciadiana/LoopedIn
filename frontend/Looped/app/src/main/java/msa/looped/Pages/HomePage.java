@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -63,6 +64,12 @@ public class HomePage extends Fragment {
             return false;
             }
         });
+
+        binding.fab.setOnClickListener(v ->
+                NavHostFragment.findNavController(HomePage.this)
+                        .navigate(R.id.action_homePage_to_addProjectPage)
+        );
+
         if(Data.getInstance().getProfilePicUrl().equals(""))
             fetchDataFromBackend();
         return binding.getRoot();
