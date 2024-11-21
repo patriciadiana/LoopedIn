@@ -158,8 +158,8 @@
             android:text="@string/sign_up"
             android:textColor="@color/main_purple"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.72"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.241"
+            app:layout_constraintStart_toEndOf="@+id/textDontHaveAccount"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton

@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationBarView;
@@ -64,6 +65,11 @@ public class MorePage extends Fragment {
             }
         });
         preparePopup();
+
+        binding.fab.setOnClickListener(v ->
+                NavHostFragment.findNavController(MorePage.this)
+                        .navigate(R.id.action_homePage_to_addProjectPage)
+        );
         return binding.getRoot();
 
     }

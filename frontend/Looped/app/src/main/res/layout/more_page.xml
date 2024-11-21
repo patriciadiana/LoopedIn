@@ -43,7 +43,7 @@
             app:labelVisibilityMode="labeled"
             app:layout_anchor="@+id/fab"
             app:layout_anchorGravity="bottom|center"
-            app:layout_gravity="bottom"
+            android:layout_gravity="bottom"
             app:menu="@menu/bottom_nav_menu" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -56,9 +56,9 @@
             android:contentDescription="@string/add_button"
             app:backgroundTint="@color/transparent"
             app:srcCompat="@drawable/add_button"
-            app:scaleType="centerInside"
+            android:scaleType="centerInside"
             app:fabSize="normal"
-            app:elevation="8dp" />
+            android:elevation="8dp" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

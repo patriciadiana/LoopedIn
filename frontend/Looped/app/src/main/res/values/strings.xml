@@ -70,4 +70,6 @@
     <string name="picksForYou">Picks for me</string>
     <string name="settings">Settings</string>
     <string name="add_button">With this button you add new projects</string>
+    <string name="search_page">Search Page</string>
+    <string name="addNewProjectPage">Add new project</string>
 </resources>
