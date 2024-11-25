@@ -3,11 +3,11 @@
 
     <item android:title="Home"
         android:icon="@drawable/home"
-        android:id="@+id/menu_home" />
+        android:id="@+id/homePage" />
 
     <item android:title="My projects"
         android:icon="@drawable/projects"
-        android:id="@+id/menu_projects" />
+        android:id="@+id/myProjectsPage" />
 
     <item android:title=""
         android:id="@+id/menu_add"
@@ -15,10 +15,10 @@
 
     <item android:title="Search"
         android:icon="@drawable/search"
-        android:id="@+id/menu_search"/>
+        android:id="@+id/searchPage"/>
 
     <item android:title="More"
         android:icon="@drawable/more"
-        android:id="@+id/menu_more"/>
+        android:id="@+id/morePage"/>
 
 </menu>

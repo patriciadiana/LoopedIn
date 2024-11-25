@@ -45,33 +45,6 @@ public class MyProjectsPage extends Fragment {
         binding = MyprojectsPageBinding.inflate(inflater, container, false);
         client = new OkHttpClient();
 
-        binding.bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                if(menuItem.getItemId() == R.id.menu_more)
-                {
-                    menuItem.setChecked(true);
-                    loadFragment(new MorePage());
-                }
-                else if(menuItem.getItemId() == R.id.menu_search)
-                {
-                    menuItem.setChecked(true);
-                    loadFragment(new SearchPage());
-                }
-                else if(menuItem.getItemId() == R.id.menu_home)
-                {
-                    menuItem.setChecked(true);
-                    loadFragment(new HomePage());
-                }
-                return false;
-            }
-        });
-
-        binding.fab.setOnClickListener(v ->
-                NavHostFragment.findNavController(MyProjectsPage.this)
-                        .navigate(R.id.action_homePage_to_addProjectPage)
-        );
-
         fetchDataFromBackend();
         return binding.getRoot();
 

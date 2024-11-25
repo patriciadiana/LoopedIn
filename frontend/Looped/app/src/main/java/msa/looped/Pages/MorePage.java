@@ -43,33 +43,8 @@ public class MorePage extends Fragment {
         client = new OkHttpClient();
         binding = MorePageBinding.inflate(inflater, container, false);
 
-        binding.bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                if(menuItem.getItemId() == R.id.menu_projects)
-                {
-                    menuItem.setChecked(true);
-                    loadFragment(new MyProjectsPage());
-                }
-                else if(menuItem.getItemId() == R.id.menu_search)
-                {
-                    menuItem.setChecked(true);
-                    loadFragment(new SearchPage());
-                }
-                else if(menuItem.getItemId() == R.id.menu_home)
-                {
-                    menuItem.setChecked(true);
-                    loadFragment(new HomePage());
-                }
-                return false;
-            }
-        });
         preparePopup();
 
-        binding.fab.setOnClickListener(v ->
-                NavHostFragment.findNavController(MorePage.this)
-                        .navigate(R.id.action_homePage_to_addProjectPage)
-        );
         return binding.getRoot();
 
     }

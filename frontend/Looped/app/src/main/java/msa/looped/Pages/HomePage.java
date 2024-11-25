@@ -38,37 +38,6 @@ public class HomePage extends Fragment {
 
         binding = HomePageBinding.inflate(inflater, container, false);
         client = new OkHttpClient();
-        binding.bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                if(menuItem.getItemId() == R.id.menu_projects)
-                {
-                    menuItem.setChecked(true);
-                    loadFragment(new MyProjectsPage());
-                }
-                else if(menuItem.getItemId() == R.id.menu_search)
-                {
-                    menuItem.setChecked(true);
-                    loadFragment(new SearchPage());
-                }
-                else if(menuItem.getItemId() == R.id.menu_more)
-                {
-                    menuItem.setChecked(true);
-                    loadFragment(new MorePage());
-                }
-                else if(menuItem.getItemId() == R.id.menu_home)
-                {
-                    menuItem.setChecked(true);
-                    loadFragment(new HomePage());
-                }
-            return false;
-            }
-        });
-
-        binding.fab.setOnClickListener(v ->
-                NavHostFragment.findNavController(HomePage.this)
-                        .navigate(R.id.action_homePage_to_addProjectPage)
-        );
 
         if(Data.getInstance().getProfilePicUrl().equals(""))
             fetchDataFromBackend();
