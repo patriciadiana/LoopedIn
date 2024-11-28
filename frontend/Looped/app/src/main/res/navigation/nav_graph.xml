@@ -85,4 +85,9 @@
             android:id="@+id/action_morePage_to_addProjectPage"
             app:destination="@id/addProjectPage" />
     </fragment>
+    <fragment
+        android:id="@+id/myProfilePage"
+        android:name="msa.looped.Pages.MyProfilePage"
+        android:label="myprofile_page"
+        tools:layout="@layout/myprofile_page" />
 </navigation>

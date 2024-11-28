@@ -72,4 +72,9 @@
     <string name="add_button">With this button you add new projects</string>
     <string name="search_page">Search Page</string>
     <string name="addNewProjectPage">Add new project</string>
+    <string name="what_kind_of_craft">What kind of craft?</string>
+    <string name="name_your_project">Name your project</string>
+    <string name="enter_project_name">Enter project name</string>
+    <string name="i_used_a_pattern">I used a pattern</string>
+    <string name="enter_the_pattern_name">Enter the pattern name</string>
 </resources>
