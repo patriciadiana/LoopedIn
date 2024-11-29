@@ -77,4 +77,11 @@
     <string name="enter_project_name">Enter project name</string>
     <string name="i_used_a_pattern">I used a pattern</string>
     <string name="enter_the_pattern_name">Enter the pattern name</string>
+    <string name="location">Location</string>
+    <string name="first_name">First Name</string>
+    <string name="about_me">About me</string>
+    <string name="location_content">location content</string>
+    <string name="first_name_content">first name content</string>
+    <string name="about_me_content">about me content</string>
+    <string name="user_name_content">user name content</string>
 </resources>

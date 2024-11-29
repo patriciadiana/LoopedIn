@@ -59,7 +59,8 @@ public class MorePage extends Fragment {
 
     public void preparePopup()
     {
-        profilePicUrl = Data.getInstance().getProfilePicUrl();
+        profilePicUrl = Data.getCurrentUser().getLarge_photo_url();
+        System.out.println("profile pic url din popup " + profilePicUrl);
 
         Dialog dialog = new Dialog(requireContext());
         dialog.setContentView(R.layout.more_popup);

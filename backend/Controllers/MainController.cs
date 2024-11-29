@@ -56,6 +56,21 @@ namespace backend.Controllers
                 return StatusCode((int)response.StatusCode, await response.Content.ReadAsStringAsync());
 
             var userData = await response.Content.ReadAsStringAsync();
+
+            var jsonDocument = JsonDocument.Parse(userData);
+            string userName = jsonDocument.RootElement.GetProperty("user").GetProperty("username").GetString();
+
+            url = $"{RavelryApiUrl}/people/{userName}.json";
+            request = new HttpRequestMessage(HttpMethod.Get, url);
+            request.Headers.Add("Authorization", $"Bearer {accessToken}");
+
+            response = await _httpClient.SendAsync(request);
+
+            if (!response.IsSuccessStatusCode)
+                return StatusCode((int)response.StatusCode, await response.Content.ReadAsStringAsync());
+
+            userData = await response.Content.ReadAsStringAsync();
+
             return Ok(JsonSerializer.Deserialize<object>(userData));
         }
 
