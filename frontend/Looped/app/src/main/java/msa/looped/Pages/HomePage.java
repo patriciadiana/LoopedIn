@@ -13,10 +13,16 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.util.List;
 
 import msa.looped.Data;
+import msa.looped.Entities.Project;
+import msa.looped.Entities.ProjectsList;
+import msa.looped.Entities.User;
+import msa.looped.Entities.UserResponse;
 import msa.looped.R;
 import msa.looped.databinding.HomePageBinding;
 import okhttp3.Call;
@@ -46,7 +52,7 @@ public class HomePage extends Fragment {
 
     private void fetchDataFromBackend() {
 
-        String url = apiUrl + "/main/current_user/profile_picture";
+        String url = apiUrl + "/main/current_user";
 
         Request request = new Request.Builder()
                 .url(url)
@@ -57,12 +63,11 @@ public class HomePage extends Fragment {
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 if (response.isSuccessful()) {
                     final String responseData = response.body().string();
-                    if (getActivity() != null) {
-                        getActivity().runOnUiThread(() -> {
-                            Data.getInstance().setProfilePicUrl(responseData);
-                            System.out.println("profile pic url: " + Data.getInstance().getProfilePicUrl());
-                        });
-                    }
+
+                    Gson gson = new Gson();
+                    UserResponse userResponse  = gson.fromJson(responseData, UserResponse.class);
+                    Data.setCurrentUser(userResponse.getUser());
+                    System.out.println("s a facut get si set la current user pe nume " + Data.getCurrentUser().getUsername());
                 }
             }
 

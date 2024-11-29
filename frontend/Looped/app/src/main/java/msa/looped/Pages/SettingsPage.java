@@ -11,12 +11,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import java.util.Set;
+
 import msa.looped.R;
-import msa.looped.databinding.SearchPageBinding;
 import msa.looped.databinding.SettingsPageBinding;
 
-public class SearchPage extends Fragment {
-    private SearchPageBinding binding;
+public class SettingsPage extends Fragment {
+
+    private SettingsPageBinding binding;
 
     @Override
     public View onCreateView(
@@ -24,7 +26,7 @@ public class SearchPage extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = SearchPageBinding.inflate(inflater, container, false);
+        binding = SettingsPageBinding.inflate(inflater, container, false);
 
         return binding.getRoot();
 
@@ -34,7 +36,7 @@ public class SearchPage extends Fragment {
     {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.search_page, fragment);
+        fragmentTransaction.add(R.id.settings_page, fragment);
         fragmentTransaction.commit();
     }
 

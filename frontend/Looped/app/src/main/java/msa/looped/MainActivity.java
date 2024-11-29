@@ -3,25 +3,16 @@ package msa.looped;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 
-import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import msa.looped.Pages.AddProjectPage;
-import msa.looped.Pages.HomePage;
-import msa.looped.Pages.MorePage;
-import msa.looped.Pages.MyProjectsPage;
-import msa.looped.Pages.SearchPage;
 import msa.looped.databinding.ActivityMainBinding;
 
 import android.view.Menu;

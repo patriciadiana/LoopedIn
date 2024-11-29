@@ -59,7 +59,8 @@ public class MorePage extends Fragment {
 
     public void preparePopup()
     {
-        profilePicUrl = Data.getInstance().getProfilePicUrl();
+        profilePicUrl = Data.getCurrentUser().getLarge_photo_url();
+        System.out.println("profile pic url din popup " + profilePicUrl);
 
         Dialog dialog = new Dialog(requireContext());
         dialog.setContentView(R.layout.more_popup);
@@ -76,6 +77,18 @@ public class MorePage extends Fragment {
                 .placeholder(R.drawable.myprofile)
                 .error(R.drawable.myprofile)
                 .into(popupImage);
+
+        ImageView settingsIcon = dialog.findViewById(R.id.settings);
+        settingsIcon.setOnClickListener(v->{
+            dialog.dismiss();
+            loadFragment(new SettingsPage());
+        });
+
+        popupImage.setOnClickListener(v->{
+            dialog.dismiss();
+            NavHostFragment.findNavController(this)
+                    .navigate(R.id.action_morePage_to_myProfilePage);
+        });
 
         dialog.show();
     }

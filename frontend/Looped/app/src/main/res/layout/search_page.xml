@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/search_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/search_page"
     android:background="#FDF4E6"
     tools:context=".Pages.SearchPage">
 
@@ -14,11 +14,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:fontFamily="@font/inter_semibold"
-        android:text="Search Page"
+        android:text="Search"
         android:textColor="@color/grey"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.096"
+        app:layout_constraintHorizontal_bias="0.106"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
