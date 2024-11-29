@@ -77,6 +77,18 @@ public class MorePage extends Fragment {
                 .error(R.drawable.myprofile)
                 .into(popupImage);
 
+        ImageView settingsIcon = dialog.findViewById(R.id.settings);
+        settingsIcon.setOnClickListener(v->{
+            dialog.dismiss();
+            loadFragment(new SettingsPage());
+        });
+
+        popupImage.setOnClickListener(v->{
+            dialog.dismiss();
+            NavHostFragment.findNavController(this)
+                    .navigate(R.id.action_morePage_to_myProfilePage);
+        });
+
         dialog.show();
     }
 

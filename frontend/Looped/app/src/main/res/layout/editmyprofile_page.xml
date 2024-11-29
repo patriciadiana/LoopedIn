@@ -2,11 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/myprofile_page"
+    android:id="@+id/editmyprofile_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FDF4E6"
-    tools:context=".Pages.MyProfilePage">
+    tools:context=".Pages.EditMyProfilePage">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -38,90 +38,43 @@
         android:id="@+id/userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="224dp"
+        android:layout_marginTop="9dp"
         android:fontFamily="@font/inter_tight_bold_italic"
-        android:text="bojack234"
+        android:clickable="true"
+        android:text="Change profile\npicture"
+        android:gravity="center"
         android:textColor="@color/grey"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/favorites_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="284dp"
-        android:background="@android:color/transparent"
-        android:clickable="true"
-        android:fontFamily="@font/inter_extrabold"
-        android:gravity="center"
-        android:lines="2"
-        android:text="14\nfavorites"
-        android:textColor="@color/main_purple"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.105"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/projects_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="284dp"
-        android:background="@android:color/transparent"
-        android:clickable="true"
-        android:fontFamily="@font/inter_extrabold"
-        android:gravity="center"
-        android:lines="2"
-        android:text="8\nprojects"
-        android:textColor="@color/main_purple"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/queued_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="284dp"
-        android:background="@android:color/transparent"
-        android:clickable="true"
-        android:fontFamily="@font/inter_extrabold"
-        android:gravity="center"
-        android:lines="2"
-        android:text="20\nqueued"
-        android:textColor="@color/main_purple"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.883"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/profilePicture" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="375dp"
+        android:layout_marginTop="292dp"
         android:fontFamily="@font/inter_medium"
-        android:text="First Name"
+        android:text="Username"
         android:textColor="@color/grey"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.096"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/usernameText"
+    <EditText
+        android:id="@+id/editTextUsername"
         android:layout_width="338dp"
         android:layout_height="48dp"
-        android:layout_marginTop="400dp"
-        android:background="@drawable/rounded_corner_secondary"
-        android:gravity="center_vertical|start"
+        android:layout_marginTop="312dp"
+        android:autofillHints=""
+        android:background="@drawable/stroke_rounded_corner"
+        android:ems="10"
+        android:fontFamily="@font/inter_medium"
+        android:hint="bojack234"
+        android:inputType="textEmailAddress"
         android:paddingStart="20dp"
-        android:text="Bojack"
-        android:textColor="@color/background_color"
+        android:textColor="@color/dark_purple"
+        android:textColorHint="@color/dark_purple"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.465"
@@ -132,7 +85,40 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="456dp"
+        android:layout_marginTop="364dp"
+        android:fontFamily="@font/inter_medium"
+        android:text="Email address"
+        android:textColor="@color/grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextEmailAddress"
+        android:layout_width="338dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="384dp"
+        android:autofillHints=""
+        android:background="@drawable/stroke_rounded_corner"
+        android:ems="10"
+        android:fontFamily="@font/inter_medium"
+        android:hint="email1@gmail.com"
+        android:inputType="textEmailAddress"
+        android:paddingStart="20dp"
+        android:textColor="@color/dark_purple"
+        android:textColorHint="@color/dark_purple"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="436dp"
         android:fontFamily="@font/inter_medium"
         android:text="Pronouns"
         android:textColor="@color/grey"
@@ -141,16 +127,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/pronounsText"
+    <EditText
+        android:id="@+id/editTextPronouns"
         android:layout_width="338dp"
         android:layout_height="48dp"
-        android:layout_marginTop="480dp"
-        android:background="@drawable/rounded_corner_secondary"
-        android:gravity="center_vertical|start"
+        android:layout_marginTop="456dp"
+        android:autofillHints=""
+        android:background="@drawable/stroke_rounded_corner"
+        android:ems="10"
+        android:fontFamily="@font/inter_medium"
+        android:hint="she/her"
+        android:inputType="textEmailAddress"
         android:paddingStart="20dp"
-        android:text="she/her"
-        android:textColor="@color/background_color"
+        android:textColor="@color/dark_purple"
+        android:textColorHint="@color/dark_purple"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.465"
@@ -161,7 +151,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="536dp"
+        android:layout_marginTop="508dp"
         android:fontFamily="@font/inter_medium"
         android:text="Birthday"
         android:textColor="@color/grey"
@@ -170,16 +160,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/birthdayDate"
+    <EditText
+        android:id="@+id/editTextBirthday"
         android:layout_width="338dp"
         android:layout_height="48dp"
-        android:layout_marginTop="560dp"
-        android:background="@drawable/rounded_corner_secondary"
-        android:gravity="center_vertical|start"
+        android:layout_marginTop="528dp"
+        android:autofillHints=""
+        android:background="@drawable/stroke_rounded_corner"
+        android:ems="10"
+        android:fontFamily="@font/inter_medium"
+        android:hint="July 8, 2003"
+        android:inputType="textEmailAddress"
         android:paddingStart="20dp"
-        android:text="July 8, 2023"
-        android:textColor="@color/background_color"
+        android:textColor="@color/dark_purple"
+        android:textColorHint="@color/dark_purple"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.465"
@@ -188,17 +182,16 @@
         tools:ignore="RtlSymmetry" />
 
     <Button
-        android:id="@+id/editprofile_button"
+        android:id="@+id/savechanges_button"
         android:layout_width="144dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="664dp"
-        android:backgroundTint="@color/dark_purple"
-        android:text="Edit profile"
+        android:backgroundTint="@color/light_purple"
+        android:text="Save changes"
         android:textColor="@color/background_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.853"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

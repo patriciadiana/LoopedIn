@@ -74,6 +74,4 @@
             app:elevation="30dp" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
