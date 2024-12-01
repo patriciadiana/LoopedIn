@@ -1,11 +1,13 @@
 package msa.looped;
 
+import msa.looped.Entities.ProjectsList;
 import msa.looped.Entities.User;
 
 public class Data {
+    public static boolean authorizationComplete = false;
     private static Data INSTANCE;
     private static User currentUser;
-    private String profilePicUrl = "";
+    private static String profilePicUrl = "";
 //    private String apiUrl = "http://192.168.1.248:5298"; // Barsi
     private String apiUrl = "http://192.168.8.104:5298";  // Cala
 //    private String apiUrl = "http://10.0.2.2:5298";       // emulator
@@ -23,11 +25,22 @@ public class Data {
         return INSTANCE;
     }
 
+    private static ProjectsList projectsList;
+
+    public static ProjectsList getProjectsList() {
+        return projectsList;
+    }
+
+    public static void setProjectsList(ProjectsList projectsList) {
+        Data.projectsList = projectsList;
+    }
+
     public static User getCurrentUser() {
         return currentUser;
     }
 
     public static void setCurrentUser(User currentUser) {
+        profilePicUrl = currentUser.getLarge_photo_url();
         Data.currentUser = currentUser;
     }
 
@@ -35,7 +48,4 @@ public class Data {
         return profilePicUrl;
     }
 
-    public void setProfilePicUrl(String profilePicUrl) {
-        this.profilePicUrl = profilePicUrl;
-    }
 }
