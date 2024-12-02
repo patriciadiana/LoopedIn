@@ -10,35 +10,6 @@ namespace backend.Controllers
     {
         private string RavelryApiUrl = "https://api.ravelry.com";
 
-        [HttpGet("projects/{username}/list")]
-        public async Task<IActionResult> GetProjectsByUsername(string username)
-        {
-            var url = $"{RavelryApiUrl}/projects/{username}/list.json";
-
-            var accessToken = _authService.getToken();
-            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
-
-            try
-            {
-                var response = await _httpClient.GetAsync(url);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var projectsData = await response.Content.ReadAsStringAsync();
-                    return Ok(projectsData);
-                }
-                else
-                {
-                    var errorResponse = await response.Content.ReadAsStringAsync();
-                    return BadRequest(new { error = "Failed to retrieve projects.", details = errorResponse });
-                }
-            }
-            catch (HttpRequestException ex)
-            {
-                return StatusCode(500, new { error = "An error occurred while retrieving projects.", details = ex.Message });
-            }
-        }
-
         [HttpGet("current_user")]
         public async Task<IActionResult> GetCurrentUser()
         {

@@ -44,6 +44,7 @@ public class MyProfilePage extends Fragment {
         String location = Data.getCurrentUser().getLocation();
         String aboutMe = Data.getCurrentUser().getAbout_me();
         String projectsCount = Data.getProjectsList().getProjectsListSize() + "\nprojects";
+        String queueCount = Data.getQueuedProjects().getQueuedPatternCount() + "\nqueued";
 
         ImageView popupImage = binding.profilePicture;
         Glide.with(requireContext())
@@ -66,6 +67,9 @@ public class MyProfilePage extends Fragment {
 
         textView = binding.projectsButton;
         textView.setText(projectsCount);
+
+        textView = binding.queuedButton;
+        textView.setText(queueCount);
 
         binding.editprofileButton.setOnClickListener(v ->
                 NavHostFragment.findNavController(MyProfilePage.this)
