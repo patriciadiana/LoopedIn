@@ -48,6 +48,9 @@ public class MorePage extends Fragment {
         return binding.getRoot();
 
     }
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
 
     private void loadFragment(Fragment fragment)
     {

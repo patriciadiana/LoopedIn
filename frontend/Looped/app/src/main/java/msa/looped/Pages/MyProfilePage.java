@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -42,6 +43,8 @@ public class MyProfilePage extends Fragment {
         String firstName = Data.getCurrentUser().getFirst_name();
         String location = Data.getCurrentUser().getLocation();
         String aboutMe = Data.getCurrentUser().getAbout_me();
+        String projectsCount = Data.getProjectsList().getProjectsListSize() + "\nprojects";
+        String queueCount = Data.getQueuedProjects().getQueuedPatternCount() + "\nqueued";
 
         ImageView popupImage = binding.profilePicture;
         Glide.with(requireContext())
@@ -61,6 +64,12 @@ public class MyProfilePage extends Fragment {
 
         textView = binding.aboutMe;
         textView.setText(aboutMe);
+
+        textView = binding.projectsButton;
+        textView.setText(projectsCount);
+
+        textView = binding.queuedButton;
+        textView.setText(queueCount);
 
         binding.editprofileButton.setOnClickListener(v ->
                 NavHostFragment.findNavController(MyProfilePage.this)

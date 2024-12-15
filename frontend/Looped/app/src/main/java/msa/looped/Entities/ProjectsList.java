@@ -12,6 +12,10 @@ public class ProjectsList {
     public List<Project> getProjects() {
         return projects;
     }
+    public int getProjectsListSize()
+    {
+        return projects.size();
+    }
 
     public void setProjects(List<Project> projects) {
         this.projects = projects;

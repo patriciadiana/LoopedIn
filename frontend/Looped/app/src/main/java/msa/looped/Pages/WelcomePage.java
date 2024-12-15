@@ -14,9 +14,14 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 import java.io.IOException;
 
 import msa.looped.Data;
+import msa.looped.Entities.ProjectsList;
+import msa.looped.Entities.QueuedProjects;
+import msa.looped.Entities.UserResponse;
 import msa.looped.R;
 import msa.looped.databinding.WelcomePageBinding;
 import okhttp3.Call;
@@ -84,8 +89,6 @@ public class WelcomePage extends Fragment {
     }
 
     private void getAccessTokenFromBackend(String authorizationCode) {
-        Log.d("getAccessTokenFromBackend", "facem get la backend");
-        Log.d("getAccessTokenFromBackend", authorizationCode);
 
         String backendUrl = apiUrl + "/oauth/token?code=" + authorizationCode;
         OkHttpClient client = new OkHttpClient();
@@ -106,12 +109,105 @@ public class WelcomePage extends Fragment {
                 if (response.isSuccessful()) {
                     String responseBody = response.body().string();
                     Log.d("BackendResponse", "Token Response: " + responseBody);
+                    fetchCurrentUserProfile();
                 } else {
                     Log.e("BackendResponse", "Error: " + response.code());
                 }
             }
         });
     }
+
+    private void fetchCurrentUserProjects() {
+
+        String url = apiUrl + "/main/user/" + Data.getCurrentUser().getUsername() +  "/projects";
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    final String responseData = response.body().string();
+
+                    Gson gson = new Gson();
+                    ProjectsList projectList = gson.fromJson(responseData, ProjectsList.class);
+                    Data.setProjectsList(projectList);
+                    fetchCurrentUserQueue();
+
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                e.printStackTrace();
+                String errorMessage = e.getMessage();
+                System.out.println(errorMessage);
+            }
+        });
+    }
+    private void fetchCurrentUserProfile() {
+
+        String url = apiUrl + "/main/current_user";
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    final String responseData = response.body().string();
+
+                    Gson gson = new Gson();
+                    UserResponse userResponse  = gson.fromJson(responseData, UserResponse.class);
+                    Data.setCurrentUser(userResponse.getUser());
+                    fetchCurrentUserProjects();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                e.printStackTrace();
+                String errorMessage = e.getMessage();
+//                getActivity().runOnUiThread(() -> binding.responseTextView.setText("Failed to connect: " + errorMessage));
+            }
+        });
+    }
+
+    private void fetchCurrentUserQueue() {
+
+        String url = apiUrl + "/main/user/" + Data.getCurrentUser().getUsername() +  "/queue";
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    final String responseData = response.body().string();
+
+                    Gson gson = new Gson();
+                    QueuedProjects queuedProjects = gson.fromJson(responseData, QueuedProjects.class);
+                    Data.setQueuedProjects(queuedProjects);
+                    System.out.println(Data.getQueuedProjects());
+
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                e.printStackTrace();
+                String errorMessage = e.getMessage();
+                System.out.println(errorMessage);
+            }
+        });
+    }
+
 
     @Override
     public void onDestroyView() {

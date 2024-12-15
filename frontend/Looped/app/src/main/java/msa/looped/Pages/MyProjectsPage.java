@@ -45,7 +45,11 @@ public class MyProjectsPage extends Fragment {
         binding = MyprojectsPageBinding.inflate(inflater, container, false);
         client = new OkHttpClient();
 
-        fetchDataFromBackend();
+        List<Project> projectList = Data.getProjectsList().getProjects();
+
+        ProjectAdapter adapter = new ProjectAdapter(getContext(), projectList);
+        binding.listView.setAdapter(adapter);
+
         return binding.getRoot();
 
     }
@@ -61,43 +65,8 @@ public class MyProjectsPage extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        fetchDataFromBackend();
-    }
-
-    private void fetchDataFromBackend() {
-
-        String url = apiUrl + "/main/current_user/projects";
-
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    final String responseData = response.body().string();
-
-                    Gson gson = new Gson();
-                    ProjectsList projectsList = gson.fromJson(responseData, ProjectsList.class);
-
-                    List<Project> projectList = projectsList.getProjects();
-
-                    if (getActivity() != null) {
-                        getActivity().runOnUiThread(() -> {
-                            ProjectAdapter adapter = new ProjectAdapter(getContext(), projectList);
-                            binding.listView.setAdapter(adapter);
-                        });
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                e.printStackTrace();
-                String errorMessage = e.getMessage();
-            }
-        });
+        ProjectAdapter adapter = new ProjectAdapter(getContext(), Data.getProjectsList().getProjects());
+        binding.listView.setAdapter(adapter);
     }
 
     @Override

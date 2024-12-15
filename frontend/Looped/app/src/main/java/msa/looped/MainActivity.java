@@ -8,11 +8,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import msa.looped.Pages.MorePage;
 import msa.looped.databinding.ActivityMainBinding;
 
 import android.view.Menu;
@@ -58,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 }
             }
+
             System.out.println(isVisible);
             binding.navbar.setVisibility(isVisible ? View.VISIBLE : View.GONE);
         });
