@@ -45,7 +45,38 @@ public class MyProjectsPage extends Fragment {
         binding = MyprojectsPageBinding.inflate(inflater, container, false);
         client = new OkHttpClient();
 
-        List<Project> projectList = Data.getProjectsList().getProjects();
+        List<Project> projectList = null;
+        
+        int retryCount = 0;
+        int maxRetries = 2; // Total attempts = 1 initial + 1 retry
+        long waitTimeMillis = 1000; // 1-second wait between attempts
+
+        while (retryCount < maxRetries) {
+            try {
+                // Attempt to call the function
+                projectList = Data.getProjectsList().getProjects();
+                // If successful, break out of the loop
+                break;
+            } catch (Exception e) {
+                retryCount++;
+                if (retryCount < maxRetries) {
+                    System.out.println("Attempt failed, retrying... (" + retryCount + ")");
+                    try {
+                        Thread.sleep(waitTimeMillis); // Wait before retrying
+                    } catch (InterruptedException ie) {
+                        // Handle the interruption during sleep
+                        Thread.currentThread().interrupt();
+                        System.out.println("Retry interrupted");
+                        break;
+                    }
+                } else {
+                    // Max retries reached, handle the failure
+                    System.out.println("All attempts failed: " + e.getMessage());
+                }
+            }
+        }
+        
+//        List<Project> projectList = Data.getProjectsList().getProjects();
 
         ProjectAdapter adapter = new ProjectAdapter(getContext(), projectList);
         binding.listView.setAdapter(adapter);
