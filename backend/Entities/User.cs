@@ -4,8 +4,14 @@ namespace backend.Entities
 {
     public class User
     {
+
+        public User(string code)
+        {
+            this.code = code;
+        }
+
         [Key]
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string code { get; set; }
     }
 }

@@ -31,6 +31,9 @@ namespace backend
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped<HttpClient>();
             builder.Services.AddSingleton<AuthService>();
+            builder.Services.AddScoped<DatabaseService>();
+            builder.Services.AddScoped<Repositories.ITokenRepository, Repositories.TokenRepository>();
+            builder.Services.AddScoped<Repositories.IUserRepository, Repositories.UserRepository>();
             builder.Services.AddHttpClient();
 
             builder.Services.AddAuthentication("Bearer")

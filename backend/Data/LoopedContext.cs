@@ -5,7 +5,7 @@ namespace backend.Data
 {
     public class LoopedContext(DbContextOptions<LoopedContext> options) : DbContext(options)
     {
-        DbSet<User> users { get; set; }
-        DbSet<Token> tokens { get; set; }
+        public DbSet<User> users { get; set; }
+        public DbSet<Token> tokens { get; set; }
     }
 }

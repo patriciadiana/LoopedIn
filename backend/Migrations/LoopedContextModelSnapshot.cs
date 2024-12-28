@@ -49,7 +49,7 @@ namespace backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Name")
+                    b.Property<string>("code")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

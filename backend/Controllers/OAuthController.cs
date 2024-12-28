@@ -1,4 +1,5 @@
-﻿using backend.Service;
+﻿using Azure.Core;
+using backend.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
@@ -6,7 +7,8 @@ namespace backend.Controllers
 {
     [ApiController]
     [Route("oauth")]
-    public class OAuthController(HttpClient _httpClient, AuthService _authService) : ControllerBase
+    public class OAuthController(HttpClient _httpClient, AuthService _authService, 
+        DatabaseService _databaseService) : ControllerBase
     {
         private const string tokenRequestUrl = "https://www.ravelry.com/oauth2/token";
 
@@ -19,6 +21,14 @@ namespace backend.Controllers
             if (string.IsNullOrEmpty(code))
             {
                 return BadRequest(new { error = "Authorization code is required." });
+            }
+
+            var userAlreadyInDatabase = await _databaseService.GetUserById(code);
+            if (userAlreadyInDatabase!=null)
+            {
+                string tokenResponse = await _databaseService.GetTokenForUser(code);
+                _authService.setToken(tokenResponse);
+                return Ok(tokenResponse);
             }
 
             var formContent = new FormUrlEncodedContent(new[]
@@ -46,6 +56,9 @@ namespace backend.Controllers
                 string accessToken = jsonDocument.RootElement.GetProperty("access_token").GetString();
 
                 _authService.setToken(accessToken);
+
+                await _databaseService.AddUser(code, accessToken);
+
                 return Ok(tokenResponse);
             }
             catch (HttpRequestException ex)
