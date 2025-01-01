@@ -1,6 +1,7 @@
 package msa.looped.Pages;
 
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,11 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import msa.looped.Data;
 import msa.looped.Entities.ProjectsList;
@@ -62,6 +67,30 @@ public class WelcomePage extends Fragment {
 
         if (getArguments() != null) {
             redirectUri = getArguments().getString("redirectUri");
+        }
+//        requireContext().getFileStreamPath("user_code.txt").delete();
+        // we have logged in before -> fetch user id and call backend
+        if (requireContext().getFileStreamPath("user_code.txt").exists())
+        {
+            System.out.println("not our first time logging in!");
+            StringBuilder code = new StringBuilder();
+            try (FileInputStream fis = requireContext().openFileInput("user_code.txt");
+                 BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    code.append(line);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            String result = code.toString();
+            getAccessTokenFromBackend(result);
+            NavHostFragment.findNavController(WelcomePage.this)
+                    .navigate(R.id.action_WelcomePage_to_homePage);
+        }
+        else
+        {
+            System.out.println("this is our first time logging in!");
         }
     }
 
@@ -109,12 +138,22 @@ public class WelcomePage extends Fragment {
                 if (response.isSuccessful()) {
                     String responseBody = response.body().string();
                     Log.d("BackendResponse", "Token Response: " + responseBody);
+
+                    saveCodeToFile(authorizationCode);
                     fetchCurrentUserProfile();
                 } else {
                     Log.e("BackendResponse", "Error: " + response.code());
                 }
             }
         });
+    }
+
+    public void saveCodeToFile(String code) {
+        try (FileOutputStream fos = requireContext().openFileOutput("user_code.txt", Context.MODE_PRIVATE)) {
+            fos.write(code.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void fetchCurrentUserProjects() {

@@ -1,7 +1,10 @@
 
 using backend.Service;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
+using backend.Data;
 
 namespace backend
 {
@@ -21,9 +24,16 @@ namespace backend
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
+
+            builder.Services.AddDbContext<LoopedContext>(options =>
+                options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Looped;Trusted_Connection=True;"));
+
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped<HttpClient>();
             builder.Services.AddSingleton<AuthService>();
+            builder.Services.AddScoped<DatabaseService>();
+            builder.Services.AddScoped<Repositories.ITokenRepository, Repositories.TokenRepository>();
+            builder.Services.AddScoped<Repositories.IUserRepository, Repositories.UserRepository>();
             builder.Services.AddHttpClient();
 
             builder.Services.AddAuthentication("Bearer")
@@ -67,7 +77,7 @@ namespace backend
                 });
             });
 
-
+        
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
