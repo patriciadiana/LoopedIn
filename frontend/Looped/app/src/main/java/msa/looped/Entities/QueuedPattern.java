@@ -16,6 +16,16 @@ public class QueuedPattern {
     @SerializedName("position_in_queue")
     private int position_in_queue;
 
+    @SerializedName("best_photo")
+    private FirstPhoto bestPhoto;
+
+    public FirstPhoto getBestPhoto() {
+        return bestPhoto;
+    }
+
+    public void setBestPhoto(FirstPhoto bestPhoto) {
+        this.bestPhoto = bestPhoto;
+    }
 
     public String getShort_pattern_name() {
         return short_pattern_name;

@@ -71,8 +71,8 @@ public class ProjectAdapter extends BaseAdapter {
         TextView textLikes = convertView.findViewById(R.id.textViewLikeCount);
         textLikes.setText(project.getLikes());
 
-        ImageView imageView = convertView.findViewById(R.id.imageViewPhoto);
-        Glide.with(context).load(project.getFirstPhoto().getThumbnailUrl()).into(imageView);
+        //ImageView imageView = convertView.findViewById(R.id.imageViewPhoto);
+        //Glide.with(context).load(project.getFirstPhoto().getThumbnailUrl()).into(imageView);
 
         return convertView;
     }
