@@ -102,6 +102,9 @@
         <action
             android:id="@+id/action_myProfilePage_to_myQueuePage"
             app:destination="@id/myQueuePage" />
+        <action
+            android:id="@+id/action_myProfilePage_to_myProjectsPage"
+            app:destination="@id/myProjectsPage" />
     </fragment>
     <fragment
         android:id="@+id/editMyProfilePage"
