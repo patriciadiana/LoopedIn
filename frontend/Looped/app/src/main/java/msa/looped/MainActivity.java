@@ -50,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
                     R.id.homePage,
                     R.id.searchPage,
                     R.id.myProjectsPage,
-                    R.id.morePage
+                    R.id.morePage,
+                    R.id.myFavoritesPage,
+                    R.id.myQueuePage
             };
 
             // Show the BottomNavigationView if the current destination is in the allowed list

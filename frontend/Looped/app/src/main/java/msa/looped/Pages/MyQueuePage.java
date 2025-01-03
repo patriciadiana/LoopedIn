@@ -1,6 +1,5 @@
 package msa.looped.Pages;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,16 +12,15 @@ import androidx.fragment.app.FragmentTransaction;
 import java.util.List;
 
 import msa.looped.Data;
-import msa.looped.Entities.ItemGridAdapter;
-import msa.looped.Entities.ProjectAdapter;
+import msa.looped.Entities.QueueProjectsAdapter;
 import msa.looped.Entities.QueuedPattern;
 import msa.looped.R;
-import msa.looped.databinding.MyfavoritesPageBinding;
+import msa.looped.databinding.MyqueuePageBinding;
 import okhttp3.OkHttpClient;
 
-public class MyFavoritesPage extends Fragment {
+public class MyQueuePage extends Fragment {
 
-    private MyfavoritesPageBinding binding;
+    private MyqueuePageBinding binding;
     public OkHttpClient client;
     private String apiUrl = Data.getInstance().getApiUrl();
 
@@ -32,13 +30,13 @@ public class MyFavoritesPage extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = MyfavoritesPageBinding.inflate(inflater, container, false);
+        binding = MyqueuePageBinding.inflate(inflater, container, false);
         client = new OkHttpClient();
 
         List<QueuedPattern> queuedProjects = Data.getQueuedProjects().getQueuedPatterns();
 
-        ItemGridAdapter adapter = new ItemGridAdapter(getContext(), queuedProjects);
-        binding.gridViewFavorites.setAdapter(adapter);
+        QueueProjectsAdapter adapter = new QueueProjectsAdapter(getContext(), queuedProjects);
+        binding.listViewQueue.setAdapter(adapter);
 
         return binding.getRoot();
     }
@@ -47,15 +45,15 @@ public class MyFavoritesPage extends Fragment {
     {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.myfavorites_page, fragment);
+        fragmentTransaction.add(R.id.myQueuePage, fragment);
         fragmentTransaction.commit();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        ItemGridAdapter adapter = new ItemGridAdapter(getContext(), Data.getQueuedProjects().getQueuedPatterns());
-        binding.gridViewFavorites.setAdapter(adapter);
+        QueueProjectsAdapter adapter = new QueueProjectsAdapter(getContext(), Data.getQueuedProjects().getQueuedPatterns());
+        binding.listViewQueue.setAdapter(adapter);
     }
 
     @Override

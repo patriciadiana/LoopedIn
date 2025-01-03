@@ -80,6 +80,11 @@ public class MyProfilePage extends Fragment {
                 NavHostFragment.findNavController(MyProfilePage.this)
                         .navigate(R.id.action_myProfilePage_to_myFavoritesPage)
         );
+
+        binding.queuedButton.setOnClickListener(v ->
+                NavHostFragment.findNavController(MyProfilePage.this)
+                        .navigate(R.id.action_myProfilePage_to_myQueuePage)
+        );
     }
 
     private void loadFragment(Fragment fragment)

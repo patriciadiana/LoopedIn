@@ -10,29 +10,29 @@
         android:id="@+id/projectTitle"
         android:layout_width="99dp"
         android:layout_height="21dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/inter_bold"
-        android:textColor="@color/dark_purple"
         android:text="Project"
-        app:layout_constraintStart_toStartOf="@+id/imageViewPhoto"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewPhoto" />
+        android:textColor="@color/dark_purple"
+        app:layout_constraintStart_toStartOf="@+id/imageViewPhotoQueued"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewPhotoQueued" />
 
     <TextView
         android:id="@+id/projectAuthor"
         android:layout_width="99dp"
         android:layout_height="17dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/inter_medium"
         android:text="by Me"
         android:textColor="@color/dark_purple"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/imageViewPhoto"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewPhoto" />
+        app:layout_constraintStart_toStartOf="@+id/imageViewPhotoQueued"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewPhotoQueued" />
 
     <ImageView
-        android:id="@+id/imageViewPhoto"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:id="@+id/imageViewPhotoQueued"
+        android:layout_width="98dp"
+        android:layout_height="93dp"
         android:layout_marginStart="8dp"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
