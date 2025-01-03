@@ -6,12 +6,13 @@ namespace backend.Entities
     {
         [Key]
         public int Id { get; set; }
-        public string TokenValue { get; set; }
+        public string BearerToken { get; set; }
+        public string RefreshToken { get; set; }
         public int UserId { get; set; }
-
-        public Token(string tokenValue, int userId)
+        public Token(string bearerToken, string refreshToken, int userId)
         {
-            TokenValue = tokenValue;
+            BearerToken = bearerToken;
+            RefreshToken = refreshToken;
             UserId = userId;
         }
     }

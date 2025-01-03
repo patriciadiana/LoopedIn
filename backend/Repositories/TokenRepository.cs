@@ -18,5 +18,17 @@ namespace backend.Repositories
             var token = await _loopedContext.tokens.Where(t => t.UserId==userId).ToListAsync();
             return token[0];
         }
+
+        public async Task<Token> UpdateToken(int userId, string newBearerToken, string newRefreshToken)
+        {
+            var tokenList = await _loopedContext.tokens.Where(t => t.UserId == userId).ToListAsync();
+            var token = tokenList[0];
+
+            token.RefreshToken = newRefreshToken;
+            token.BearerToken = newBearerToken;
+
+            await _loopedContext.SaveChangesAsync();
+            return token;
+        }
     }
 }

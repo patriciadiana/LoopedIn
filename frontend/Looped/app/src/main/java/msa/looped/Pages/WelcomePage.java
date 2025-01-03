@@ -68,7 +68,7 @@ public class WelcomePage extends Fragment {
         if (getArguments() != null) {
             redirectUri = getArguments().getString("redirectUri");
         }
-        requireContext().getFileStreamPath("user_code.txt").delete();
+//        requireContext().getFileStreamPath("user_code.txt").delete();
         // we have logged in before -> fetch user id and call backend
         if (requireContext().getFileStreamPath("user_code.txt").exists())
         {
@@ -84,7 +84,7 @@ public class WelcomePage extends Fragment {
                 e.printStackTrace();
             }
             String result = code.toString();
-            getAccessTokenFromBackend(result);
+            getAccessTokenFromBackend(result, "regular");
             NavHostFragment.findNavController(WelcomePage.this)
                     .navigate(R.id.action_WelcomePage_to_homePage);
         }
@@ -108,7 +108,7 @@ public class WelcomePage extends Fragment {
 
             System.out.println(data);
             if (authorizationCode != null && state.equals(returnedState)) {
-                getAccessTokenFromBackend(authorizationCode);
+                getAccessTokenFromBackend(authorizationCode, "first");
                 NavHostFragment.findNavController(WelcomePage.this)
                         .navigate(R.id.action_WelcomePage_to_homePage);
             } else {
@@ -117,9 +117,11 @@ public class WelcomePage extends Fragment {
         }
     }
 
-    private void getAccessTokenFromBackend(String authorizationCode) {
+    private void getAccessTokenFromBackend(String authorizationCode, String loginType) {
 
-        String backendUrl = apiUrl + "/oauth/token?code=" + authorizationCode;
+        String backendUrl = apiUrl + "/oauth/"+ loginType + "Login?code=" + authorizationCode;
+        System.out.println("backend url: " + backendUrl);
+
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url(backendUrl)
