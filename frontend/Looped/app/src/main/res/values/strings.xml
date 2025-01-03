@@ -64,8 +64,8 @@
     <string name="enter_your_email_address">Enter your email address</string>
     <string name="enter_your_password">Enter your password</string>
     <string name="confirm_your_password">Confirm your password</string>
-    <string name="my_projects">My projects</string>
-    <string name="my_profile">My profile</string>
+    <string name="my_projects">My Projects</string>
+    <string name="my_profile">My Profile</string>
     <string name="friends">Friends</string>
     <string name="picksForYou">Picks for me</string>
     <string name="settings">Settings</string>
@@ -84,4 +84,5 @@
     <string name="first_name_content">first name content</string>
     <string name="about_me_content">about me content</string>
     <string name="user_name_content">user name content</string>
+    <string name="my_favorites">My Favorites</string>
 </resources>

@@ -5,6 +5,9 @@ import com.google.gson.annotations.SerializedName;
 import java.sql.Date;
 
 public class QueuedPattern {
+
+    @SerializedName("created_at")
+    private String created_at;
     @SerializedName("short_pattern_name")
     private String short_pattern_name;
     @SerializedName("pattern_author_name")
@@ -16,7 +19,20 @@ public class QueuedPattern {
     @SerializedName("position_in_queue")
     private int position_in_queue;
 
+    @SerializedName("best_photo")
+    private FirstPhoto bestPhoto;
 
+    public FirstPhoto getBestPhoto() {
+        return bestPhoto;
+    }
+
+    public void setBestPhoto(FirstPhoto bestPhoto) {
+        this.bestPhoto = bestPhoto;
+    }
+
+    public String getCreated_at_date(){
+        return created_at;
+    }
     public String getShort_pattern_name() {
         return short_pattern_name;
     }
@@ -62,6 +78,7 @@ public class QueuedPattern {
         return "QueuedPattern{" +
                 "short_pattern_name='" + short_pattern_name + '\'' +
                 ", pattern_author_name='" + pattern_author_name + '\'' +
+                ", created_at='" + created_at + '\'' +
                 ", make_for='" + make_for + '\'' +
                 ", notes='" + notes + '\'' +
                 ", position_in_queue=" + position_in_queue +

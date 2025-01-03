@@ -96,10 +96,26 @@
         <action
             android:id="@+id/action_myProfilePage_to_editMyProfilePage"
             app:destination="@id/editMyProfilePage" />
+        <action
+            android:id="@+id/action_myProfilePage_to_myFavoritesPage"
+            app:destination="@id/myFavoritesPage" />
+        <action
+            android:id="@+id/action_myProfilePage_to_myQueuePage"
+            app:destination="@id/myQueuePage" />
     </fragment>
     <fragment
         android:id="@+id/editMyProfilePage"
         android:name="msa.looped.Pages.EditMyProfilePage"
         android:label="editmyprofile_page"
         tools:layout="@layout/editmyprofile_page" />
+    <fragment
+        android:id="@+id/myFavoritesPage"
+        android:name="msa.looped.Pages.MyFavoritesPage"
+        android:label="myfavorites_page"
+        tools:layout="@layout/myfavorites_page" />
+    <fragment
+        android:id="@+id/myQueuePage"
+        android:name="msa.looped.Pages.MyQueuePage"
+        android:label="myqueue_page"
+        tools:layout="@layout/myqueue_page" />
 </navigation>

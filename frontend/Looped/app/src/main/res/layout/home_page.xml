@@ -8,29 +8,64 @@
     android:background="#FDF4E6"
     tools:context=".Pages.HomePage">
 
-    <ImageView
-        android:id="@+id/small_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:contentDescription="@string/app_logo"
-        android:src="@drawable/yarn_ball"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/register_button"
-        android:layout_width="154dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="496dp"
-        android:backgroundTint="@color/secondary_purple"
-        android:text="@string/register"
-        android:textColor="@color/background_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:fontFamily="@font/inter_semibold"
+                android:text="News"
+                android:textColor="@color/grey"
+                android:textSize="32sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.096"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/newsCard1"
+                android:layout_width="348dp"
+                android:layout_height="198dp"
+                android:layout_marginTop="108dp"
+                android:src="@drawable/news_card"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.492"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/newsCard2"
+                android:layout_width="348dp"
+                android:layout_height="198dp"
+                android:layout_marginTop="312dp"
+                android:src="@drawable/news_card"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.492"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/newsCard3"
+                android:layout_width="348dp"
+                android:layout_height="198dp"
+                android:layout_marginTop="516dp"
+                android:src="@drawable/news_card"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.492"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
