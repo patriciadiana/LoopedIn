@@ -5,12 +5,17 @@
     android:background="@android:color/transparent">
 
     <!-- My Profile -->
+
+    <!-- Friends -->
+
+    <!-- Picks For Me -->
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profilePicture"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="8dp"
         android:background="#B57CC8"
         android:backgroundTint="#B57CC8"
@@ -23,57 +28,42 @@
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent" />
 
     <TextView
-        android:id="@+id/textProfilePic"
+        android:id="@+id/textFriends"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/my_profile"
+        android:layout_marginTop="4dp"
+        android:text="@string/friends"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/profilePicture"
-        app:layout_constraintEnd_toEndOf="@id/profilePicture"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintTop_toBottomOf="@id/profilePicture" />
-
-    <!-- Friends -->
+        app:layout_constraintEnd_toEndOf="@+id/friends"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/friends"
+        app:layout_constraintTop_toBottomOf="@id/friends" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/friends"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="8dp"
         android:background="#B57CC8"
         android:backgroundTint="#B57CC8"
         android:clickable="true"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@+id/picksForMe"
+        app:layout_constraintEnd_toStartOf="@+id/settings"
         app:layout_constraintStart_toEndOf="@+id/profilePicture"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
         app:srcCompat="@drawable/friends" />
 
-    <TextView
-        android:id="@+id/textFriends"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/friends"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/friends"
-        app:layout_constraintStart_toStartOf="@+id/friends"
-        app:layout_constraintTop_toBottomOf="@id/friends" />
-
-    <!-- Picks For Me -->
-
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/picksForMe"
+        android:id="@+id/settings"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="16dp"
         android:background="#B57CC8"
         android:backgroundTint="#B57CC8"
@@ -83,52 +73,43 @@
         app:layout_constraintStart_toEndOf="@+id/friends"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
-        app:srcCompat="@drawable/picksforyou" />
-
-    <TextView
-        android:id="@+id/textPicksForMe"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/picksForYou"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/picksForMe"
-        app:layout_constraintStart_toStartOf="@+id/picksForMe"
-        app:layout_constraintTop_toBottomOf="@id/picksForMe" />
-
-    <!-- Settings -->
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/settings"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="24dp"
-        android:background="#B57CC8"
-        android:backgroundTint="#B57CC8"
-        android:clickable="true"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="@id/profilePicture"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/profilePicture"
-        app:layout_constraintTop_toBottomOf="@id/textProfilePic"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
         app:srcCompat="@drawable/settings" />
 
     <TextView
         android:id="@+id/textSettings"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:text="@string/settings"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/settings"
-        app:layout_constraintEnd_toEndOf="@id/settings"
+        app:layout_constraintEnd_toEndOf="@+id/settings"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/settings"
         app:layout_constraintTop_toBottomOf="@id/settings" />
-    
+
+    <TextView
+        android:id="@+id/textProfilePic"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/my_profile"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/profilePicture"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="@id/profilePicture"
+        app:layout_constraintTop_toBottomOf="@id/profilePicture" />
+
+
     <Space
         android:layout_width="172dp"
         android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="204dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textSettings" />
 
