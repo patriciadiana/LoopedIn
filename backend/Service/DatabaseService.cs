@@ -12,6 +12,10 @@
         {
             return await _userRepository.GetUserById(id);
         }
+        public async Task<Entities.User> GetUserByUsername(string username)
+        {
+            return await _userRepository.GetUserByUsername(username);
+        }
         public async Task<string> GetBearerTokenForUser(string id)
         {
             var user = await _userRepository.GetUserById(id);
@@ -42,6 +46,12 @@
             Console.WriteLine($"user id{userId} token{bearerToken}");
             var token = await _tokenRepository.AddToken(new Entities.Token(bearerToken, refreshToken, userId));
 
+            return user;
+        }
+
+        public async Task<Entities.User> UpdateUser(string userCode, string firstName, string location, string profilePic, string username, string aboutMe, string faveColors)
+        {
+            var user = await _userRepository.UpdateUser(userCode, firstName, location, profilePic, username, aboutMe, faveColors);
             return user;
         }
     }

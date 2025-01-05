@@ -83,7 +83,7 @@ public class LoginPage extends Fragment {
                 Uri.parse(redirectUri)
         )
                 .setState(state)
-                .setScopes("offline")
+                .setScopes("offline", "profile-write")
                 .build();
 
         AuthorizationService authService = new AuthorizationService(requireContext());

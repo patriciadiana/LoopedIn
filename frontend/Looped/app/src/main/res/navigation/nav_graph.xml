@@ -108,7 +108,11 @@
         android:id="@+id/editMyProfilePage"
         android:name="msa.looped.Pages.EditMyProfilePage"
         android:label="editmyprofile_page"
-        tools:layout="@layout/editmyprofile_page" />
+        tools:layout="@layout/editmyprofile_page" >
+        <action
+            android:id="@+id/action_editMyProfilePage_to_myProfilePage"
+            app:destination="@id/myProfilePage" />
+    </fragment>
     <fragment
         android:id="@+id/myFavoritesPage"
         android:name="msa.looped.Pages.MyFavoritesPage"
