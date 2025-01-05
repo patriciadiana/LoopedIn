@@ -41,8 +41,8 @@
         android:layout_width="343dp"
         android:layout_height="48dp"
         android:layout_marginTop="196dp"
-        android:paddingStart="10dp"
         android:background="@drawable/dropdown_background"
+        android:paddingStart="10dp"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -61,6 +61,32 @@
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.112"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/enterPatternName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="436dp"
+        android:fontFamily="@font/inter_medium"
+        android:text="Enter the pattern name"
+        android:textColor="@color/background_color"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/editTextPatternName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/madeFor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="532dp"
+        android:fontFamily="@font/inter_medium"
+        android:text="Made for"
+        android:textColor="@color/background_color"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.091"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -85,7 +111,7 @@
         tools:ignore="RtlSymmetry" />
 
     <RadioButton
-        android:id="@+id/radioButton"
+        android:id="@+id/radioButtonIUsedPattern"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="372dp"
@@ -101,7 +127,7 @@
         android:id="@+id/editTextPatternName"
         android:layout_width="343dp"
         android:layout_height="48dp"
-        android:layout_marginTop="432dp"
+        android:layout_marginTop="464dp"
         android:autofillHints=""
         android:background="@drawable/dropdown_background"
         android:ems="10"
@@ -116,4 +142,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="RtlSymmetry" />
+
+    <EditText
+        android:id="@+id/enterMadeFor"
+        android:layout_width="343dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="560dp"
+        android:autofillHints=""
+        android:background="@drawable/dropdown_background"
+        android:ems="10"
+        android:hint="Enter for who is this pattern"
+        android:inputType="textEmailAddress"
+        android:paddingStart="20dp"
+        android:textColor="@color/background_color"
+        android:textColorHint="@color/background_color"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlSymmetry" />
+
+    <Button
+        android:id="@+id/cancelProject"
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="664dp"
+        android:backgroundTint="@color/background_color"
+        android:text="Cancel"
+        android:textColor="@color/dark_purple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.127"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/createProject"
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="664dp"
+        android:backgroundTint="@color/background_color"
+        android:text="Create"
+        android:textColor="@color/dark_purple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.853"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

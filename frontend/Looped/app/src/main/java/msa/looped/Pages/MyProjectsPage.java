@@ -50,6 +50,11 @@ public class MyProjectsPage extends Fragment {
         ProjectAdapter adapter = new ProjectAdapter(getContext(), projectList);
         binding.listView.setAdapter(adapter);
 
+        binding.savedpatternsbutton.setOnClickListener(v ->
+                NavHostFragment.findNavController(MyProjectsPage.this)
+                        .navigate(R.id.action_myProjectsPage_to_mySavedPatterns)
+        );
+
         return binding.getRoot();
 
     }

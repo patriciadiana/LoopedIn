@@ -61,12 +61,19 @@
         <action
             android:id="@+id/action_myProjectsPage_to_addProjectPage"
             app:destination="@id/addProjectPage" />
+        <action
+            android:id="@+id/action_myProjectsPage_to_mySavedPatterns"
+            app:destination="@id/mySavedPatterns" />
     </fragment>
     <fragment
         android:id="@+id/addProjectPage"
         android:name="msa.looped.Pages.AddProjectPage"
         android:label="addproject_page"
-        tools:layout="@layout/addproject_page" />
+        tools:layout="@layout/addproject_page" >
+        <action
+            android:id="@+id/action_addProjectPage_to_homePage"
+            app:destination="@id/homePage" />
+    </fragment>
     <fragment
         android:id="@+id/searchPage"
         android:name="msa.looped.Pages.SearchPage"
@@ -121,4 +128,13 @@
         android:name="msa.looped.Pages.MyQueuePage"
         android:label="myqueue_page"
         tools:layout="@layout/myqueue_page" />
+    <fragment
+        android:id="@+id/mySavedPatterns"
+        android:name="msa.looped.Pages.MySavedPatterns"
+        android:label="mysavedpatterns_page"
+        tools:layout="@layout/mysavedpatterns_page" >
+        <action
+            android:id="@+id/action_mySavedPatterns_to_myProjectsPage"
+            app:destination="@id/myProjectsPage" />
+    </fragment>
 </navigation>
