@@ -85,4 +85,5 @@
     <string name="about_me_content">about me content</string>
     <string name="user_name_content">user name content</string>
     <string name="my_favorites">My Favorites</string>
+    <string name="fave_colors">fave colors</string>
 </resources>

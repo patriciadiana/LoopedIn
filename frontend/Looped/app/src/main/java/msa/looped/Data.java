@@ -8,6 +8,7 @@ public class Data {
     public static boolean authorizationComplete = false;
     private static Data INSTANCE;
     private static User currentUser;
+    private static String userCode = "";
     private static String profilePicUrl = "";
 //    private String apiUrl = "http://192.168.1.160:5298"; // Barsi
     private String apiUrl = "http://192.168.8.104:5298";  // Cala
@@ -24,6 +25,14 @@ public class Data {
             currentUser = new User();
         }
         return INSTANCE;
+    }
+
+    public static String getUserCode() {
+        return userCode;
+    }
+
+    public static void setUserCode(String userCode) {
+        Data.userCode = userCode;
     }
 
     private static ProjectsList projectsList;

@@ -6,7 +6,7 @@ namespace backend.Controllers
 {
     [ApiController]
     [Route("main")]
-    public class MainController(HttpClient _httpClient, AuthService _authService) : ControllerBase
+    public class MainController(HttpClient _httpClient, AuthService _authService, DatabaseService _databaseService) : ControllerBase
     {
         private string RavelryApiUrl = "https://api.ravelry.com";
 
@@ -46,6 +46,83 @@ namespace backend.Controllers
             return Ok(JsonSerializer.Deserialize<object>(userData));
         }
 
+        [HttpGet("current_user_api/{userCode}")]
+        public async Task<IActionResult> GetCurrentUserApi(String userCode)
+        {
+            string accessToken = _authService.getToken();
+
+            Console.WriteLine("Access Token: " + accessToken);
+
+            var url = $"{RavelryApiUrl}/current_user.json";
+            var request = new HttpRequestMessage(HttpMethod.Get, url);
+            request.Headers.Add("Authorization", $"Bearer {accessToken}");
+
+            var response = await _httpClient.SendAsync(request);
+
+            if (!response.IsSuccessStatusCode)
+                return StatusCode((int)response.StatusCode, await response.Content.ReadAsStringAsync());
+
+            var userData = await response.Content.ReadAsStringAsync();
+
+            var jsonDocument = JsonDocument.Parse(userData);
+            var currentUserUsername = jsonDocument.RootElement.GetProperty("user").GetProperty("username").GetString();
+            Console.Write(currentUserUsername);
+
+            url = $"{RavelryApiUrl}/people/{currentUserUsername}.json";
+            request = new HttpRequestMessage(HttpMethod.Get, url);
+            request.Headers.Add("Authorization", $"Bearer {accessToken}");
+
+            response = await _httpClient.SendAsync(request);
+
+            if (!response.IsSuccessStatusCode)
+                return StatusCode((int)response.StatusCode, await response.Content.ReadAsStringAsync());
+
+            userData = await response.Content.ReadAsStringAsync();
+            jsonDocument = JsonDocument.Parse(userData);
+
+            var firstName = jsonDocument.RootElement.GetProperty("user").GetProperty("first_name").GetString();
+            var location = jsonDocument.RootElement.GetProperty("user").GetProperty("location").GetString();
+            var profilePic = jsonDocument.RootElement.GetProperty("user").GetProperty("large_photo_url").GetString();
+            var aboutMe = jsonDocument.RootElement.GetProperty("user").GetProperty("about_me").GetString();
+            var fave_colors = "";
+
+            _databaseService.UpdateUser(userCode, firstName,location,profilePic, currentUserUsername, aboutMe, fave_colors);
+
+            return Ok(JsonSerializer.Deserialize<object>(userData));
+        }
+
+        [HttpGet("current_user_db/{userCode}")]
+        public async Task<IActionResult> GetCurrentUserDatabase(String userCode)
+        {
+            Console.WriteLine($"user code {userCode}");
+            var user = await _databaseService.GetUserById(userCode);
+
+            var response = new
+            {
+                user = new
+                {
+                    id = user.Id,
+                    first_name = user.first_name,
+                    location = user.location,
+                    large_photo_url = user.large_photo_url,
+                    about_me = user.about_me,
+                    username = user.username
+                }
+            };
+
+            return Ok(response);
+
+        }
+        [HttpPost("update_profile")]
+        public async Task<IActionResult> UpdateProfile([FromQuery] string user_name, [FromQuery] string? firstName, 
+            [FromQuery] string? location, [FromQuery]  string? aboutMe, [FromQuery] string? faveColors)
+        {
+            var user = await _databaseService.GetUserByUsername(user_name);
+            await _databaseService.UpdateUser(user.code, firstName, location, user.large_photo_url, user_name, aboutMe, faveColors);
+
+            Console.WriteLine($"!! {aboutMe}");
+            return Ok(user);
+        }
         [HttpGet("user/{user_name}/projects")]
         public async Task<IActionResult> GetProjectsForCurrentUser(string user_name)
         {

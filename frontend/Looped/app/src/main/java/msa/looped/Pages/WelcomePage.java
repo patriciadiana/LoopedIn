@@ -142,7 +142,7 @@ public class WelcomePage extends Fragment {
                     Log.d("BackendResponse", "Token Response: " + responseBody);
 
                     saveCodeToFile(authorizationCode);
-                    fetchCurrentUserProfile();
+                    fetchCurrentUserProfile(loginType);
                 } else {
                     Log.e("BackendResponse", "Error: " + response.code());
                 }
@@ -152,6 +152,7 @@ public class WelcomePage extends Fragment {
 
     public void saveCodeToFile(String code) {
         try (FileOutputStream fos = requireContext().openFileOutput("user_code.txt", Context.MODE_PRIVATE)) {
+            Data.setUserCode(code);
             fos.write(code.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
@@ -188,9 +189,15 @@ public class WelcomePage extends Fragment {
             }
         });
     }
-    private void fetchCurrentUserProfile() {
+    private void fetchCurrentUserProfile(String loginType) {
 
         String url = apiUrl + "/main/current_user";
+        String userCode = Data.getUserCode();
+
+        if(loginType.equals("first"))
+            url = url + "_api/" + userCode;
+        else
+            url = url + "_db/" + userCode;
 
         Request request = new Request.Builder()
                 .url(url)

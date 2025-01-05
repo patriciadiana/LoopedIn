@@ -15,6 +15,17 @@ public class User {
     @SerializedName("about_me")
     private String about_me;
 
+    @SerializedName("fave_colors")
+    private String fave_colors;
+
+    public String getFave_colors() {
+        return fave_colors;
+    }
+
+    public void setFave_colors(String fave_colors) {
+        this.fave_colors = fave_colors;
+    }
+
     public String getFirst_name() {
         return first_name;
     }
