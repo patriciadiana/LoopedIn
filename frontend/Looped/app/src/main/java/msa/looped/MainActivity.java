@@ -52,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
                     R.id.myProjectsPage,
                     R.id.morePage,
                     R.id.myFavoritesPage,
-                    R.id.myQueuePage
+                    R.id.myQueuePage,
+                    R.id.mySavedPatterns
             };
 
             // Show the BottomNavigationView if the current destination is in the allowed list
@@ -64,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            System.out.println(isVisible);
             binding.navbar.setVisibility(isVisible ? View.VISIBLE : View.GONE);
         });
 

@@ -1,0 +1,72 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_purple">
+
+
+    <Space
+        android:layout_width="172dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="348dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/uploadIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/upload_icon" />
+
+
+    <TextView
+        android:id="@+id/chooseAFile"
+        android:layout_width="99dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/inter_medium"
+        android:text="Choose a file"
+        android:textAlignment="center"
+        android:textColor="@color/background_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uploadIcon" />
+
+    <TextView
+        android:id="@+id/fileFormat"
+        android:layout_width="152dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="PDF, DOCX formats"
+        android:textAlignment="center"
+        android:textColor="@color/background_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uploadIcon" />
+
+
+    <Button
+        android:id="@+id/createProject"
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="232dp"
+        android:backgroundTint="@color/background_color"
+        android:text="Browse a file"
+        android:textColor="@color/dark_purple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

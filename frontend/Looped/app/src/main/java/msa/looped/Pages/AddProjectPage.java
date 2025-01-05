@@ -9,7 +9,9 @@ import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
+import msa.looped.R;
 import msa.looped.databinding.AddprojectPageBinding;
 
 public class AddProjectPage extends Fragment {
@@ -22,6 +24,12 @@ public class AddProjectPage extends Fragment {
     ) {
 
         binding = AddprojectPageBinding.inflate(inflater, container, false);
+
+        binding.cancelProject.setOnClickListener(v ->
+                NavHostFragment.findNavController(AddProjectPage.this)
+                        .navigate(R.id.action_addProjectPage_to_homePage)
+        );
+
         return binding.getRoot();
 
     }
