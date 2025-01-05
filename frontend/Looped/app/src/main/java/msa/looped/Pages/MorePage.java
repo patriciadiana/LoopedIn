@@ -87,10 +87,15 @@ public class MorePage extends Fragment {
             loadFragment(new SettingsPage());
         });
 
+        ImageView friendsIcon = dialog.findViewById(R.id.friends);
+        friendsIcon.setOnClickListener(v-> {
+            dialog.dismiss();
+            loadFragment(new MyFriendsPage());
+        });
+
         popupImage.setOnClickListener(v->{
             dialog.dismiss();
-            NavHostFragment.findNavController(this)
-                    .navigate(R.id.action_morePage_to_myProfilePage);
+            loadFragment(new MyProfilePage());
         });
 
         dialog.show();

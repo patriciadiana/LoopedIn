@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -40,12 +43,12 @@ public class MySavedPatterns extends Fragment {
         SavedPatternsAdapter adapter = new SavedPatternsAdapter(getContext(), queuedProjects);
         binding.listRecentUploads.setAdapter(adapter);
 
-        binding.uploadPattern.setOnClickListener(v -> preparePopUp());
+        binding.uploadPattern.setOnClickListener(v -> uploadPopUp());
 
         return binding.getRoot();
     }
 
-    private void preparePopUp() {
+    private void uploadPopUp() {
 
         Dialog dialog = new Dialog(requireContext());
         dialog.setContentView(R.layout.upload_popup);
@@ -55,6 +58,39 @@ public class MySavedPatterns extends Fragment {
         params.width = (int) (getResources().getDisplayMetrics().widthPixels * 0.9);
         params.height = WindowManager.LayoutParams.WRAP_CONTENT;
         dialog.getWindow().setAttributes(params);
+
+        Button browseButton = dialog.findViewById(R.id.browseAFile);
+        browseButton.setOnClickListener(v -> {
+            browsePopUp();
+            dialog.dismiss();
+        });
+
+        dialog.show();
+    }
+
+    private void browsePopUp() {
+
+        Dialog dialog = new Dialog(requireContext());
+        dialog.setContentView(R.layout.browse_popup);
+        dialog.getWindow().setBackgroundDrawableResource(R.drawable.upload_background);
+
+        WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
+        params.width = (int) (getResources().getDisplayMetrics().widthPixels * 0.9);
+        params.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        dialog.getWindow().setAttributes(params);
+
+        Spinner craftType = dialog.findViewById(R.id.spinnerCraftType);
+
+        String[] craftTypes = {"Crochet", "Knitting", "Loom Knitting", "Machine Knitting", "Weaving", "Spinning"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                requireContext(),
+                android.R.layout.simple_spinner_item,
+                craftTypes
+        );
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        craftType.setAdapter(adapter);
 
         dialog.show();
     }

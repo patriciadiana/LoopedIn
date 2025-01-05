@@ -18,6 +18,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.bumptech.glide.Glide;
 
 import msa.looped.Data;
+import msa.looped.Entities.QueuedPattern;
 import msa.looped.R;
 import msa.looped.databinding.MyprofilePageBinding;
 
@@ -76,19 +77,19 @@ public class MyProfilePage extends Fragment {
                         .navigate(R.id.action_myProfilePage_to_editMyProfilePage)
         );
 
-        binding.favoritesButton.setOnClickListener(v ->
-                NavHostFragment.findNavController(MyProfilePage.this)
-                        .navigate(R.id.action_myProfilePage_to_myFavoritesPage)
-        );
+        binding.favoritesButton.setOnClickListener(v -> {
+            loadFragment(new MyFavoritesPage());
+            requireActivity().findViewById(R.id.navbar).setVisibility(View.VISIBLE);
+        });
 
-        binding.queuedButton.setOnClickListener(v ->
-                NavHostFragment.findNavController(MyProfilePage.this)
-                        .navigate(R.id.action_myProfilePage_to_myQueuePage)
-        );
-        binding.projectsButton.setOnClickListener(v ->
-                NavHostFragment.findNavController(MyProfilePage.this)
-                        .navigate(R.id.action_myProfilePage_to_myProjectsPage)
-        );
+        binding.queuedButton.setOnClickListener(v ->{
+            loadFragment(new MyQueuePage());
+            requireActivity().findViewById(R.id.navbar).setVisibility(View.VISIBLE);
+        });
+        binding.projectsButton.setOnClickListener(v ->{
+            loadFragment(new MyProjectsPage());
+            requireActivity().findViewById(R.id.navbar).setVisibility(View.VISIBLE);
+        });
     }
 
     private void loadFragment(Fragment fragment)
