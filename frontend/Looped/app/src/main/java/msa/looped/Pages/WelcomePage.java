@@ -68,7 +68,7 @@ public class WelcomePage extends Fragment {
         if (getArguments() != null) {
             redirectUri = getArguments().getString("redirectUri");
         }
-        requireContext().getFileStreamPath("user_code.txt").delete();
+//        requireContext().getFileStreamPath("user_code.txt").delete();
         // we have logged in before -> fetch user id and call backend
         if (requireContext().getFileStreamPath("user_code.txt").exists())
         {

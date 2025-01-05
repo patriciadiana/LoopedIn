@@ -48,10 +48,28 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/queued_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="264dp"
+        android:background="@android:color/transparent"
+        android:clickable="true"
+        android:fontFamily="@font/inter_extrabold"
+        android:gravity="center"
+        android:lines="2"
+        android:text="20\nqueued"
+        android:textColor="@color/main_purple"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.883"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/favorites_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="284dp"
+        android:layout_marginTop="264dp"
         android:background="@android:color/transparent"
         android:clickable="true"
         android:fontFamily="@font/inter_extrabold"
@@ -69,7 +87,7 @@
         android:id="@+id/projects_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="284dp"
+        android:layout_marginTop="264dp"
         android:background="@android:color/transparent"
         android:clickable="true"
         android:fontFamily="@font/inter_extrabold"
@@ -83,32 +101,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/queued_button"
+        android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="284dp"
-        android:background="@android:color/transparent"
-        android:clickable="true"
-        android:fontFamily="@font/inter_extrabold"
-        android:gravity="center"
-        android:lines="2"
-        android:text="20\nqueued"
-        android:textColor="@color/main_purple"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.883"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="375dp"
+        android:layout_marginTop="340dp"
         android:fontFamily="@font/inter_medium"
         android:text="@string/first_name"
         android:textColor="@color/grey"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.096"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -116,7 +117,6 @@
         android:id="@+id/firstName"
         android:layout_width="338dp"
         android:layout_height="48dp"
-        android:layout_marginTop="400dp"
         android:background="@drawable/rounded_corner_secondary"
         android:gravity="center_vertical|start"
         android:paddingStart="20dp"
@@ -124,28 +124,28 @@
         android:textColor="@color/background_color"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
         tools:ignore="RtlSymmetry" />
 
     <TextView
+        android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="456dp"
         android:fontFamily="@font/inter_medium"
+        android:layout_marginTop="5dp"
         android:text="@string/location"
         android:textColor="@color/grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.097"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/firstName" />
 
     <TextView
         android:id="@+id/location"
         android:layout_width="338dp"
         android:layout_height="48dp"
-        android:layout_marginTop="480dp"
         android:background="@drawable/rounded_corner_secondary"
         android:gravity="center_vertical|start"
         android:paddingStart="20dp"
@@ -155,26 +155,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
         tools:ignore="RtlSymmetry" />
 
     <TextView
+        android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="536dp"
         android:fontFamily="@font/inter_medium"
         android:text="@string/about_me"
+        android:layout_marginTop="5dp"
         android:textColor="@color/grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.096"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/location" />
 
     <TextView
         android:id="@+id/aboutMe"
         android:layout_width="338dp"
         android:layout_height="48dp"
-        android:layout_marginTop="560dp"
         android:background="@drawable/rounded_corner_secondary"
         android:gravity="center_vertical|start"
         android:paddingStart="20dp"
@@ -184,21 +184,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
         tools:ignore="RtlSymmetry" />
 
     <Button
         android:id="@+id/editprofile_button"
         android:layout_width="144dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="664dp"
         android:backgroundTint="@color/dark_purple"
+        android:layout_marginTop="10dp"
         android:text="Edit profile"
         android:textColor="@color/background_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.853"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/aboutMe" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

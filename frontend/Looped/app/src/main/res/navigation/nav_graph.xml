@@ -91,6 +91,9 @@
         <action
             android:id="@+id/action_morePage_to_myProfilePage"
             app:destination="@id/myProfilePage" />
+        <action
+            android:id="@+id/action_myProfilePage_to_editMyProfilePage"
+            app:destination="@id/editMyProfilePage" />
     </fragment>
     <fragment
         android:id="@+id/myProfilePage"
