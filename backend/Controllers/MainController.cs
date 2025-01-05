@@ -1,5 +1,6 @@
 ﻿using backend.Service;
 using Microsoft.AspNetCore.Mvc;
+using System.Text;
 using System.Text.Json;
 
 namespace backend.Controllers
@@ -44,6 +45,58 @@ namespace backend.Controllers
             userData = await response.Content.ReadAsStringAsync();
 
             return Ok(JsonSerializer.Deserialize<object>(userData));
+        }
+
+        [HttpGet("user/{user_name}")]
+        public async Task<IActionResult> GetCurrentUser(string user_name)
+        {
+            string accessToken = _authService.getToken();
+
+            var url = $"{RavelryApiUrl}/people/{user_name}.json";
+            var request = new HttpRequestMessage(HttpMethod.Get, url);
+            request.Headers.Add("Authorization", $"Bearer {accessToken}");
+
+            var response = await _httpClient.SendAsync(request);
+
+            if (!response.IsSuccessStatusCode)
+                return StatusCode((int)response.StatusCode, await response.Content.ReadAsStringAsync());
+
+            var userData = await response.Content.ReadAsStringAsync();
+
+            return Ok(JsonSerializer.Deserialize<object>(userData));
+        }
+
+        [HttpPost("user/{user_name}")]
+        public async Task<IActionResult> UpdateCurrentUser(string user_name)
+        {
+            string accessToken = _authService.getToken();
+
+            var url = $"{RavelryApiUrl}/people/{user_name}.json";
+
+            var user = await _databaseService.GetUserByUsername(user_name);
+
+            var payload = new
+            {
+                Data = user
+            };
+
+            var jsonPayload = JsonSerializer.Serialize(payload);
+
+            var request = new HttpRequestMessage(HttpMethod.Post, url)
+            {
+                Content = new StringContent(jsonPayload, Encoding.UTF8, "application/json")
+            };
+
+            request.Headers.Add("Authorization", $"Bearer {accessToken}");
+
+            var response = await _httpClient.SendAsync(request);
+
+            if (!response.IsSuccessStatusCode)
+                return StatusCode((int)response.StatusCode, await response.Content.ReadAsStringAsync());
+
+            // Return the response from the third-party API
+            var responseData = await response.Content.ReadAsStringAsync();
+            return Ok(JsonSerializer.Deserialize<object>(responseData));
         }
 
         [HttpGet("current_user_api/{userCode}")]
@@ -119,9 +172,42 @@ namespace backend.Controllers
         {
             var user = await _databaseService.GetUserByUsername(user_name);
             await _databaseService.UpdateUser(user.code, firstName, location, user.large_photo_url, user_name, aboutMe, faveColors);
+            user = await _databaseService.GetUserByUsername(user_name);
 
-            Console.WriteLine($"!! {aboutMe}");
-            return Ok(user);
+
+            string accessToken = _authService.getToken();
+
+            var url = $"{RavelryApiUrl}/people/{user_name}.json";
+
+            var payload = new
+            {
+                about_me = user.about_me,
+                fave_colors = user.fave_colors,
+                first_name = user.first_name
+            };
+
+            var jsonPayload = JsonSerializer.Serialize(payload);
+
+            var request = new HttpRequestMessage(HttpMethod.Post, url)
+            {
+                Content = new StringContent(jsonPayload, Encoding.UTF8, "application/json")
+            };
+
+            request.Headers.Add("Authorization", $"Bearer {accessToken}");
+
+            var response = await _httpClient.SendAsync(request);
+
+            if (!response.IsSuccessStatusCode)
+                return StatusCode((int)response.StatusCode, await response.Content.ReadAsStringAsync());
+
+            // Return the response from the third-party API
+            var responseData = await response.Content.ReadAsStringAsync();
+
+
+
+            Console.WriteLine($"!! {responseData}");
+
+            return Ok(JsonSerializer.Deserialize<object>(responseData));
         }
         [HttpGet("user/{user_name}/projects")]
         public async Task<IActionResult> GetProjectsForCurrentUser(string user_name)
