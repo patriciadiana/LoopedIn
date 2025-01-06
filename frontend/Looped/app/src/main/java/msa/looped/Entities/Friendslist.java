@@ -7,7 +7,7 @@ import java.util.List;
 public class Friendslist {
     @SerializedName("friendships")
     private List<Friend> friendships;
-    public List<Friend> getProjects() {
+    public List<Friend> getFriends() {
         return friendships;
     }
     public int getProjectsListSize()

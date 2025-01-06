@@ -13,7 +13,6 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-import msa.looped.Entities.Project;
 import msa.looped.R;
 
 public class ProjectAdapter extends BaseAdapter {
@@ -43,7 +42,7 @@ public class ProjectAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.list_view, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.list_project_template, parent, false);
         }
 
         Project project = projectsList.get(position);

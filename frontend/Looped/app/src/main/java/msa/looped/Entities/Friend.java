@@ -2,7 +2,9 @@ package msa.looped.Entities;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Friend {
+import java.io.Serializable;
+
+public class Friend implements Serializable {
     @SerializedName("created_at")
     private String created_at;
     @SerializedName("friend_username")
