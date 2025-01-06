@@ -25,6 +25,7 @@ import java.io.InputStreamReader;
 
 import msa.looped.Data;
 import msa.looped.Entities.FriendsActivity;
+import msa.looped.Entities.Friendslist;
 import msa.looped.Entities.ProjectsList;
 import msa.looped.Entities.QueuedProjects;
 import msa.looped.Entities.UserResponse;
@@ -69,7 +70,7 @@ public class WelcomePage extends Fragment {
         if (getArguments() != null) {
             redirectUri = getArguments().getString("redirectUri");
         }
-//        requireContext().getFileStreamPath("user_code.txt").delete();
+//         requireContext().getFileStreamPath("user_code.txt").delete();
         // we have logged in before -> fetch user id and call backend
         if (requireContext().getFileStreamPath("user_code.txt").exists())
         {
@@ -275,6 +276,38 @@ public class WelcomePage extends Fragment {
                     QueuedProjects queuedProjects = gson.fromJson(responseData, QueuedProjects.class);
                     Data.setQueuedProjects(queuedProjects);
                     System.out.println(Data.getQueuedProjects());
+                    fetchCurrentUserFriends();
+
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                e.printStackTrace();
+                String errorMessage = e.getMessage();
+                System.out.println(errorMessage);
+            }
+        });
+    }
+
+    private void fetchCurrentUserFriends() {
+
+        String url = apiUrl + "/main/user/" + Data.getCurrentUser().getUsername() +  "/friendslist";
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    final String responseData = response.body().string();
+
+                    Gson gson = new Gson();
+                    Friendslist friendslist = gson.fromJson(responseData, Friendslist.class);
+                    Data.setFriendslist(friendslist);
+                    System.out.println(Data.getFriendslist());
 
                 }
             }
