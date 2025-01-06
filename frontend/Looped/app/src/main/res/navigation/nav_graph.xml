@@ -70,6 +70,9 @@
         <action
             android:id="@+id/action_addProjectPage_to_homePage"
             app:destination="@id/homePage" />
+        <action
+            android:id="@+id/action_addProjectPage_to_myProjectsPage"
+            app:destination="@id/myProjectsPage" />
     </fragment>
     <fragment
         android:id="@+id/searchPage"
