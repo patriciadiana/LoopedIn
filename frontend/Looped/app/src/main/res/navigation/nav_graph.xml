@@ -131,4 +131,9 @@
         android:name="msa.looped.Pages.MySavedPatterns"
         android:label="mysavedpatterns_page"
         tools:layout="@layout/mysavedpatterns_page" />
+    <fragment
+        android:id="@+id/friendProfilePage"
+        android:name="msa.looped.Pages.FriendProfilePage"
+        android:label="friendprofile_page"
+        tools:layout="@layout/friendprofile_page" />
 </navigation>
