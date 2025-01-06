@@ -1,5 +1,6 @@
 package msa.looped;
 
+import msa.looped.Entities.Friendslist;
 import msa.looped.Entities.ProjectsList;
 import msa.looped.Entities.QueuedProjects;
 import msa.looped.Entities.User;
@@ -37,6 +38,15 @@ public class Data {
 
     private static ProjectsList projectsList;
     private static QueuedProjects queuedProjects;
+    private static Friendslist friendslist;
+
+    public static Friendslist getFriendslist() {
+        return friendslist;
+    }
+
+    public static void setFriendslist(Friendslist friendslist) {
+        Data.friendslist = friendslist;
+    }
 
     public static QueuedProjects getQueuedProjects() {
         return queuedProjects;
