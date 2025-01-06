@@ -1,10 +1,16 @@
-﻿using backend.Entities;
+﻿using backend.Data;
+using backend.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace backend.Repositories
 {
-    public class UserRepository(Data.LoopedContext _loopedContext) : IUserRepository
+    public class UserRepository : IUserRepository
     {
+        private readonly LoopedContext _loopedContext;
+        public UserRepository(LoopedContext loopedContext)
+        {
+            _loopedContext = loopedContext;
+        }
         public async Task<User> AddUser(User user)
         {
             ArgumentNullException.ThrowIfNull(user);
@@ -65,7 +71,7 @@ namespace backend.Repositories
                 }
 
                 Console.WriteLine($"updates new name {user.first_name} location {user.location} profile pic {user.large_photo_url}");
-                _loopedContext.users.Update(user);
+
                 await _loopedContext.SaveChangesAsync();
                 return user;
             }

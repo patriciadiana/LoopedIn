@@ -7,7 +7,7 @@
     android:orientation="horizontal"
     android:padding="8dp">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/background"
         android:layout_width="367dp"
         android:layout_height="213dp"
@@ -15,9 +15,10 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/news_card" />
+        app:srcCompat="@drawable/news_card"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"/>
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/newsProfilePhoto"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -25,7 +26,8 @@
         android:layout_marginTop="20dp"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"/>
 
     <TextView
         android:id="@+id/startedProject"
@@ -41,7 +43,7 @@
         app:layout_constraintStart_toEndOf="@+id/newsProfilePhoto"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/newsProjectPhoto"
         android:layout_width="92dp"
         android:layout_height="88dp"
@@ -49,7 +51,8 @@
         android:layout_marginTop="104dp"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"/>
 
     <TextView
         android:id="@+id/projectTitle"

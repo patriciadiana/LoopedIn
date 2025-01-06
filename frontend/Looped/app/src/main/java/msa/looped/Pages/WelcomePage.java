@@ -70,7 +70,7 @@ public class WelcomePage extends Fragment {
         if (getArguments() != null) {
             redirectUri = getArguments().getString("redirectUri");
         }
-         requireContext().getFileStreamPath("user_code.txt").delete();
+//         requireContext().getFileStreamPath("user_code.txt").delete();
         // we have logged in before -> fetch user id and call backend
         if (requireContext().getFileStreamPath("user_code.txt").exists())
         {
@@ -245,6 +245,7 @@ public class WelcomePage extends Fragment {
                     Gson gson = new Gson();
                     UserResponse userResponse  = gson.fromJson(responseData, UserResponse.class);
                     Data.setCurrentUser(userResponse.getUser());
+                    System.out.println(Data.getCurrentUser());
                     fetchCurrentUserProjects();
                 }
             }
