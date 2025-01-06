@@ -37,7 +37,6 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/stroke_rounded_corner"
                 android:color="@color/dark_purple"
-                android:foregroundTint="@color/dark_purple"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textQueue" />
 

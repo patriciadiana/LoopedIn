@@ -55,8 +55,10 @@ public class HomePage extends Fragment {
             @Override
             public void run() {
                 List<Activity> activityList = Data.getFriendsActivity().getActivities();
+                if(activityList != null) {
                 HomeNewsAdapter adapter = new HomeNewsAdapter(getContext(), activityList);
                 binding.newsView.setAdapter(adapter);
+                }
             }
         }, 5000);
 
@@ -69,8 +71,10 @@ public class HomePage extends Fragment {
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                HomeNewsAdapter adapter = new HomeNewsAdapter(getContext(), Data.getFriendsActivity().getActivities());
-                binding.newsView.setAdapter(adapter);
+                if(Data.getFriendsActivity().getActivities() != null) {
+                    HomeNewsAdapter adapter = new HomeNewsAdapter(getContext(), Data.getFriendsActivity().getActivities());
+                    binding.newsView.setAdapter(adapter);
+                }
             }
         }, 5000);
     }
