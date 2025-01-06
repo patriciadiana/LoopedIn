@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import msa.looped.Data;
+import msa.looped.Entities.FriendsActivity;
 import msa.looped.Entities.ProjectsList;
 import msa.looped.Entities.QueuedProjects;
 import msa.looped.Entities.UserResponse;
@@ -176,6 +177,37 @@ public class WelcomePage extends Fragment {
                     Gson gson = new Gson();
                     ProjectsList projectList = gson.fromJson(responseData, ProjectsList.class);
                     Data.setProjectsList(projectList);
+                    fetchCurrentUserActivity();
+
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                e.printStackTrace();
+                String errorMessage = e.getMessage();
+                System.out.println(errorMessage);
+            }
+        });
+    }
+    private void fetchCurrentUserActivity() {
+
+        String url = apiUrl + "/main/user/" + Data.getCurrentUser().getUsername() +  "/friends_activity";
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    final String responseData = response.body().string();
+
+                    Gson gson = new Gson();
+                    FriendsActivity friendsActivity = gson.fromJson(responseData, FriendsActivity.class);
+                    Data.setFriendsActivity(friendsActivity);
+                    System.out.println(friendsActivity);
                     fetchCurrentUserQueue();
 
                 }
