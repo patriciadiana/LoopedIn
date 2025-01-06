@@ -1,6 +1,8 @@
 package msa.looped.Pages;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,9 +21,12 @@ import java.io.IOException;
 import java.util.List;
 
 import msa.looped.Data;
+import msa.looped.Entities.Activity;
+import msa.looped.Entities.HomeNewsAdapter;
 import msa.looped.Entities.Project;
 import msa.looped.Entities.ProjectAdapter;
 import msa.looped.Entities.ProjectsList;
+import msa.looped.Entities.SavedPatternsAdapter;
 import msa.looped.Entities.User;
 import msa.looped.Entities.UserResponse;
 import msa.looped.R;
@@ -46,12 +51,28 @@ public class HomePage extends Fragment {
         binding = HomePageBinding.inflate(inflater, container, false);
         client = new OkHttpClient();
 
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                List<Activity> activityList = Data.getFriendsActivity().getActivities();
+                HomeNewsAdapter adapter = new HomeNewsAdapter(getContext(), activityList);
+                binding.newsView.setAdapter(adapter);
+            }
+        }, 5000);
+
         return binding.getRoot();
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                HomeNewsAdapter adapter = new HomeNewsAdapter(getContext(), Data.getFriendsActivity().getActivities());
+                binding.newsView.setAdapter(adapter);
+            }
+        }, 5000);
     }
 
     private void loadFragment(Fragment fragment)

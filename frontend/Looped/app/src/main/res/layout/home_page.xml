@@ -21,47 +21,22 @@
                 android:id="@+id/textSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="56dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="60dp"
                 android:fontFamily="@font/inter_semibold"
                 android:text="News"
                 android:textColor="@color/grey"
                 android:textSize="32sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.096"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
-            <ImageView
-                android:id="@+id/newsCard1"
-                android:layout_width="348dp"
-                android:layout_height="198dp"
-                android:layout_marginTop="108dp"
-                android:src="@drawable/news_card"
+            <ListView
+                android:id="@+id/newsView"
+                android:layout_width="385dp"
+                android:layout_height="567dp"
+                android:layout_marginTop="120dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.492"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/newsCard2"
-                android:layout_width="348dp"
-                android:layout_height="198dp"
-                android:layout_marginTop="312dp"
-                android:src="@drawable/news_card"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.492"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/newsCard3"
-                android:layout_width="348dp"
-                android:layout_height="198dp"
-                android:layout_marginTop="516dp"
-                android:src="@drawable/news_card"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.492"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

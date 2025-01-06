@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.List;
 
 import msa.looped.Data;
+import msa.looped.Entities.Friend;
 import msa.looped.Entities.Project;
 import msa.looped.Entities.ProjectAdapter;
 import msa.looped.Entities.ProjectsList;
@@ -49,6 +50,18 @@ public class MyProjectsPage extends Fragment {
 
         ProjectAdapter adapter = new ProjectAdapter(getContext(), projectList);
         binding.listView.setAdapter(adapter);
+
+        binding.listView.setOnItemClickListener((parent, view, position, id) -> {
+            Project selectedProject = projectList.get(position);
+
+            SingleProjectPage singleProjectFragment = new SingleProjectPage();
+
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("project", selectedProject);
+            singleProjectFragment.setArguments(bundle);
+
+            loadFragment(singleProjectFragment);
+        });
 
         binding.savedpatternsbutton.setOnClickListener(v ->{
             loadFragment(new MySavedPatterns());

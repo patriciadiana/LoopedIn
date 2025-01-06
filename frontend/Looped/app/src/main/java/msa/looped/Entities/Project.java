@@ -2,7 +2,9 @@ package msa.looped.Entities;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Project {
+import java.io.Serializable;
+
+public class Project implements Serializable {
     @SerializedName("name")
     private String name;
 

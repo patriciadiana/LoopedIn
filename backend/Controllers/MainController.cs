@@ -335,5 +335,37 @@ namespace backend.Controllers
                 return StatusCode(500, new { error = "An error occurred while retrieving favorites.", details = ex.Message });
             }
         }
+        [HttpGet("user/{user_name}/friends_activity")]
+        public async Task<IActionResult> GetFriendsActivity(string user_name)
+        {
+            string accessToken = _authService.getToken();
+
+            Console.WriteLine("Access Token: " + accessToken);
+
+            var url = $"{RavelryApiUrl}/people/{user_name}/friends/activity.json?activity_type_keys=added-project-photo+queued-pattern+added-favorite";
+
+            accessToken = _authService.getToken();
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+
+            try
+            {
+                var response = await _httpClient.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var projectsData = await response.Content.ReadAsStringAsync();
+                    return Ok(projectsData);
+                }
+                else
+                {
+                    var errorResponse = await response.Content.ReadAsStringAsync();
+                    return BadRequest(new { error = "Failed to retrieve favorites.", details = errorResponse });
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                return StatusCode(500, new { error = "An error occurred while retrieving favorites.", details = ex.Message });
+            }
+        }
     }
 }
