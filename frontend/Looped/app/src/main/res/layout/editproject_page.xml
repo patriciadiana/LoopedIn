@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/editproject_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDF4E6"
+    tools:context=".Pages.EditProjectPage">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="410dp"
+        android:layout_height="162dp"
+        android:src="@drawable/profile_block"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/projectPicture"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="104dp"
+        android:background="@color/dark_purple"
+        android:backgroundTint="@color/dark_purple"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent" />
+
+    <TextView
+        android:id="@+id/projectTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:fontFamily="@font/inter_tight_bold_italic"
+        android:clickable="true"
+        android:text="Change profile\npicture"
+        android:gravity="center"
+        android:textColor="@color/grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/projectPicture" />
+
+    <EditText
+        android:id="@+id/editTextMadeFor"
+        android:layout_width="338dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:background="@drawable/stroke_rounded_corner"
+        android:ems="10"
+        android:fontFamily="@font/inter_medium"
+        android:hint="@string/first_name"
+        android:inputType="textEmailAddress"
+        android:paddingStart="20dp"
+        android:textColor="@color/dark_purple"
+        android:textColorHint="@color/dark_purple"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/inter_medium"
+        android:text="Size"
+        android:textColor="@color/grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.091"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMadeFor" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/inter_medium"
+        android:text="Made for"
+        android:textColor="@color/grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.105"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCraft" />
+
+    <EditText
+        android:id="@+id/editTextCraft"
+        android:layout_width="338dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:autofillHints=""
+        android:background="@drawable/stroke_rounded_corner"
+        android:ems="10"
+        android:fontFamily="@font/inter_medium"
+        android:hint="bojack234"
+        android:inputType="textEmailAddress"
+        android:paddingStart="20dp"
+        android:textColor="@color/dark_purple"
+        android:textColorHint="@color/dark_purple"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="292dp"
+        android:fontFamily="@font/inter_medium"
+        android:text="Craft"
+        android:textColor="@color/grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextSize"
+        android:layout_width="338dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:background="@drawable/stroke_rounded_corner"
+        android:ems="10"
+        android:fontFamily="@font/inter_medium"
+        android:hint="@string/location"
+        android:inputType="textEmailAddress"
+        android:paddingStart="20dp"
+        android:textColor="@color/dark_purple"
+        android:textColorHint="@color/dark_purple"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:ignore="RtlSymmetry" />
+
+    <Button
+        android:id="@+id/savechanges_button"
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="620dp"
+        android:backgroundTint="@color/light_purple"
+        android:text="Save changes"
+        android:textColor="@color/background_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

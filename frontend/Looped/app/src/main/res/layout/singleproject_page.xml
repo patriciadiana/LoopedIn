@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/singleproject_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/singleproject_page"
     android:background="#FDF4E6"
     tools:context=".Pages.SingleProjectPage">
 
@@ -17,9 +17,7 @@
         android:text="Project Title"
         android:textColor="@color/grey"
         android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/projectPhoto"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -31,7 +29,7 @@
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"/>
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent" />
 
     <TextView
         android:id="@+id/projectInfo"
@@ -46,33 +44,316 @@
         app:layout_constraintStart_toEndOf="@+id/projectPhoto"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/needlesAndYarn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="272dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Needles &amp; yarn"
+        android:textColor="@color/dark_purple"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/yarnText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Yarn"
+        android:textColor="@color/dark_purple"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/needlesAndYarn" />
+
+    <TextView
+        android:id="@+id/needlesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Needles"
+        android:textColor="@color/dark_purple"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/needlesAndYarn" />
+
+    <TextView
+        android:id="@+id/colorwayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="68dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Colorway"
+        android:textColor="@color/dark_purple"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/needlesAndYarn" />
+
     <ProgressBar
         android:id="@+id/progressBar"
         style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
         android:layout_width="173dp"
         android:layout_height="8dp"
-        android:layout_marginTop="180dp"
-        android:layout_marginEnd="52dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="474dp"
         android:indeterminateOnly="false"
         android:progress="50"
         android:progressBackgroundTint="@color/unselected"
         android:progressTint="@color/main_purple"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
-        app:layout_constraintStart_toEndOf="@+id/projectPhoto"
+        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintStart_toEndOf="@+id/progressText"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewPercentage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="470dp"
         android:fontFamily="@font/inter_semibold"
         android:textColor="@color/main_purple"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.235"
+        app:layout_constraintHorizontal_bias="0.058"
         app:layout_constraintStart_toEndOf="@+id/progressBar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/craftText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Craft"
+        android:textColor="@color/dark_purple"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/projectPhoto"
+        app:layout_constraintTop_toBottomOf="@+id/projectInfo" />
+
+    <TextView
+        android:id="@+id/craftTextFetched"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Craft"
+        android:textColor="@color/grey"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/craftText"
+        app:layout_constraintTop_toBottomOf="@+id/projectInfo" />
+
+    <TextView
+        android:id="@+id/madeForText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Made for"
+        android:textColor="@color/dark_purple"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/projectPhoto"
+        app:layout_constraintTop_toBottomOf="@+id/projectInfo" />
+
+    <TextView
+        android:id="@+id/madeForTextFetched"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Craft"
+        android:textColor="@color/grey"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/madeForText"
+        app:layout_constraintTop_toBottomOf="@+id/projectInfo" />
+
+    <TextView
+        android:id="@+id/sizeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="68dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Size"
+        android:textColor="@color/dark_purple"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/projectPhoto"
+        app:layout_constraintTop_toBottomOf="@+id/projectInfo" />
+
+    <TextView
+        android:id="@+id/sizeTextFetched"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="68dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Craft"
+        android:textColor="@color/grey"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/sizeText"
+        app:layout_constraintTop_toBottomOf="@+id/projectInfo" />
+
+    <TextView
+        android:id="@+id/yarnTextFetched"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Yarn"
+        android:textColor="@color/grey"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/yarnText"
+        app:layout_constraintTop_toBottomOf="@+id/needlesAndYarn" />
+
+    <TextView
+        android:id="@+id/needlesTextFetched"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Yarn"
+        android:textColor="@color/grey"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/needlesText"
+        app:layout_constraintTop_toBottomOf="@+id/needlesAndYarn" />
+
+    <TextView
+        android:id="@+id/colorwayTextFetched"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="68dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Yarn"
+        android:textColor="@color/grey"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/colorwayText"
+        app:layout_constraintTop_toBottomOf="@+id/needlesAndYarn" />
+
+    <TextView
+        android:id="@+id/details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="400dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Details"
+        android:textColor="@color/dark_purple"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Status"
+        android:textColor="@color/dark_purple"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/details" />
+
+    <TextView
+        android:id="@+id/statusTextFetched"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Yarn"
+        android:textColor="@color/grey"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/statusText"
+        app:layout_constraintTop_toBottomOf="@+id/details" />
+
+    <TextView
+        android:id="@+id/progressText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Progress"
+        android:textColor="@color/dark_purple"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/details" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/secondProjectPhoto"
+        android:layout_width="122dp"
+        android:layout_height="114dp"
+        android:layout_marginTop="272dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@+id/projectPhoto"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent" />
+
+    <ImageView
+        android:id="@+id/editButton"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="612dp"
+        android:layout_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.72"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/edit_button"
+        app:tint="@color/dark_purple" />
+
+    <TextView
+        android:id="@+id/editButtonText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="612dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="edit project"
+        android:textColor="@color/dark_purple"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/deleteButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/deleteButton"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="640dp"
+        android:layout_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.72"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/delete_button"
+        app:tint="@color/dark_purple" />
+
+    <TextView
+        android:id="@+id/deleteButtonText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="640dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="delete project"
+        android:textColor="@color/dark_purple"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/deleteButton"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

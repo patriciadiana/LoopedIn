@@ -15,6 +15,9 @@ public class ProjectBig implements Serializable {
     @SerializedName("craft_name")
     private String craft_name;
 
+    @SerializedName("size")
+    private String size;
+
     @SerializedName("created_at")
     private String created_at;
 
@@ -26,6 +29,9 @@ public class ProjectBig implements Serializable {
     @SerializedName("name")
     private String name;
 
+    @SerializedName("status_name")
+    private String status_name;
+
     @SerializedName("notes_html")
     private String notes_html;
 
@@ -36,7 +42,7 @@ public class ProjectBig implements Serializable {
     private List<FirstPhoto> photos;
 
     @SerializedName("progress")
-    private String progress;
+    private int progress;
     @SerializedName("started")
     private String started;
 
@@ -74,12 +80,20 @@ public class ProjectBig implements Serializable {
         return craft_name;
     }
 
+    public String getSize() {
+        return size;
+    }
+
     public String getCreated_at() {
         return created_at;
     }
 
     public String getFavorites_count() {
         return favorites_count;
+    }
+
+    public String getStatus_name() {
+        return status_name;
     }
 
     public String getMade_for() {
@@ -102,7 +116,7 @@ public class ProjectBig implements Serializable {
         return photos;
     }
 
-    public String getProgress() {
+    public int getProgress() {
         return progress;
     }
 

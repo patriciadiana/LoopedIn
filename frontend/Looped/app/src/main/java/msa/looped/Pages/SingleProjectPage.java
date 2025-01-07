@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -11,12 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.bumptech.glide.Glide;
 
-import msa.looped.Entities.Friend;
-import msa.looped.Entities.Project;
-import msa.looped.Entities.ProjectBig;
+import java.util.List;
+
+import msa.looped.Entities.FirstPhoto;
 import msa.looped.Entities.ProjectBigResult;
 import msa.looped.R;
 import msa.looped.databinding.SingleprojectPageBinding;
@@ -33,43 +36,63 @@ public class SingleProjectPage extends Fragment {
             System.out.println(project);
 
             if (project != null) {
+                binding.singleProjectTitle.setText(project.getProject().getName());
+                ProgressBar progressBar = binding.progressBar;
 
-//                binding.singleProjectTitle.setText(project.getName());
-//                ProgressBar progressBar = binding.progressBar;
+                binding.craftTextFetched.setText(project.getProject().getCraft_name());
+                binding.madeForTextFetched.setText(project.getProject().getMade_for());
+                binding.sizeTextFetched.setText(project.getProject().getSize());
+                binding.yarnTextFetched.setText("miaumiauyarn");
+                binding.needlesTextFetched.setText("miaumiauneedles");
+                binding.colorwayTextFetched.setText("miaumiaucolorway");
+                binding.statusTextFetched.setText(project.getProject().getStatus_name());
 
-//                TextView textProgress = binding.textViewPercentage;
-//                if(project.getStatus().equals("Finished")) {
-//                    progressBar.setProgress(100);
-//                    textProgress.setText("100%");
-//                }
-//                else if(project.getProgress() != 0){
-//                    progressBar.setProgress(project.getProgress());
-//                    textProgress.setText(project.getProgress() + "%");
-//                }
-//                else
-//                {
-//                    progressBar.setProgress(0);
-//                    textProgress.setText("0%");
-//                }
-//
-//                if (project.getFirstPhoto() != null && project.getFirstPhoto().getThumbnailUrl() != null) {
-//                    Glide.with(this).load(project.getFirstPhoto().getThumbnailUrl()).into(binding.projectPhoto);
-//                }
-//                else
-//                {
-//                    Glide.with(this).load(R.drawable.placeholder_image).into(binding.projectPhoto);
-//                }
+                TextView textProgress = binding.textViewPercentage;
+                if (project.getProject().getStatus_name().equals("Finished")) {
+                    progressBar.setProgress(100);
+                    textProgress.setText("100%");
+                } else if (project.getProject().getProgress() != 0) {
+                    progressBar.setProgress(project.getProject().getProgress());
+                    textProgress.setText(project.getProject().getProgress() + "%");
+                } else {
+                    progressBar.setProgress(0);
+                    textProgress.setText("0%");
+                }
+
+                List<FirstPhoto> photos = project.getProject().getPhotos();
+                loadPhoto(photos, 0, binding.projectPhoto);
+                loadPhoto(photos, 1, binding.secondProjectPhoto);
+
+                binding.editButton.setOnClickListener(v -> navigateToEditProjectPage(project));
             }
         }
 
         return binding.getRoot();
     }
 
+    private void loadPhoto(List<FirstPhoto> photos, int index, ImageView imageView) {
+        if (photos != null && photos.size() > index && photos.get(index) != null) {
+            Glide.with(this).load(photos.get(index).getThumbnailUrl()).into(imageView);
+        } else {
+            Glide.with(this).load(R.drawable.placeholder_image).into(imageView);
+        }
+    }
+
+    private void navigateToEditProjectPage(ProjectBigResult project) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("project", project);
+
+        EditProjectPage editProjectPage = new EditProjectPage();
+        editProjectPage.setArguments(bundle);
+        loadFragment(editProjectPage);
+    }
+
+
     private void loadFragment(Fragment fragment)
     {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.friendprofile_page, fragment);
+        fragmentTransaction.add(R.id.singleproject_page, fragment);
         fragmentTransaction.commit();
     }
 
