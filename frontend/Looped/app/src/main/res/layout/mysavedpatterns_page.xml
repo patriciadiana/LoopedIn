@@ -2,99 +2,90 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/myfavorites_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/myfavorites_page"
     android:background="#FDF4E6"
     tools:context=".Pages.MySavedPatterns">
 
-    <ScrollView
+
+    <ListView
+        android:id="@+id/listRecentUploads"
+        android:layout_width="379dp"
+        android:layout_height="485dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lineUnderRecentUploads" />
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="229dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="21dp"
+        android:background="@drawable/stroke_rounded_corner"
+        android:color="@color/dark_purple"
+        android:foregroundTint="@color/dark_purple"
+        android:searchIcon="@drawable/purple_search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textQueue" />
+
+    <TextView
+        android:id="@+id/textQueue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:fontFamily="@font/inter_semibold"
+        android:text="My Saved Patterns"
+        android:textColor="@color/grey"
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="@+id/searchView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textRecentUploads"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="172dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Recent Uploads"
+        android:textColor="@color/light_purple"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/searchView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/lineUnderRecentUploads"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ListView
-                android:id="@+id/listRecentUploads"
-                android:layout_width="380dp"
-                android:layout_height="451dp"
-                android:layout_marginTop="120dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.514"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textQueue"
-                app:layout_constraintVertical_bias="1.0" />
-
-            <SearchView
-                android:id="@+id/searchView"
-                android:layout_width="229dp"
-                android:layout_height="27dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="21dp"
-                android:background="@drawable/stroke_rounded_corner"
-                android:color="@color/dark_purple"
-                android:foregroundTint="@color/dark_purple"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textQueue" />
-
-            <TextView
-                android:id="@+id/textQueue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="56dp"
-                android:fontFamily="@font/inter_semibold"
-                android:text="My Saved Patterns"
-                android:textColor="@color/grey"
-                android:textSize="32sp"
-                app:layout_constraintStart_toStartOf="@+id/searchView"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textRecentUploads"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="172dp"
-                android:fontFamily="@font/inter_bold"
-                android:text="Recent Uploads"
-                android:textColor="@color/light_purple"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/searchView"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <View
-                android:id="@+id/lineUnderRecentUploads"
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@color/light_purple"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textRecentUploads" />
+        android:layout_height="3dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/light_purple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textRecentUploads" />
 
 
-            <Button
-                android:id="@+id/uploadPattern"
-                android:layout_width="128dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="118dp"
-                android:backgroundTint="@color/background_color"
-                android:text="Upload"
-                android:textColor="@color/dark_purple"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.671"
-                app:layout_constraintStart_toEndOf="@+id/searchView"
-                app:layout_constraintTop_toTopOf="parent"
-                app:strokeColor="@color/dark_purple"
-                app:strokeWidth="2dp" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    <Button
+        android:id="@+id/uploadPattern"
+        android:layout_width="128dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="118dp"
+        android:backgroundTint="@color/background_color"
+        android:text="Upload"
+        android:textColor="@color/dark_purple"
+        android:textSize="12sp"
+        app:icon="@drawable/purple_upload"
+        app:iconTint="@color/dark_purple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.671"
+        app:layout_constraintStart_toEndOf="@+id/searchView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/dark_purple"
+        app:strokeWidth="2dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

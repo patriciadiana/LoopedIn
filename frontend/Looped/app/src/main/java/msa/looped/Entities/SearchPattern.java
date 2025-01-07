@@ -11,6 +11,18 @@ public class SearchPattern {
     @SerializedName("first_photo")
     private FirstPhoto patterPhoto;
 
+    public String getPatternName() {
+        return patternName;
+    }
+
+    public PatternAuthor getPatternAuthor() {
+        return patternAuthor;
+    }
+
+    public FirstPhoto getPatterPhoto() {
+        return patterPhoto;
+    }
+
     @Override
     public String toString() {
         return "SearchPattern{" +
