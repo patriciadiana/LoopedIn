@@ -139,18 +139,4 @@
         android:name="msa.looped.Pages.FriendProfilePage"
         android:label="friendprofile_page"
         tools:layout="@layout/friendprofile_page" />
-    <fragment
-        android:id="@+id/editProjectPage"
-        android:name="msa.looped.Pages.EditProjectPage"
-        android:label="editproject_page"
-        tools:layout="@layout/editproject_page" />
-    <fragment
-        android:id="@+id/singleProjectPage"
-        android:name="msa.looped.Pages.SingleProjectPage"
-        android:label="singleproject_page"
-        tools:layout="@layout/singleproject_page" >
-        <action
-            android:id="@+id/action_singleProjectPage_to_editProjectPage"
-            app:destination="@id/editProjectPage" />
-    </fragment>
 </navigation>

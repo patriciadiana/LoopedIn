@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -13,16 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.bumptech.glide.Glide;
 
 import java.util.List;
 
 import msa.looped.Entities.FirstPhoto;
-import msa.looped.Entities.Friend;
-import msa.looped.Entities.Project;
-import msa.looped.Entities.ProjectBig;
 import msa.looped.Entities.ProjectBigResult;
 import msa.looped.R;
 import msa.looped.databinding.SingleprojectPageBinding;
@@ -39,7 +36,6 @@ public class SingleProjectPage extends Fragment {
             System.out.println(project);
 
             if (project != null) {
-
                 binding.singleProjectTitle.setText(project.getProject().getName());
                 ProgressBar progressBar = binding.progressBar;
 
@@ -52,16 +48,13 @@ public class SingleProjectPage extends Fragment {
                 binding.statusTextFetched.setText(project.getProject().getStatus_name());
 
                 TextView textProgress = binding.textViewPercentage;
-                if(project.getProject().getStatus_name().equals("Finished")) {
+                if (project.getProject().getStatus_name().equals("Finished")) {
                     progressBar.setProgress(100);
                     textProgress.setText("100%");
-                }
-                else if(project.getProject().getProgress() != 0){
+                } else if (project.getProject().getProgress() != 0) {
                     progressBar.setProgress(project.getProject().getProgress());
                     textProgress.setText(project.getProject().getProgress() + "%");
-                }
-                else
-                {
+                } else {
                     progressBar.setProgress(0);
                     textProgress.setText("0%");
                 }
@@ -69,13 +62,10 @@ public class SingleProjectPage extends Fragment {
                 List<FirstPhoto> photos = project.getProject().getPhotos();
                 loadPhoto(photos, 0, binding.projectPhoto);
                 loadPhoto(photos, 1, binding.secondProjectPhoto);
+
+                binding.editButton.setOnClickListener(v -> navigateToEditProjectPage(project));
             }
         }
-
-        binding.editButton.setOnClickListener(v ->
-            NavHostFragment.findNavController(SingleProjectPage.this)
-                    .navigate(R.id.action_singleProjectPage_to_editProjectPage)
-        );
 
         return binding.getRoot();
     }
@@ -88,11 +78,21 @@ public class SingleProjectPage extends Fragment {
         }
     }
 
+    private void navigateToEditProjectPage(ProjectBigResult project) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("project", project);
+
+        EditProjectPage editProjectPage = new EditProjectPage();
+        editProjectPage.setArguments(bundle);
+        loadFragment(editProjectPage);
+    }
+
+
     private void loadFragment(Fragment fragment)
     {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.singleProjectPage, fragment);
+        fragmentTransaction.add(R.id.singleproject_page, fragment);
         fragmentTransaction.commit();
     }
 
