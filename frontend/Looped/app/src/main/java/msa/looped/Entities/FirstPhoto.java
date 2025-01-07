@@ -10,4 +10,11 @@ public class FirstPhoto {
     {
         return thumbnailUrl;
     }
+
+    @Override
+    public String toString() {
+        return "FirstPhoto{" +
+                "thumbnailUrl='" + thumbnailUrl + '\'' +
+                '}';
+    }
 }
