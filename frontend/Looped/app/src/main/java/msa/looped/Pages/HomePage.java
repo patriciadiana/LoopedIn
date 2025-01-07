@@ -58,13 +58,13 @@ public class HomePage extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-            @Override
-            public void run() {
+        view.postDelayed(() -> {
+            if (isAdded() && binding != null) {
                 List<Activity> activityList = Data.getFriendsActivity().getActivities();
-                if(activityList != null && !activityList.isEmpty()) {
+                if (activityList != null && !activityList.isEmpty()) {
                     HomeNewsAdapter adapter = new HomeNewsAdapter(getContext(), activityList);
-                    binding.newsView.setAdapter(adapter);
+                    if (!adapter.isEmpty())
+                        binding.newsView.setAdapter(adapter);
                 }
             }
         }, 5000);
@@ -76,7 +76,8 @@ public class HomePage extends Fragment {
         List<Activity> activityList = Data.getFriendsActivity().getActivities();
         if(activityList != null  && !activityList.isEmpty()) {
             HomeNewsAdapter adapter = new HomeNewsAdapter(getContext(), activityList);
-            binding.newsView.setAdapter(adapter);
+            if(!adapter.isEmpty())
+                binding.newsView.setAdapter(adapter);
         }
     }
 
