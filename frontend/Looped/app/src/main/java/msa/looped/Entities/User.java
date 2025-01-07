@@ -65,4 +65,16 @@ public class User {
     public void setAbout_me(String about_me) {
         this.about_me = about_me;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "first_name='" + first_name + '\'' +
+                ", location='" + location + '\'' +
+                ", username='" + username + '\'' +
+                ", large_photo_url='" + large_photo_url + '\'' +
+                ", about_me='" + about_me + '\'' +
+                ", fave_colors='" + fave_colors + '\'' +
+                '}';
+    }
 }

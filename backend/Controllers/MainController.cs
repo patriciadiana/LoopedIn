@@ -346,6 +346,46 @@ namespace backend.Controllers
                 return StatusCode(500, new { error = "An error occurred while retrieving favorites.", details = ex.Message });
             }
         }
+        [HttpGet("patterns/search")]
+        public async Task<IActionResult> SearchPatternsDatabase([FromQuery] String? query, [FromQuery] int? page, [FromQuery] int? page_size)
+        {
+            string accessToken = _authService.getToken();
+
+            Console.WriteLine("Access Token: " + accessToken);
+
+            var url = "";
+            if(query=="")
+            {
+                var start = (page - 1) * page_size;
+                var end = page * page_size;
+                url = $"{RavelryApiUrl}/patterns.json?ids={query}&page={start}+{end}";
+            }
+            else
+                url = $"{RavelryApiUrl}/patterns/search.json?query={query}&page={page}&page_size={page_size}";
+
+            accessToken = _authService.getToken();
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+
+            try
+            {
+                var response = await _httpClient.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var projectsData = await response.Content.ReadAsStringAsync();
+                    return Ok(projectsData);
+                }
+                else
+                {
+                    var errorResponse = await response.Content.ReadAsStringAsync();
+                    return BadRequest(new { error = "Failed to retrieve search results.", details = errorResponse });
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                return StatusCode(500, new { error = "An error occurred while retrieving favorites.", details = ex.Message });
+            }
+        }
         [HttpGet("user/{user_name}/queue")]
         public async Task<IActionResult> GetQueueForCurrentUser(string user_name)
         {
