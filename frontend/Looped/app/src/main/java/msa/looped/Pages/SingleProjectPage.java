@@ -16,6 +16,8 @@ import com.bumptech.glide.Glide;
 
 import msa.looped.Entities.Friend;
 import msa.looped.Entities.Project;
+import msa.looped.Entities.ProjectBig;
+import msa.looped.Entities.ProjectBigResult;
 import msa.looped.R;
 import msa.looped.databinding.SingleprojectPageBinding;
 
@@ -27,35 +29,36 @@ public class SingleProjectPage extends Fragment {
         binding = SingleprojectPageBinding.inflate(inflater, container, false);
 
         if (getArguments() != null) {
-            Project project = (Project) getArguments().getSerializable("project");
+            ProjectBigResult project = (ProjectBigResult) getArguments().getSerializable("project");
+            System.out.println(project);
 
             if (project != null) {
 
-                binding.singleProjectTitle.setText(project.getName());
-                ProgressBar progressBar = binding.progressBar;
+//                binding.singleProjectTitle.setText(project.getName());
+//                ProgressBar progressBar = binding.progressBar;
 
-                TextView textProgress = binding.textViewPercentage;
-                if(project.getStatus().equals("Finished")) {
-                    progressBar.setProgress(100);
-                    textProgress.setText("100%");
-                }
-                else if(project.getProgress() != 0){
-                    progressBar.setProgress(project.getProgress());
-                    textProgress.setText(project.getProgress() + "%");
-                }
-                else
-                {
-                    progressBar.setProgress(0);
-                    textProgress.setText("0%");
-                }
-
-                if (project.getFirstPhoto() != null && project.getFirstPhoto().getThumbnailUrl() != null) {
-                    Glide.with(this).load(project.getFirstPhoto().getThumbnailUrl()).into(binding.projectPhoto);
-                }
-                else
-                {
-                    Glide.with(this).load(R.drawable.placeholder_image).into(binding.projectPhoto);
-                }
+//                TextView textProgress = binding.textViewPercentage;
+//                if(project.getStatus().equals("Finished")) {
+//                    progressBar.setProgress(100);
+//                    textProgress.setText("100%");
+//                }
+//                else if(project.getProgress() != 0){
+//                    progressBar.setProgress(project.getProgress());
+//                    textProgress.setText(project.getProgress() + "%");
+//                }
+//                else
+//                {
+//                    progressBar.setProgress(0);
+//                    textProgress.setText("0%");
+//                }
+//
+//                if (project.getFirstPhoto() != null && project.getFirstPhoto().getThumbnailUrl() != null) {
+//                    Glide.with(this).load(project.getFirstPhoto().getThumbnailUrl()).into(binding.projectPhoto);
+//                }
+//                else
+//                {
+//                    Glide.with(this).load(R.drawable.placeholder_image).into(binding.projectPhoto);
+//                }
             }
         }
 

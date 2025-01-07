@@ -19,6 +19,9 @@ public class Project implements Serializable {
 
     @SerializedName("status_name")
     private String status;
+
+    @SerializedName("permalink")
+    private String permalink;
     @SerializedName("pattern_name")
     private String pattern_name;
 
@@ -27,6 +30,18 @@ public class Project implements Serializable {
 
     @SerializedName("first_photo")
     private FirstPhoto firstPhoto;
+
+    public String getPermalink() {
+        return permalink;
+    }
+
+    public String getPattern_name() {
+        return pattern_name;
+    }
+
+    public int getCraft_id() {
+        return craft_id;
+    }
 
     public String getName()
     {
