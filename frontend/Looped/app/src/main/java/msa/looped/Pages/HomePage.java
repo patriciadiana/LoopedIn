@@ -51,32 +51,33 @@ public class HomePage extends Fragment {
         binding = HomePageBinding.inflate(inflater, container, false);
         client = new OkHttpClient();
 
+
+
+        return binding.getRoot();
+    }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
                 List<Activity> activityList = Data.getFriendsActivity().getActivities();
-                if(activityList != null) {
-                HomeNewsAdapter adapter = new HomeNewsAdapter(getContext(), activityList);
-                binding.newsView.setAdapter(adapter);
+                if(activityList != null && !activityList.isEmpty()) {
+                    HomeNewsAdapter adapter = new HomeNewsAdapter(getContext(), activityList);
+                    binding.newsView.setAdapter(adapter);
                 }
             }
         }, 5000);
-
-        return binding.getRoot();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if(Data.getFriendsActivity().getActivities() != null) {
-                    HomeNewsAdapter adapter = new HomeNewsAdapter(getContext(), Data.getFriendsActivity().getActivities());
-                    binding.newsView.setAdapter(adapter);
-                }
-            }
-        }, 5000);
+        List<Activity> activityList = Data.getFriendsActivity().getActivities();
+        if(activityList != null  && !activityList.isEmpty()) {
+            HomeNewsAdapter adapter = new HomeNewsAdapter(getContext(), activityList);
+            binding.newsView.setAdapter(adapter);
+        }
     }
 
     private void loadFragment(Fragment fragment)

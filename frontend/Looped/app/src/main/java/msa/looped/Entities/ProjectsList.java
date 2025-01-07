@@ -17,6 +17,11 @@ public class ProjectsList {
         return projects.size();
     }
 
+    public void addProjectToList(Project project)
+    {
+        projects.add(project);
+    }
+
     public void setProjects(List<Project> projects) {
         this.projects = projects;
     }

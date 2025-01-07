@@ -12,8 +12,8 @@ public class Data {
     private static User currentUser;
     private static String userCode = "";
     private static String profilePicUrl = "";
-    private String apiUrl = "http://192.168.1.160:5298"; // Barsi
-//    private String apiUrl = "http://192.168.8.104:5298";  // Cala
+//    private String apiUrl = "http://192.168.1.160:5298"; // Barsi
+    private String apiUrl = "http://192.168.8.104:5298";  // Cala
 //    private String apiUrl = "http://10.0.2.2:5298";       // emulator
     public String getApiUrl()
     {
@@ -25,6 +25,10 @@ public class Data {
         if(INSTANCE == null) {
             INSTANCE = new Data();
             currentUser = new User();
+            projectsList = new ProjectsList();
+            queuedProjects = new QueuedProjects();
+            friendslist = new Friendslist();
+            friendsActivity = new FriendsActivity();
         }
         return INSTANCE;
     }

@@ -26,7 +26,9 @@ namespace backend
             builder.Services.AddEndpointsApiExplorer();
 
             builder.Services.AddDbContext<LoopedContext>(options =>
-                options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Looped;Trusted_Connection=True;"));
+                options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Looped;Trusted_Connection=True;")
+                .EnableSensitiveDataLogging()
+                .LogTo(Console.WriteLine, LogLevel.Information));
 
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped<HttpClient>();

@@ -239,6 +239,49 @@ namespace backend.Controllers
 
             return Ok(JsonSerializer.Deserialize<object>(responseData));
         }
+
+        [HttpPost("add_project")]
+        public async Task<IActionResult> AddProject([FromQuery] string user_name, [FromQuery] string? craft,
+            [FromQuery] string? projectName, [FromQuery] string? usedAPattern, [FromQuery] string? patternUsed, [FromQuery] string? madeFor)
+        {
+            Console.WriteLine($"{user_name} {craft} {projectName} {madeFor}");
+
+            string accessToken = _authService.getToken();
+
+            var url = $"{RavelryApiUrl}/projects/{user_name}/create.json";
+
+            var payload = new
+            {
+                craft_id = craft,
+                made_for = madeFor,
+                name = projectName,
+                started = DateTime.Now
+            };
+
+            var jsonPayload = JsonSerializer.Serialize(payload);
+
+            var request = new HttpRequestMessage(HttpMethod.Post, url)
+            {
+                Content = new StringContent(jsonPayload, Encoding.UTF8, "application/json")
+            };
+
+            request.Headers.Add("Authorization", $"Bearer {accessToken}");
+
+            var response = await _httpClient.SendAsync(request);
+
+            if (!response.IsSuccessStatusCode)
+                return StatusCode((int)response.StatusCode, await response.Content.ReadAsStringAsync());
+
+            // Return the response from the third-party API
+            var responseData = await response.Content.ReadAsStringAsync();
+
+
+
+            Console.WriteLine($"!! {responseData}");
+
+            return Ok(JsonSerializer.Deserialize<object>(responseData));
+        }
+
         [HttpGet("user/{user_name}/projects")]
         public async Task<IActionResult> GetProjectsForCurrentUser(string user_name)
         {

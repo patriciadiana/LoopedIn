@@ -53,7 +53,8 @@ public class ProjectAdapter extends BaseAdapter {
         ProgressBar progressBar = convertView.findViewById(R.id.progressBar);
 
         TextView textProgress = convertView.findViewById(R.id.textViewPercentage);
-        if(project.getStatus().equals("Finished")) {
+        if(project.getStatus()!=null)
+            if(project.getStatus().equals("Finished")) {
             progressBar.setProgress(100);
             textProgress.setText("100%");
         }
