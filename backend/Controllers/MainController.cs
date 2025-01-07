@@ -314,6 +314,41 @@ namespace backend.Controllers
                 return StatusCode(500, new { error = "An error occurred while retrieving projects.", details = ex.Message });
             }
         }
+        [HttpGet("projects/{user_name}/{id}")]
+        public async Task<IActionResult> ShowProjectDetails(string user_name, string id)
+        {
+            string accessToken = _authService.getToken();
+
+            Console.WriteLine("Access Token: " + accessToken);
+
+            var url = $"{RavelryApiUrl}/projects/{user_name}/{id}.json";
+
+            Console.WriteLine(url);
+
+            accessToken = _authService.getToken();
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+
+            try
+            {
+                var response = await _httpClient.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var projectsData = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine(projectsData);
+                    return Ok(projectsData);
+                }
+                else
+                {
+                    var errorResponse = await response.Content.ReadAsStringAsync();
+                    return BadRequest(new { error = "Failed to retrieve project details.", details = errorResponse });
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                return StatusCode(500, new { error = "An error occurred while retrieving projects.", details = ex.Message });
+            }
+        }
         [HttpGet("user/{user_name}/favorites")]
         public async Task<IActionResult> GetFavoritesForCurrentUser(string user_name)
         {

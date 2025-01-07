@@ -16,12 +16,17 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
 import msa.looped.Data;
+import msa.looped.Entities.Activity;
 import msa.looped.Entities.Friend;
+import msa.looped.Entities.HomeNewsAdapter;
 import msa.looped.Entities.Project;
 import msa.looped.Entities.ProjectAdapter;
+import msa.looped.Entities.ProjectBig;
+import msa.looped.Entities.ProjectBigResult;
 import msa.looped.Entities.ProjectsList;
 import msa.looped.R;
 import msa.looped.databinding.MyprojectsPageBinding;
@@ -36,6 +41,7 @@ public class MyProjectsPage extends Fragment {
 
     public OkHttpClient client;
     private String apiUrl = Data.getInstance().getApiUrl();
+    private ProjectBigResult projectBigResult = new ProjectBigResult();
 
     @Override
     public View onCreateView(
@@ -53,14 +59,26 @@ public class MyProjectsPage extends Fragment {
 
         binding.listView.setOnItemClickListener((parent, view, position, id) -> {
             Project selectedProject = projectList.get(position);
+            String permalink = selectedProject.getPermalink();
+            System.out.println("permalink: " + permalink);
 
-            SingleProjectPage singleProjectFragment = new SingleProjectPage();
+            fetchProjectDetails(permalink);
 
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("project", selectedProject);
-            singleProjectFragment.setArguments(bundle);
+            view.postDelayed(() -> {
+                if (projectBigResult!=null)
+                {
+                    SingleProjectPage singleProjectFragment = new SingleProjectPage();
 
-            loadFragment(singleProjectFragment);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("project", projectBigResult);
+                    singleProjectFragment.setArguments(bundle);
+
+                    loadFragment(singleProjectFragment);
+                }
+            }, 1000);
+
+
+
         });
 
         binding.savedpatternsbutton.setOnClickListener(v ->{
@@ -68,6 +86,35 @@ public class MyProjectsPage extends Fragment {
         });
 
         return binding.getRoot();
+    }
+
+    private void fetchProjectDetails(String permalink) {
+
+        String url = apiUrl + "/main/projects/" + Data.getCurrentUser().getUsername() +  "/" + permalink;
+        System.out.println(url);
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    final String responseData = response.body().string();
+
+                    Gson gson = new Gson();
+                    projectBigResult = gson.fromJson(responseData, ProjectBigResult.class);
+
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                e.printStackTrace();
+                String errorMessage = e.getMessage();
+                System.out.println(errorMessage);
+            }
+        });
     }
 
     private void loadFragment(Fragment fragment)
