@@ -6,6 +6,9 @@ public class Document {
     @SerializedName("Title")
     private String Title;
 
+    @SerializedName("Data")
+    private byte[] Data;
+
     @SerializedName("AuthorName")
     private String AuthorName;
 
@@ -19,6 +22,10 @@ public class Document {
                 ", AuthorName='" + AuthorName + '\'' +
                 ", Craft='" + Craft + '\'' +
                 '}';
+    }
+
+    public byte[] getData() {
+        return Data;
     }
 
     public String getTitle() {

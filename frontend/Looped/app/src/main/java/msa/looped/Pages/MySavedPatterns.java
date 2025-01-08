@@ -30,13 +30,16 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import msa.looped.Data;
 import msa.looped.Entities.Document;
+import msa.looped.Entities.DocumentsList;
 import msa.looped.Entities.ProjectsList;
 import msa.looped.Entities.QueuedPattern;
 import msa.looped.Entities.SavedPatternsAdapter;
+import msa.looped.Entities.SearchGridAdapter;
 import msa.looped.R;
 import msa.looped.databinding.MysavedpatternsPageBinding;
 import okhttp3.Call;
@@ -56,24 +59,26 @@ public class MySavedPatterns extends Fragment {
     private Uri documentUri;
     private String fileName, authorName, craft, userName;
 
+    private DocumentsList documentList;
+
     @Override
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-
+        documentList = new DocumentsList();
         binding = MysavedpatternsPageBinding.inflate(inflater, container, false);
         client = new OkHttpClient();
 
         return binding.getRoot();
     }
+
+    @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        List<QueuedPattern> queuedProjects = Data.getQueuedProjects().getQueuedPatterns();
-
-        SavedPatternsAdapter adapter = new SavedPatternsAdapter(getContext(), queuedProjects);
-        binding.listRecentUploads.setAdapter(adapter);
+        fetchUserDocuments();
+        loadGrid(view);
 
         binding.uploadPattern.setOnClickListener(v -> uploadPopUp());
 
@@ -89,8 +94,18 @@ public class MySavedPatterns extends Fragment {
                     }
                 }
         );
+    }
 
-        fetchUserDocuments();
+    private void loadGrid(View view) {
+        view.postDelayed(() -> {
+            if (isAdded() && binding != null) {
+                if (documentList.getDocumentsList() != null && !documentList.getDocumentsList().isEmpty()) {
+                    SavedPatternsAdapter adapter = new SavedPatternsAdapter(getContext(), documentList.getDocumentsList());
+                    if (!adapter.isEmpty())
+                        binding.listRecentUploads.setAdapter(adapter);
+                }
+            }
+        }, 1000);
     }
 
     public void openDocument(byte[] fileData, String fileName, String mimeType) {
@@ -134,7 +149,11 @@ public class MySavedPatterns extends Fragment {
                     System.out.println(responseData);
 
                     Gson gson = new Gson();
-                    List<Document> documentList = gson.fromJson(responseData, List.class);
+                    documentList = gson.fromJson(responseData, DocumentsList.class);
+
+                    getActivity().runOnUiThread(() -> {
+                        loadGrid(getView());
+                    });
 
                     System.out.println(documentList);
 
@@ -206,7 +225,8 @@ public class MySavedPatterns extends Fragment {
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
                     if (response.isSuccessful()) {
-                        System.out.println("DA"  +response);
+                        System.out.println("DA" + response);
+//                        fetchUserDocuments();
                     } else {
                         System.out.println("nu prea");
                     }
@@ -293,13 +313,6 @@ public class MySavedPatterns extends Fragment {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.mySavedPatterns, fragment);
         fragmentTransaction.commit();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        SavedPatternsAdapter adapter = new SavedPatternsAdapter(getContext(), Data.getQueuedProjects().getQueuedPatterns());
-        binding.listRecentUploads.setAdapter(adapter);
     }
 
     @Override
