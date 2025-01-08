@@ -1,6 +1,8 @@
 package msa.looped.Pages;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -96,6 +98,8 @@ public class EditMyProfilePage extends Fragment {
     public void logout()
     {
         requireContext().getFileStreamPath("user_code.txt").delete();
+        SharedPreferences preferences = requireContext().getSharedPreferences("app_prefs", Context.MODE_PRIVATE);
+        preferences.edit().putString("state", "").apply();
         NavHostFragment.findNavController(EditMyProfilePage.this)
                 .navigate(R.id.action_editMyProfilePage_to_WelcomePage);
 

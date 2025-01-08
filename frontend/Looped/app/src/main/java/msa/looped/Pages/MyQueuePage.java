@@ -59,6 +59,13 @@ public class MyQueuePage extends Fragment {
         return binding.getRoot();
     }
 
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+
+    }
+
     private void filterProjects(String query) {
         filteredProjects.clear();
         if (TextUtils.isEmpty(query)) {

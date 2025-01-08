@@ -163,11 +163,14 @@ namespace backend.Controllers
             userData = await response.Content.ReadAsStringAsync();
             jsonDocument = JsonDocument.Parse(userData);
 
+            var userId = jsonDocument.RootElement.GetProperty("user").GetProperty("id").GetInt64();
             var firstName = jsonDocument.RootElement.GetProperty("user").GetProperty("first_name").GetString();
             var location = jsonDocument.RootElement.GetProperty("user").GetProperty("location").GetString();
             var profilePic = jsonDocument.RootElement.GetProperty("user").GetProperty("large_photo_url").GetString();
             var aboutMe = jsonDocument.RootElement.GetProperty("user").GetProperty("about_me").GetString();
             var fave_colors = "";
+
+            Console.WriteLine("USER ID FRATILOR " + userId);
 
             await _databaseService.UpdateUser(userCode, firstName,location,profilePic, currentUserUsername, aboutMe, fave_colors);
 
@@ -312,6 +315,44 @@ namespace backend.Controllers
             catch (HttpRequestException ex)
             {
                 return StatusCode(500, new { error = "An error occurred while retrieving projects.", details = ex.Message });
+            }
+        }
+        [HttpGet("queue/delete")]
+        public async Task<IActionResult> DeleteProjectFromQueue([FromQuery] string user_name, [FromQuery] int project_id)
+        {
+            string accessToken = _authService.getToken();
+
+            Console.WriteLine("Access Token: " + accessToken);
+            Console.WriteLine(" user name " + user_name + " project id " + project_id);
+
+            var url = $"{RavelryApiUrl}/people/{user_name}/queue/{project_id}.json";
+
+            Console.WriteLine(url);
+
+            accessToken = _authService.getToken();
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+
+            try
+            {
+                var response = await _httpClient.DeleteAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var projectsData = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine("da " + projectsData);
+                    return Ok(projectsData);
+                }
+                else
+                {
+                    var errorResponse = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine("nu " + errorResponse);
+                    return BadRequest(new { error = "Failed to delete from queue.", details = errorResponse });
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                Console.WriteLine("nasol");
+                return StatusCode(500, new { error = "An error occurred while deleting from queue.", details = ex.Message });
             }
         }
         [HttpGet("projects/{user_name}/{id}")]

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:foregroundTint="@color/transparent"
     android:orientation="horizontal"
     android:padding="8dp">
 
@@ -30,25 +31,27 @@
         app:layout_constraintStart_toEndOf="@+id/imageViewPhotoQueued"
         app:layout_constraintTop_toBottomOf="@+id/projectTitle" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/startButton"
         android:layout_width="18dp"
         android:layout_height="18dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="4dp"
         android:layout_weight="1"
+        android:backgroundTint="#FDF4E6"
         app:layout_constraintStart_toEndOf="@+id/projectTitle"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/start_button"
         app:tint="@color/dark_purple" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/deleteButton"
         android:layout_width="18dp"
         android:layout_height="18dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="92dp"
         android:layout_weight="1"
+        android:backgroundTint="#FDF4E6"
         app:layout_constraintStart_toEndOf="@+id/projectTitle"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/delete_button"
@@ -74,7 +77,7 @@
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"/>
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent" />
 
     <TextView
         android:id="@+id/queuedDate"
@@ -95,6 +98,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
+        android:clickable="true"
         android:fontFamily="@font/inter_bold"
         android:text="start"
         android:textColor="@color/dark_purple"
@@ -108,9 +112,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="92dp"
+        android:clickable="true"
         android:fontFamily="@font/inter_bold"
-        android:textColor="@color/dark_purple"
         android:text="delete"
+        android:textColor="@color/dark_purple"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/deleteButton"
         app:layout_constraintTop_toTopOf="parent" />
