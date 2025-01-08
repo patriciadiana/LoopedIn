@@ -63,5 +63,11 @@ namespace backend.Service
             var user = await _userRepository.UpdateUser(userCode, firstName, location, profilePic, username, aboutMe, faveColors);
             return user;
         }
+        public async Task<List<Entities.Document>> GetDocumentForUser(int userId)
+        {
+            var documentList = await _documentRepository.GetDocumentForUser(userId);
+
+            return documentList;
+        }
     }
 }

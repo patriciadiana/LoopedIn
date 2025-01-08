@@ -18,16 +18,23 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.gson.Gson;
+
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
 import msa.looped.Data;
+import msa.looped.Entities.Document;
+import msa.looped.Entities.ProjectsList;
 import msa.looped.Entities.QueuedPattern;
 import msa.looped.Entities.SavedPatternsAdapter;
 import msa.looped.R;
@@ -58,6 +65,11 @@ public class MySavedPatterns extends Fragment {
         binding = MysavedpatternsPageBinding.inflate(inflater, container, false);
         client = new OkHttpClient();
 
+        return binding.getRoot();
+    }
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         List<QueuedPattern> queuedProjects = Data.getQueuedProjects().getQueuedPatterns();
 
         SavedPatternsAdapter adapter = new SavedPatternsAdapter(getContext(), queuedProjects);
@@ -73,13 +85,69 @@ public class MySavedPatterns extends Fragment {
                         if (data != null) {
                             documentUri = data.getData();
 
-                            // Handle the selected document
                         }
                     }
                 }
         );
 
-        return binding.getRoot();
+        fetchUserDocuments();
+    }
+
+    public void openDocument(byte[] fileData, String fileName, String mimeType) {
+        try {
+            File file = new File(requireContext().getExternalFilesDir(null), fileName);
+            try (FileOutputStream fos = new FileOutputStream(file)) {
+                fos.write(fileData);
+            }
+
+            Uri fileUri = FileProvider.getUriForFile(
+                    requireContext(),
+                    "com.Looped.msa", // Replace with your app's package name
+                    file
+            );
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(fileUri, mimeType);
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+            startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private void fetchUserDocuments() {
+
+        String url = apiUrl + "/documents/list?user_name="+ Data.getCurrentUser().getUsername();
+
+        System.out.println("backend url: " + url);
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    final String responseData = response.body().string();
+
+                    System.out.println(responseData);
+
+                    Gson gson = new Gson();
+                    List<Document> documentList = gson.fromJson(responseData, List.class);
+
+                    System.out.println(documentList);
+
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                e.printStackTrace();
+                String errorMessage = e.getMessage();
+                System.out.println(errorMessage);
+            }
+        });
     }
 
     private byte[] readFileFromUri(Uri uri) throws IOException {

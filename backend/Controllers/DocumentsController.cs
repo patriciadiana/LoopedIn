@@ -40,5 +40,16 @@ namespace backend.Controllers
 
             return Ok(new { Message = "File uploaded successfully.", FileName = fileName });
         }
+        [HttpGet("list")]
+        public async Task<IActionResult> GetCurrentUserDatabase([FromQuery] String user_name)
+        {
+            var user = await _databaseService.GetUserByUsername(user_name);
+            var userId = user.Id;
+
+            var documents = await _databaseService.GetDocumentForUser(userId);
+
+            return Ok(documents);
+
+        }
     }
 }

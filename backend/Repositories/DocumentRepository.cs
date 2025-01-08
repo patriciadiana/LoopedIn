@@ -23,5 +23,11 @@ namespace backend.Repositories
             Console.WriteLine($"\n\n\nEntity State: {_loopedContext.Entry(document).State}\n\n\n");
             return document;
         }
+        public async Task<List<Document>> GetDocumentForUser(int userId)
+        {
+            ArgumentNullException.ThrowIfNull(userId);
+            var documents = await _loopedContext.documents.Where(t => t.UserId == userId).ToListAsync();
+            return documents;
+        }
     }
 }
