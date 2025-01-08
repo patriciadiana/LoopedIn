@@ -16,11 +16,17 @@ public class QueuedPattern {
     private String make_for;
     @SerializedName("notes")
     private String notes;
+    @SerializedName("id")
+    private int id;
     @SerializedName("position_in_queue")
     private int position_in_queue;
 
     @SerializedName("best_photo")
     private FirstPhoto bestPhoto;
+
+    public int getId() {
+        return id;
+    }
 
     public FirstPhoto getBestPhoto() {
         return bestPhoto;

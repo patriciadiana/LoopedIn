@@ -21,6 +21,11 @@ public class QueuedProjects {
         return queued_projects.size();
     }
 
+    public void deletePatternAtPosition(int position)
+    {
+        position = position-1;
+        queued_projects.remove(position);
+    }
     @Override
     public String toString() {
         return "QueueResponse{" +
