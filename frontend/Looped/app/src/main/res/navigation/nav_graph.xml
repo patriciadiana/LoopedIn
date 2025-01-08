@@ -118,6 +118,9 @@
         <action
             android:id="@+id/action_editMyProfilePage_to_myProfilePage"
             app:destination="@id/myProfilePage" />
+        <action
+            android:id="@+id/action_editMyProfilePage_to_WelcomePage"
+            app:destination="@id/WelcomePage" />
     </fragment>
     <fragment
         android:id="@+id/myFavoritesPage"

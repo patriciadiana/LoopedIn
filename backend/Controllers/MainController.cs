@@ -169,7 +169,7 @@ namespace backend.Controllers
             var aboutMe = jsonDocument.RootElement.GetProperty("user").GetProperty("about_me").GetString();
             var fave_colors = "";
 
-            _databaseService.UpdateUser(userCode, firstName,location,profilePic, currentUserUsername, aboutMe, fave_colors);
+            await _databaseService.UpdateUser(userCode, firstName,location,profilePic, currentUserUsername, aboutMe, fave_colors);
 
             return Ok(JsonSerializer.Deserialize<object>(userData));
         }

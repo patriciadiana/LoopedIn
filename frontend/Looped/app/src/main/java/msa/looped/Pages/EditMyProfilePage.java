@@ -90,6 +90,15 @@ public class EditMyProfilePage extends Fragment {
                 }
 
         );
+
+        binding.logoutButton.setOnClickListener(v -> logout());
+    }
+    public void logout()
+    {
+        requireContext().getFileStreamPath("user_code.txt").delete();
+        NavHostFragment.findNavController(EditMyProfilePage.this)
+                .navigate(R.id.action_editMyProfilePage_to_WelcomePage);
+
     }
 
     private void sendEditedProfile(String userName, String firstName, String location, String aboutMe, String faveColors) {

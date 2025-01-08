@@ -114,7 +114,7 @@
         tools:ignore="RtlSymmetry" />
 
     <Button
-        android:id="@+id/createProject"
+        android:id="@+id/addPatternToLibrary"
         android:layout_width="144dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="316dp"

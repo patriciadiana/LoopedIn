@@ -8,6 +8,19 @@
     android:background="#FDF4E6"
     tools:context=".Pages.EditMyProfilePage">
 
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="664dp"
+        android:backgroundTint="@color/light_purple"
+        android:text="Logout"
+        android:textColor="@color/background_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.138"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="410dp"

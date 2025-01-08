@@ -7,5 +7,6 @@ namespace backend.Data
     {
         public DbSet<User> users { get; set; }
         public DbSet<Token> tokens { get; set; }
+        public DbSet<Document> documents { get; set; }
     }
 }

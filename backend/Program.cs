@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 using backend.Data;
+using Microsoft.Extensions.Options;
 
 namespace backend
 {
@@ -26,9 +27,15 @@ namespace backend
             builder.Services.AddEndpointsApiExplorer();
 
             builder.Services.AddDbContext<LoopedContext>(options =>
-                options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Looped;Trusted_Connection=True;")
+            {
+                options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Looped;Trusted_Connection=True;Pooling=False;", sqlOptions =>
+                {
+                    sqlOptions.CommandTimeout(60);
+                })
                 .EnableSensitiveDataLogging()
-                .LogTo(Console.WriteLine, LogLevel.Information));
+                .LogTo(Console.WriteLine, LogLevel.Information);
+            });
+
 
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped<HttpClient>();
@@ -36,6 +43,7 @@ namespace backend
             builder.Services.AddScoped<DatabaseService>();
             builder.Services.AddScoped<Repositories.ITokenRepository, Repositories.TokenRepository>();
             builder.Services.AddScoped<Repositories.IUserRepository, Repositories.UserRepository>();
+            builder.Services.AddScoped<Repositories.IDocumentRepository, Repositories.DocumentRepository>();
             builder.Services.AddHttpClient();
 
             builder.Services.AddAuthentication("Bearer")
@@ -51,43 +59,48 @@ namespace backend
                     };
                 });
 
-            builder.Services.AddSwaggerGen(c =>
-            {
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                {
-                    Name = "Authorization",
-                    Type = SecuritySchemeType.Http,
-                    Scheme = "Bearer",
-                    BearerFormat = "JWT",
-                    In = ParameterLocation.Header,
-                    Description = "Enter 'Bearer' followed by your token."
-                });
+            //builder.Services.AddSwaggerGen(c =>
+            //{
+            //    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            //    {
+            //        Name = "Authorization",
+            //        Type = SecuritySchemeType.Http,
+            //        Scheme = "Bearer",
+            //        BearerFormat = "JWT",
+            //        In = ParameterLocation.Header,
+            //        Description = "Enter 'Bearer' followed by your token."
+            //    });
 
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                    {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "Bearer"
-                            }
-                        },
-                        new string[] {}
-                    }
-                });
-            });
+            //    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+            //    {
+            //        {
+            //            new OpenApiSecurityScheme
+            //            {
+            //                Reference = new OpenApiReference
+            //                {
+            //                    Type = ReferenceType.SecurityScheme,
+            //                    Id = "Bearer"
+            //                }
+            //            },
+            //            new string[] {}
+            //        }
+            //    });
+            //    c.MapType<IFormFile>(() => new OpenApiSchema
+            //    {
+            //        Type = "string",
+            //        Format = "binary"
+            //    });
+            //});
 
         
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+            //if (app.Environment.IsDevelopment())
+            //{
+            //    app.UseSwagger();
+            //    app.UseSwaggerUI();
+            //}
 
             app.UseAuthentication();
             app.UseAuthorization();

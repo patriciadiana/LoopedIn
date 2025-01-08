@@ -1,7 +1,9 @@
-﻿namespace backend.Service
+﻿using System.Reflection.Metadata;
+
+namespace backend.Service
 {
     public class DatabaseService (Repositories.ITokenRepository _tokenRepository, 
-        Repositories.IUserRepository _userRepository)
+        Repositories.IUserRepository _userRepository, Repositories.IDocumentRepository _documentRepository)
     {
         public async Task<Entities.Token> UpdateToken(string userCode, string bearerToken, string refreshToken)
         {
@@ -49,10 +51,23 @@
             return user;
         }
 
+        public async Task<Entities.Document> AddDocument(Entities.Document document)
+        {
+            var addeddocument = await _documentRepository.AddDocument(document);
+
+            return addeddocument;
+        }
+
         public async Task<Entities.User> UpdateUser(string userCode, string firstName, string location, string profilePic, string username, string aboutMe, string faveColors)
         {
             var user = await _userRepository.UpdateUser(userCode, firstName, location, profilePic, username, aboutMe, faveColors);
             return user;
+        }
+        public async Task<List<Entities.Document>> GetDocumentForUser(int userId)
+        {
+            var documentList = await _documentRepository.GetDocumentForUser(userId);
+
+            return documentList;
         }
     }
 }
