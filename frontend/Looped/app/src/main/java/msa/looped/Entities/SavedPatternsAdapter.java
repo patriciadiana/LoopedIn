@@ -18,21 +18,21 @@ import msa.looped.R;
 
 public class SavedPatternsAdapter extends BaseAdapter {
     private Context context;
-    private List<QueuedPattern> queuedProjects;
+    private List<Document> documentList;
 
-    public SavedPatternsAdapter(Context context, List<QueuedPattern> queuedProjects) {
+    public SavedPatternsAdapter(Context context, List<Document> documentList) {
         this.context = context;
-        this.queuedProjects = queuedProjects;
+        this.documentList = documentList;
     }
 
     @Override
     public int getCount() {
-        return queuedProjects.size();
+        return documentList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return queuedProjects.get(position);
+        return documentList.get(position);
     }
 
     @Override
@@ -46,29 +46,19 @@ public class SavedPatternsAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.saved_patterns_template, parent, false);
         }
 
-        QueuedPattern queuedProject = queuedProjects.get(position);
+        Document document = documentList.get(position);
 
         TextView uploadTitle = convertView.findViewById(R.id.uploadTitle);
-        uploadTitle.setText(queuedProject.getShort_pattern_name());
+        uploadTitle.setText(document.getTitle());
 
-        String rawDate = queuedProject.getCreated_at_date();
+        TextView authorName = convertView.findViewById(R.id.authorName);
+        authorName.setText(document.getAuthorName());
 
-        String formattedDate = "";
-        try {
-            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss Z");
-            Date date = inputFormat.parse(rawDate);
-
-            SimpleDateFormat outputFormat = new SimpleDateFormat("dd MMMM yyyy");
-            formattedDate = outputFormat.format(date);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        TextView uploadDate = convertView.findViewById(R.id.uploadDate);
-        uploadDate.setText("queued on " + formattedDate);
+        TextView craftName = convertView.findViewById(R.id.craftName);
+        craftName.setText(document.getCraft());
 
         ImageView imageView = convertView.findViewById(R.id.imageViewDocumentType);
-        Glide.with(context).load(queuedProject.getBestPhoto().getThumbnailUrl()).into(imageView);
+        Glide.with(context).load(R.drawable.placeholder_image).into(imageView);
 
         return convertView;
     }

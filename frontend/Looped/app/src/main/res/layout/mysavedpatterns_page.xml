@@ -11,9 +11,8 @@
 
     <ListView
         android:id="@+id/listRecentUploads"
-        android:layout_width="379dp"
-        android:layout_height="485dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="383dp"
+        android:layout_height="512dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -77,15 +76,15 @@
         android:layout_marginTop="118dp"
         android:backgroundTint="@color/background_color"
         android:text="Upload"
-        android:textColor="@color/dark_purple"
+        android:textColor="@color/main_purple"
         android:textSize="12sp"
         app:icon="@drawable/purple_upload"
-        app:iconTint="@color/dark_purple"
+        app:iconTint="@color/main_purple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.671"
         app:layout_constraintStart_toEndOf="@+id/searchView"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="@color/dark_purple"
+        app:strokeColor="@color/main_purple"
         app:strokeWidth="2dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -48,7 +48,20 @@ namespace backend.Controllers
 
             var documents = await _databaseService.GetDocumentForUser(userId);
 
-            return Ok(documents);
+            var result = new
+            {
+                documentsList = documents.Select(doc => new
+                {
+                    doc.Id,
+                    doc.Title,
+                    Data = Convert.ToBase64String(doc.Data),
+                    doc.AuthorName,
+                    doc.Craft,
+                    doc.UserId
+                })
+            };
+
+            return Ok(result);
 
         }
     }

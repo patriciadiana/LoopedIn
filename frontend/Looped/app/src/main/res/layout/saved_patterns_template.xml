@@ -14,14 +14,14 @@
         android:layout_marginStart="10dp"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/uploadTitle" />
 
     <TextView
         android:id="@+id/uploadTitle"
-        android:layout_width="133dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/inter_semibold"
         android:text="titlulungdedocument"
         android:textColor="@color/dark_purple"
@@ -30,28 +30,29 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/uploadDate"
-        android:layout_width="100dp"
-        android:layout_height="11dp"
+        android:id="@+id/authorName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="6dp"
         android:fontFamily="sans-serif-medium"
-        android:text="datadocument"
+        android:text="numeautor"
+        android:textColor="@color/dark_purple"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/imageViewDocumentType"
+        app:layout_constraintTop_toBottomOf="@+id/uploadTitle" />
+
+    <TextView
+        android:id="@+id/craftName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="6dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="craftname"
         android:textColor="@color/dark_purple"
         android:textSize="8sp"
-        app:layout_constraintStart_toEndOf="@+id/uploadTitle"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/moreButton"
-        android:layout_width="19dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="24dp"
-        android:layout_weight="1"
-        app:layout_constraintStart_toEndOf="@+id/uploadDate"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/more_button"
-        app:tint="@color/main_purple" />
+        app:layout_constraintStart_toEndOf="@+id/imageViewDocumentType"
+        app:layout_constraintTop_toBottomOf="@+id/authorName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
