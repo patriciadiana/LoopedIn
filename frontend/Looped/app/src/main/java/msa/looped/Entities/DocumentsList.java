@@ -12,6 +12,11 @@ public class DocumentsList {
         return documentsList;
     }
 
+    public Document get(int position)
+    {
+        return documentsList.get(position);
+    }
+
     @Override
     public String toString() {
         return "DocumentsList{" +

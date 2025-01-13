@@ -1,18 +1,22 @@
 package msa.looped.Entities;
 
+import android.os.Build;
+
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Base64;
+
 public class Document {
-    @SerializedName("Title")
+    @SerializedName("title")
     private String Title;
 
-    @SerializedName("Data")
-    private byte[] Data;
+    @SerializedName("data")
+    private String Data;
 
-    @SerializedName("AuthorName")
+    @SerializedName("authorName")
     private String AuthorName;
 
-    @SerializedName("Craft")
+    @SerializedName("craft")
     private String Craft;
 
     @Override
@@ -22,10 +26,6 @@ public class Document {
                 ", AuthorName='" + AuthorName + '\'' +
                 ", Craft='" + Craft + '\'' +
                 '}';
-    }
-
-    public byte[] getData() {
-        return Data;
     }
 
     public String getTitle() {
@@ -38,5 +38,31 @@ public class Document {
 
     public String getCraft() {
         return Craft;
+    }
+
+    public void setTitle(String title) {
+        Title = title;
+    }
+
+    public String getData() {
+        return Data;
+    }
+    public byte[] getDataBytes() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            return Base64.getDecoder().decode(Data);
+        }
+        return null;
+    }
+
+    public void setData(String data) {
+        Data = data;
+    }
+
+    public void setAuthorName(String authorName) {
+        AuthorName = authorName;
+    }
+
+    public void setCraft(String craft) {
+        Craft = craft;
     }
 }

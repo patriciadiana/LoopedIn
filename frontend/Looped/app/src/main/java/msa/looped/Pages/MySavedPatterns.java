@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,7 @@ import java.util.List;
 import msa.looped.Data;
 import msa.looped.Entities.Document;
 import msa.looped.Entities.DocumentsList;
+import msa.looped.Entities.Project;
 import msa.looped.Entities.ProjectsList;
 import msa.looped.Entities.QueuedPattern;
 import msa.looped.Entities.SavedPatternsAdapter;
@@ -69,6 +71,16 @@ public class MySavedPatterns extends Fragment {
         documentList = new DocumentsList();
         binding = MysavedpatternsPageBinding.inflate(inflater, container, false);
         client = new OkHttpClient();
+
+        binding.listRecentUploads.setOnItemClickListener((parent, view, position, id) -> {
+            Document selectedDocument = documentList.get(position);
+
+            byte[] dataBytes = selectedDocument.getDataBytes();
+            String docName = selectedDocument.getTitle();
+            String mimeType = "application/pdf";
+
+            openDocument(dataBytes, docName, mimeType);
+        });
 
         return binding.getRoot();
     }
@@ -115,21 +127,34 @@ public class MySavedPatterns extends Fragment {
                 fos.write(fileData);
             }
 
+            Log.d("FileProvider", "File written to: " + file.getAbsolutePath());
+
             Uri fileUri = FileProvider.getUriForFile(
                     requireContext(),
-                    "com.Looped.msa", // Replace with your app's package name
+                    "com.msa.looped.fileprovider",
                     file
             );
+
+            Log.d("FileProvider", "File URI: " + fileUri.toString());
 
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setDataAndType(fileUri, mimeType);
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
-            startActivity(intent);
+            if (intent.resolveActivity(requireContext().getPackageManager()) != null) {
+                Log.d("FileProvider", "Launching intent to open file");
+                Intent chooser = Intent.createChooser(intent, "Open file with");
+                startActivity(chooser);
+            } else {
+                Log.e("FileProvider", "No app found to open this file");
+                Toast.makeText(requireContext(), "No app available to open this file", Toast.LENGTH_SHORT).show();
+            }
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e("FileProviderError", "Error opening document", e);
+            Toast.makeText(requireContext(), "Failed to open document", Toast.LENGTH_SHORT).show();
         }
     }
+
     private void fetchUserDocuments() {
 
         String url = apiUrl + "/documents/list?user_name="+ Data.getCurrentUser().getUsername();
