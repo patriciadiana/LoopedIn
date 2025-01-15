@@ -64,7 +64,7 @@ public class HomeNewsAdapter extends BaseAdapter {
         }
 
         TextView mainText = convertView.findViewById(R.id.startedProject);
-        mainText.setText(user + " started a new project on\n" + formattedDate);
+        mainText.setText(user + " favorited a new project on\n" + formattedDate);
 
         TextView textProjectTitle = convertView.findViewById(R.id.projectTitle);
         textProjectTitle.setText(activity.getTitle());
