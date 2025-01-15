@@ -42,9 +42,6 @@ public class SingleProjectPage extends Fragment {
                 binding.craftTextFetched.setText(project.getProject().getCraft_name());
                 binding.madeForTextFetched.setText(project.getProject().getMade_for());
                 binding.sizeTextFetched.setText(project.getProject().getSize());
-                binding.yarnTextFetched.setText("miaumiauyarn");
-                binding.needlesTextFetched.setText("miaumiauneedles");
-                binding.colorwayTextFetched.setText("miaumiaucolorway");
                 binding.statusTextFetched.setText(project.getProject().getStatus_name());
 
                 TextView textProgress = binding.textViewPercentage;
